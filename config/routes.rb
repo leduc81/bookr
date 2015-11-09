@@ -2,13 +2,18 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
 
-  resources :user_profiles, only: [:new, :show, :edit, :create, :update] do
-    resources :dossiers do
-      resources :candidates do
-        resources :proofs
-      end
-    end
-  end
+  resources :dossiers
+
+  # resources :user_profiles, only: [:new, :show, :edit, :create, :update] do
+  #   resources :dossiers do
+  #     resources :candidates do
+  #       resources :proofs
+  #     end
+  #   end
+  # end
+
+
+
 
   # namespace :admin do
   #   resources :user_profiles
