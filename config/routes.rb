@@ -4,6 +4,11 @@ Rails.application.routes.draw do
 
   resources :dossiers
 
+  resources :candidates do
+    resources :proofs
+  end
+
+
   # resources :user_profiles, only: [:new, :show, :edit, :create, :update] do
   #   resources :dossiers do
   #     resources :candidates do
