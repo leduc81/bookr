@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
+  get 'dashboard/index'
+
   # devise_for :users
   # root to: 'pages#home'
 
    devise_for :users
   root to: 'pages#home'
 
-  resources :dossiers
+  # resources :dossiers
 
   resources :candidates do
     resources :proofs
