@@ -1,6 +1,32 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
+
+  resources :dossiers
+
+  resources :candidates do
+    resources :proofs
+  end
+
+
+  # resources :user_profiles, only: [:new, :show, :edit, :create, :update] do
+  #   resources :dossiers do
+  #     resources :candidates do
+  #       resources :proofs
+  #     end
+  #   end
+  # end
+
+
+
+
+  # namespace :admin do
+  #   resources :user_profiles
+  #   resources :dossiers
+  #   resources :candidates
+  #   resources :proofs
+  # end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
