@@ -13,6 +13,12 @@ class CandidatesController < ApplicationController
   end
 
   def create
+    @candidate = Candidate.new(candidate_params)
+    if @candidate.save
+      redirect_to dashboard_index_path
+    else
+      render :new
+    end
   end
 
   def edit
@@ -32,8 +38,8 @@ class CandidatesController < ApplicationController
     @candidate = Candidate.find(params[:id])
   end
 
-  # def candidate_params
-  #   params.require(:candidate).permit()
-  # end
+  def candidate_params
+    params.require(:candidate).permit(:firstname, :lastname, :address, :city, :country, :zipcode, :position, :declared_income, :position_from_date, :garant_position, :garant_declared_income, :garant_position_from_date )
+  end
 
 end
