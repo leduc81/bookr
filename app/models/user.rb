@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
+<<<<<<< HEAD
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:linkedin]
 
@@ -17,4 +18,11 @@ class User < ActiveRecord::Base
       user.token = auth.credentials.token
     end
   end
+=======
+         :recoverable, :rememberable, :trackable, :validatable
+  has_many :dossiers
+  has_many :candidates
+  has_many :candidate_dossiers, through: :dossier
+
+>>>>>>> master
 end

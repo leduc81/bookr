@@ -11,10 +11,71 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20151110114256) do
+=======
+ActiveRecord::Schema.define(version: 20151110135702) do
+>>>>>>> master
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "candidate_dossiers", force: :cascade do |t|
+    t.integer  "dossier_id"
+    t.integer  "candidate_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "candidate_dossiers", ["candidate_id"], name: "index_candidate_dossiers_on_candidate_id", using: :btree
+  add_index "candidate_dossiers", ["dossier_id"], name: "index_candidate_dossiers_on_dossier_id", using: :btree
+
+  create_table "candidates", force: :cascade do |t|
+    t.boolean  "active"
+    t.string   "nationality"
+    t.string   "gender"
+    t.string   "firstname"
+    t.string   "lastname"
+    t.string   "email"
+    t.string   "sms"
+    t.string   "address"
+    t.integer  "zipcode"
+    t.string   "city"
+    t.string   "country"
+    t.integer  "verified_income"
+    t.string   "position"
+    t.date     "position_from_date"
+    t.integer  "verified_garant_income"
+    t.string   "garant_position"
+    t.date     "garant_position_from_date"
+    t.integer  "user_id"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.integer  "declared_income"
+    t.integer  "garant_declared_income"
+  end
+
+  add_index "candidates", ["user_id"], name: "index_candidates_on_user_id", using: :btree
+
+  create_table "dossiers", force: :cascade do |t|
+    t.integer  "verified_income"
+    t.integer  "user_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "dossiers", ["user_id"], name: "index_dossiers_on_user_id", using: :btree
+
+  create_table "proofs", force: :cascade do |t|
+    t.string   "category"
+    t.integer  "amount"
+    t.boolean  "verified"
+    t.integer  "candidate_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "proofs", ["candidate_id"], name: "index_proofs_on_candidate_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -41,4 +102,9 @@ ActiveRecord::Schema.define(version: 20151110114256) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "candidate_dossiers", "candidates"
+  add_foreign_key "candidate_dossiers", "dossiers"
+  add_foreign_key "candidates", "users"
+  add_foreign_key "dossiers", "users"
+  add_foreign_key "proofs", "candidates"
 end
