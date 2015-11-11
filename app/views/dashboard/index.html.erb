@@ -1,11 +1,8 @@
-<h1>Dashboard#index</h1>
-<p>Find me in app/views/dashboard/index.html.erb</p>
-
-<div class="container">
+<div class="container padded">
   <div class="row">
     <h1>Candidates <%= link_to "ADD", new_candidate_path, class: "btn btn-primary"%></h1>
     <% @candidates.each do |candidate| %>
-    <h2><%= candidate.firstname %></h2>
+    <h5><%= candidate.firstname %> <%= candidate.lastname %></h5>
     <%end%>
     <h1>Proofs</h1>
     <h1>Dossiers</h1>
