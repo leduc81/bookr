@@ -1,30 +1,73 @@
+# CONFIG
 
 init: 1-1
 
+# SCHEMA
+
+# block-step:
+#   intro: "some introductive text"
+#   questions:
+#     id_question_1:
+#       text: "how old are you ?" # optional
+#       format: integer|text|date|email|password # mandatory
+#       name: age # mandatory
+#       label: "Your Age" # optional
+#       default: 25 # optional
+#      id_question_x ..............
+#        format:....
+#        name:...
+#   info: "some informational text"
+#   validate: "this will be the text on the form submit button"
+#   next: 1-2|some_path # another step listed below or a route path
+
+# TODO :
+# - add validations on inputs
+# - add JS live validations on inputs
+# - fail ouputs (ex more than 5 people canno't use the service)
+# - allow additional questions to appear in certain cases
+# - todo allow to use variables from past responses in questions
+# - allow to loop on several persons (for block 2,3,5)
+
+#########################
+
 1-1:
-  intro: "Tell us what you’re looking for and we’ll elaborate your Dossier with you."
+  intro: ""
   questions:
     0:
-      text: "Where do you want to live ?"
+      text: Où souhaitez-vous vivre ?
       format: integer
       name: zipcode
-      label: "Research Area"
+      label: Code postal
       default: 75011
-  info: "prices & owner’s expectations change a lot from an area to another"
-  validate: "Go to next step"
+  info: "Le prix et les attentes des propriétaires en terme de garantie dépendent du loyer, du type de bien et de leur localisation. Par exemple, dans tous les arrondissements de Paris, la demande est forte et les propriétaires peuvent donc être très exigeants. Un dossier clair et complet vous permet de gagner des places dans la file d'attente !"
+  validate: Valider
   next: 1-2
 
 1-2:
   intro: ""
   questions:
     0:
-      text: "How many people would you want to live with (including you)"
-      format: "integer"
+      text: Combien de personnes seront sur le bail ? (vous inclus)"
+      format: integer
       name: people
-      label: "How many are you guys"
-      default: "1"
-  info: "people are collectively responsible for paying the rent"
-  validate: "Go to next step"
+      label: Personne(s)
+      default: 1
+  info: "Dans un bail d'habitation, les différentes personnes sont collectivement responsables du règlement du loyer mensuel."
+  validate: Valider
+  next: 1-3
+
+
+1-3:
+  intro: ""
+  questions:
+    0:
+      text: Montant maximum du loyer pour le bien recherché ? (pour toutes les personnes)
+      format: integer
+      name: max_rent
+      label: Loyer maximum
+      default: 1000
+  info: "L'INSEE recommande un loyer mensuel ne dépassant pas un tiers des revenus. C'est la norme généralement appliquée sur le marché par les agences et les propriétaires pour accepter les candidatures de locataires."
+  validate: Valider
   next: dashboard_index_path
 
 
