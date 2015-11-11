@@ -1,0 +1,24 @@
+<div class="container padded">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+      <h3>Create a candidate:</h3>
+      <%= simple_form_for [@candidate] do |f| %>
+        <%= f.input :firstname, placeholder: "Douglas" %>
+        <%= f.input :lastname, placeholder: "Adams" %>
+        <%= f.input :email, placeholder: "doug@hitchhike.com" %>
+        <%= f.input :address, placeholder: "11, Earth Street" %>
+        <%= f.input :city, placeholder: "Dublin" %>
+        <%= f.input :country %>
+        <%= f.input :zipcode, placeholder: "42424" %>
+        <%= f.input :position, placeholder: "Hitchhiker" %>
+        <%= f.input :declared_income, placeholder: "20.000 towels/year" %>
+        <%= f.input :position_from_date %>
+        <%= f.input :garant_position, placeholder: "Vogon" %>
+        <%= f.input :garant_declared_income, placeholder: "20.000 towels/year" %>
+        <%= f.input :garant_position_from_date %>
+        <%= f.submit class: "btn btn-danger" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
