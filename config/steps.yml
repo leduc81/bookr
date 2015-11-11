@@ -27,6 +27,7 @@ init: 1-1
 # - allow additional questions to appear in certain cases
 # - todo allow to use variables from past responses in questions
 # - allow to loop on several persons (for block 2,3,5)
+# - separate init from the funnel : steps_init.yml & steps_funnel.yml ?
 
 #########################
 
@@ -35,7 +36,7 @@ init: 1-1
   questions:
     0:
       text: Où souhaitez-vous vivre ?
-      format: integer
+      format: "integer"
       name: zipcode
       label: Code postal
       default: 75011
