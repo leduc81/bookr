@@ -10,9 +10,11 @@ class StepsController < ApplicationController
   end
 
   def next
+    # TODO : avoid that user changes the GET value
     next_step = params['next']
-    # todo avoid that user changes the GET value
+    # TODO : allow only permit data
     # => in this case goto current_user passed step instead
+    # TODO : save pushed data to user
     if next_step[-5,5] == "_path"
       redirect_to send next_step # as a PATH
     else

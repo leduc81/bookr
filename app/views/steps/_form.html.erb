@@ -1,9 +1,11 @@
 <%= form_tag( steps_next_path , method: "post") do %>
+
   <% @step['questions'].each do |q| %>
 
     <% q_symbol = q[1]['name'].to_sym %>
 
       <p><%= q[1]['text'] %></p>
+
       <%= label_tag(q_symbol, q[1]['label']) %>
 
       <!-- INTEGER field -->
@@ -13,6 +15,7 @@
 
       <!-- TEXT field -->
       <% elsif q[1]['format'] == "integer" %>
+
         <%= number_field_tag(q_symbol, q[1]['default']) %>
 
       <!-- DATE field -->
