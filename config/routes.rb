@@ -7,7 +7,6 @@ Rails.application.routes.draw do
    devise_for :users
   root to: 'pages#home'
 
-  # resources :dossiers
 
   resources :candidates do
     resources :proofs
