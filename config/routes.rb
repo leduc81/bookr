@@ -1,11 +1,17 @@
 Rails.application.routes.draw do
+
+  get 'steps/init'
+  # get 'steps/:id' => 'steps#show', as: "step"
+  resources :steps, only: :show
+  post 'steps/next'
+
   get 'dashboard/index'
 
   # devise_for :users
   # root to: 'pages#home'
 
    devise_for :users
-  root to: 'pages#home'
+  root to: 'dashboard#index'
 
 
   resources :candidates do
