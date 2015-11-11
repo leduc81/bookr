@@ -1,0 +1,31 @@
+
+init: 1-1
+
+1-1:
+  intro: "Tell us what you’re looking for and we’ll elaborate your Dossier with you."
+  questions:
+    0:
+      text: "Where do you want to live ?"
+      format: integer
+      name: zipcode
+      label: "Research Area"
+      default: 75011
+  info: "prices & owner’s expectations change a lot from an area to another"
+  validate: "Go to next step"
+  next: 1-2
+
+1-2:
+  intro: ""
+  questions:
+    0:
+      text: "How many people would you want to live with (including you)"
+      format: "integer"
+      name: people
+      label: "How many are you guys"
+      default: "1"
+  info: "people are collectively responsible for paying the rent"
+  validate: "Go to next step"
+  next: dashboard_index_path
+
+
+

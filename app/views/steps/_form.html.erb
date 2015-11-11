@@ -1,0 +1,40 @@
+<%= form_tag( steps_next_path , method: "post") do %>
+  <% @step['questions'].each do |q| %>
+
+    <% q_symbol = q[1]['name'].to_sym %>
+
+      <p><%= q[1]['text'] %></p>
+      <%= label_tag(q_symbol, q[1]['label']) %>
+
+      <!-- INTEGER field -->
+
+      <% if q[1]['format'] == "text" %>
+        <%= text_field_tag(q_symbol, q[1]['default']) %>
+
+      <!-- TEXT field -->
+      <% elsif q[1]['format'] == "integer" %>
+        <%= number_field_tag(q_symbol, q[1]['default']) %>
+
+      <!-- DATE field -->
+      <% elsif q[1]['format'] == "date" %>
+        <%= date_field(:candidate, q_symbol) %>
+
+      <!-- EMAIL field -->
+      <% elsif q[1]['format'] == "email" %>
+        <%= email_field(:candidate, q_symbol) %>
+
+      <!-- PASSWORD field -->
+      <% elsif q[1]['format'] == "password" %>
+        <%= password_field_tag(q_symbol) %>
+
+       <!-- SELECT field -->
+       <!-- TODO -->
+
+      <% end %>
+
+  <% end %>
+
+  <%= hidden_field_tag(:next, @step['next']) %>
+  <%= submit_tag(@step['validate']) %>
+
+<% end %>
