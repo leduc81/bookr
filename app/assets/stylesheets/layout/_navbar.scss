@@ -1,6 +1,6 @@
 .navbar-wagon {
   box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
-  background: white;
+  background: $color1;
   transition: all 0.3s ease;
   &-fixed {
     position: fixed;
@@ -33,7 +33,7 @@
     position: relative;
     &-btn {
       line-height: 40px;
-      color: #E6E6E6;
+      color: $color3;
       border: none;
       background: transparent;
       position: absolute;
@@ -70,15 +70,18 @@
     padding: 0 20px;
     border-radius: 20em;
     line-height: 40px;
-    background-color: #D23333;
-    color: white;
+    background-color: $color5;
+    color: $color1;
     font-size: 14px;
-    border: 2px solid $brand-color;
+    border: 2px solid $color4;
 
     &:hover {
       color: white;
-      background: $brand-color;
-      border-color: darken($brand-color, 10%);
+      background: $color3;
+      border-color: darken($color2, 10%);
+    }
+    &:visited {
+      color: white;
     }
   }
   &-dropdown-menu {

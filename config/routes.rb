@@ -11,12 +11,12 @@ Rails.application.routes.draw do
   # root to: 'pages#home'
 
    devise_for :users
-  root to: 'dashboard#index'
+  root to: 'pages#home'
 
 
-  resources :candidates do
-    resources :proofs
-  end
+   resources :candidates #do
+  #   resources :proofs
+  # end
 
   # resources :user_profiles, only: [:new, :show, :edit, :create, :update] do
   #   resources :dossiers do
