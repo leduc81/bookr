@@ -2,3 +2,59 @@
  * SASS code SPECIFIC TO your home page
  * (margin/padding adjustments, background image, etc..)
  * ------------------------------------- */
+
+.div-home {
+  height: 100vh;
+  background-image: url(toit_view.jpg);
+  background-size: cover;
+  background-position: left top;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  position: relative;
+  color: white;
+  .filter {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    background: rgba(0,0,0,0.4);
+    z-index: 1;
+  }
+  .home-container {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+  }
+  .img-home {
+    position: relative;
+    z-index: 3;
+  }
+}
+
+h1 {
+  color: white;
+  font-size: 60pt;
+  margin-top: 10px;
+}
+
+h3 {
+  padding-top: 200px;
+}
+
+h4 {
+  color: white;
+  font-size: 30pt;
+  margin-bottom: 50px;
+  font-weight: 100;
+}
+
+.second {
+  height: 800px;
+  background-color: white;
+}
+
+.third {
+  height: 800px;
+  background-color: $gray-lighter;
+}
