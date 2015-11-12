@@ -73,5 +73,33 @@ init: 1-1
   persist: true
   next: pages_step2_path
 
+2-1:
+  intro:
+  questions:
+    0:
+      text: On se présente ?
+      format: text
+      name: "candidate[firstname]"
+      label: Prénom
+    1:
+      text:
+      format: text
+      name: "candidate[lastname]"
+      label: Nom
+    3:
+      text:
+      format: date
+      name: "candidate[birthdate]"
+      label: Date de naissance
+    4:
+      text:
+      format: checkbox
+      name: "candidate[cautioner]"
+      label: A un garant ?
+  info: ""
+  validate: Bonjour!
+  persist: true
+  next: pages_step3_path
+
 
 

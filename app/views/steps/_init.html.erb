@@ -1,5 +1,5 @@
 <% @steps = YAML.load_file(Rails.root + 'config/steps.yml') %>
-<% @step = @steps[@steps['init']] %>
+<% @step = @steps[page] %>
 
 
 <!-- <p><%# @step['intro'] %></p> -->
