@@ -28,6 +28,7 @@ init: 1-1
 # - todo allow to use variables from past responses in questions
 # - allow to loop on several persons (for block 2,3,5)
 # - separate init from the funnel : steps_init.yml & steps_funnel.yml ?
+# - make questions optional
 
 #########################
 
@@ -36,8 +37,8 @@ init: 1-1
   questions:
     0:
       text: Où souhaitez-vous vivre ?
-      format: "integer"
-      name: zipcode
+      format: text
+      name: "candidate[dossier_zip]"
       label: Code postal
       default: 75011
   info: "Le prix et les attentes des propriétaires en terme de garantie dépendent du loyer, du type de bien et de leur localisation. Par exemple, dans tous les arrondissements de Paris, la demande est forte et les propriétaires peuvent donc être très exigeants. Un dossier clair et complet vous permet de gagner des places dans la file d'attente !"
@@ -48,9 +49,9 @@ init: 1-1
   intro: ""
   questions:
     0:
-      text: Combien de personnes seront sur le bail ? (vous inclus)"
+      text: Combien de personnes seront sur le bail ? (vous inclus)
       format: integer
-      name: people
+      name: "candidate[dossier_people]"
       label: Personne(s)
       default: 1
   info: "Dans un bail d'habitation, les différentes personnes sont collectivement responsables du règlement du loyer mensuel."
@@ -64,12 +65,13 @@ init: 1-1
     0:
       text: Montant maximum du loyer pour le bien recherché ? (pour toutes les personnes)
       format: integer
-      name: max_rent
+      name: "candidate[dossier_max_rent]"
       label: Loyer maximum
       default: 1000
   info: "L'INSEE recommande un loyer mensuel ne dépassant pas un tiers des revenus. C'est la norme généralement appliquée sur le marché par les agences et les propriétaires pour accepter les candidatures de locataires."
   validate: Valider
-  next: dashboard_index_path
+  persist: true
+  next: pages_step2_path
 
 
 
