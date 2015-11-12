@@ -30,8 +30,13 @@
       <% elsif q[1]['format'] == "password" %>
         <%= password_field_tag(q_symbol) %>
 
-       <!-- SELECT field -->
-       <!-- TODO -->
+      <!-- CHECKBOX field -->
+      <% elsif q[1]['format'] == "checkbox" %>
+        <%= check_box_tag(q_symbol) %>
+
+
+      <!-- SELECT field -->
+      <!-- TODO -->
 
       <% end %>
 
