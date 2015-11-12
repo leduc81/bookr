@@ -15,6 +15,7 @@ class StepsController < ApplicationController
     # TODO : allow only permit data
     # => in this case goto current_user passed step instead
     # TODO : save pushed data to user
+    raise
     if next_step[-5,5] == "_path"
       redirect_to send next_step # as a PATH
     else
