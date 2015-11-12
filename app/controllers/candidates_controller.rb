@@ -39,7 +39,6 @@ class CandidatesController < ApplicationController
   end
 
   def candidate_params
-    params.require(:candidate).permit(:firstname, :lastname, :address, :city, :country, :zipcode, :position, :declared_income, :position_from_date, :garant_position, :garant_declared_income, :garant_position_from_date )
-  end
+    params.require(:candidate).permit(:firstname, :lastname, :nationality, :income, :status, :status_from_date, :dossier_zip, :dossier_people, :dossier_max_rent, :performed_step)
 
 end

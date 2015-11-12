@@ -20,11 +20,11 @@
 
       <!-- DATE field -->
       <% elsif q[1]['format'] == "date" %>
-        <%= date_field(:candidate, q_symbol) %>
+        <%= date_field_tag(q_symbol) %>
 
       <!-- EMAIL field -->
       <% elsif q[1]['format'] == "email" %>
-        <%= email_field(:candidate, q_symbol) %>
+        <%= email_field_tag(q_symbol) %>
 
       <!-- PASSWORD field -->
       <% elsif q[1]['format'] == "password" %>
@@ -37,6 +37,12 @@
 
   <% end %>
 
+  <% if @candidate %>
+    <%= hidden_field_tag("candidate[id]", @candidate.id) %>
+  <% end %>
+   <% if @step['persist'] %>
+    <%= hidden_field_tag("persist", true) %>
+  <% end %>
   <%= hidden_field_tag(:next, @step['next']) %>
   <%= submit_tag(@step['validate']) %>
 
