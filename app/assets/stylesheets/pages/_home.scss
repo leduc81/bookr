@@ -50,9 +50,24 @@ h4 {
   color: $color4;
   font-weight: 100;
   }
+  img {
+    width: 100%;
+  }
 }
 
 .third {
   height: 800px;
   background-color: $color2;
+  h3 {
+  padding-top: 200px;
+  color: $color4;
+  font-weight: 100;
+  }
+  img {
+    width: 100%;
+  }
+}
+
+.land {
+  padding-top: 116px;
 }
