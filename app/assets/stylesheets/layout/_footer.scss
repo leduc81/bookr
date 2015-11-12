@@ -1,1 +1,8 @@
-// Your footer style
+.footer {
+  background-color: $color4;
+  height: 400px;
+  color: $color5;
+  ul{
+    text-align: center;
+  }
+}
