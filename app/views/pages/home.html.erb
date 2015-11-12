@@ -4,7 +4,7 @@
   <div class="container home-container text-center">
     <div class="row">
       <div class="col-xs-12">
-        <h1> <%= image_tag "logo_white" %> </h1>
+        <h1> <%= image_tag "logo_white.png" %> </h1>
         <h4>Ton dossier de location en ligne</h4>
       </div>
     </div>
@@ -29,11 +29,6 @@
 </div>
 <div class="third">
   <div class="container">
-    <div class="row">
-      <div class="col-xs-12">
-        <%= render 'steps/init', page: '1-1' %>
-      </div>
-    </div>
      <div class="row">
       <div class="col-xs-12 col-md-6">
         <div class="land">
@@ -71,12 +66,15 @@
     <div class="row">
       <div class="col-xs-12">
         <div class="padded">
-          <%= image_tag "laptop_mock"%>
+          <%= image_tag "laptop_mock.png"%>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<%= render 'steps/init', page: "1-1" %>
+
 <%# render 'steps/init' %>
 <!-- <div class="third">
   <div class="container">

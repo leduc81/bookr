@@ -1,0 +1,17 @@
+.round-form {
+  border-radius: 15px !important;
+  width: 20%;
+  margin: auto;
+  margin-bottom: 10px;
+}
+
+.custom-btn {
+  background-color: $color5;
+  border-radius: 15px;
+  border-color: $color4;
+  &:hover {
+    background-color: $color4;
+    color: $color5;
+    border-color: $color1;
+  }
+}

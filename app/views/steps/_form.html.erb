@@ -1,34 +1,36 @@
+
+
 <%= form_tag( steps_next_path , method: "post") do %>
 
   <% @step['questions'].each do |q| %>
 
     <% q_symbol = q[1]['name'].to_sym %>
 
-      <p><%= q[1]['text'] %></p>
+      <h3><%= q[1]['text'] %></h3>
 
-      <%= label_tag(q_symbol, q[1]['label']) %>
+      <h6><%= label_tag(q_symbol, q[1]['label']) %></h6>
 
       <!-- INTEGER field -->
 
       <% if q[1]['format'] == "text" %>
-        <%= text_field_tag(q_symbol, q[1]['default']) %>
+        <%= text_field_tag(q_symbol, q[1]['default'], class:'form-control round-form text-center') %>
 
       <!-- TEXT field -->
       <% elsif q[1]['format'] == "integer" %>
 
-        <%= number_field_tag(q_symbol, q[1]['default']) %>
+        <%= number_field_tag(q_symbol, q[1]['default'], class:'form-control round-form text-center') %>
 
       <!-- DATE field -->
       <% elsif q[1]['format'] == "date" %>
-        <%= date_field_tag(q_symbol) %>
+        <%= date_field_tag(q_symbol, class:'form-control round-form text-center') %>
 
       <!-- EMAIL field -->
       <% elsif q[1]['format'] == "email" %>
-        <%= email_field_tag(q_symbol) %>
+        <%= email_field_tag(q_symbol, class:'form-control round-form text-center') %>
 
       <!-- PASSWORD field -->
       <% elsif q[1]['format'] == "password" %>
-        <%= password_field_tag(q_symbol) %>
+        <%= password_field_tag(q_symbol, class:'form-control round-form text-center') %>
 
       <!-- CHECKBOX field -->
       <% elsif q[1]['format'] == "checkbox" %>
@@ -49,6 +51,6 @@
     <%= hidden_field_tag("persist", true) %>
   <% end %>
   <%= hidden_field_tag(:next, @step['next']) %>
-  <%= submit_tag(@step['validate']) %>
+  <%= submit_tag(@step['validate'], class: "btn btn-primary custom-btn") %>
 
 <% end %>
