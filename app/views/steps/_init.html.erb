@@ -2,11 +2,18 @@
 <% @step = @steps[@steps['init']] %>
 
 
-<!-- <p><%= @step['intro'] %></p> -->
+<!-- <p><%# @step['intro'] %></p> -->
+<div class="third text-center">
+  <div class="container">
+    <div class="row padded">
+      <div>
+        <%= render 'steps/form' %>
+      </div>
+    </div>
+  </div>
+</div>
 
-<%= render 'steps/form' %>
-
-<!-- <p><%= "Info: " + @step['info'] %></p> -->
+<!-- <p><%# "Info: " + @step['info'] %></p> -->
 
 
 

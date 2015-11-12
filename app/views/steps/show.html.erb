@@ -1,8 +1,16 @@
 <p><%= @step['intro'] %></p>
+<div class="third text-center">
+  <div class="container">
+    <div class="row padded">
+      <div>
+        <h5><%= "Info: " + @step['info'] %></h5>
+        <%= render 'form' %>
+        </div>
+    </div>
+  </div>
+</div>
 
-<%= render 'form' %>
 
-<p><%= "Info: " + @step['info'] %></p>
 
 
 
