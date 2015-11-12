@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+
+  get 'steps/init'
+  # get 'steps/:id' => 'steps#show', as: "step"
+  resources :steps, only: :show
+  post 'steps/next'
+
   get 'dashboard/index'
 
   # devise_for :users
@@ -7,11 +13,10 @@ Rails.application.routes.draw do
    devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   root to: 'pages#home'
 
-  # resources :dossiers
 
-  resources :candidates do
-    resources :proofs
-  end
+   resources :candidates #do
+  #   resources :proofs
+  # end
 
   # resources :user_profiles, only: [:new, :show, :edit, :create, :update] do
   #   resources :dossiers do
