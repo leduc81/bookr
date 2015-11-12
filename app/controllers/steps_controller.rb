@@ -16,7 +16,7 @@ class StepsController < ApplicationController
 
 
     next_step = params['next']
-
+    session['next_step'] = next_step
     # TODO : allow only permit data
     # => in this case goto current_user passed step instead
 
@@ -31,10 +31,12 @@ class StepsController < ApplicationController
       # construire / mettre à jour l'objet
       step_two if next_step == "pages_step2_path"
       # step_three + route
+      step_three if next_step == "pages_step3_path"
       # step_four + route
     end
 
     # REDIRECT TO STEP OR PATH
+    next_step = session['next_step'] # si le next step a été changé par une méthode
     if next_step[-5,5] == "_path"
       redirect_to send next_step # as a PATH
     else
@@ -43,18 +45,6 @@ class StepsController < ApplicationController
   end
 
   private
-
-  # TODO: avoid loading each time ?
-  def set_steps_list
-    @steps = YAML.load_file(Rails.root + 'config/steps.yml')
-    #@steps['step1.1']
-  end
-
-  # TODO: secure inputs
-  def set_step
-    step_id = params['id'] ? params['id'] : @steps['init']
-    @step = @steps[step_id]
-  end
 
   def step_two
     candidates = []
@@ -67,11 +57,42 @@ class StepsController < ApplicationController
       candidate.save
       candidates << candidate.id
     end
+    ns = session['next_step']
     reset_session
     session['candidates'] = candidates
     session['user_candidate'] = session['candidates'].first
+    session['next_step'] = ns
   end
 
+  def step_three
+
+    # on récupère la liste des candidats de cette session qui ne sont pas encore populated
+    candidates = Candidate.where(id: session['candidates']).select{ |c| !c.is_populated_step2 }
+    candidate = candidates.first
+
+    # on alimente le candidat concerné avec ses données
+    candidate.firstname = params['candidate']['firstname']
+    candidate.lastname = params['candidate']['lastname']
+    candidate.birthdate = params['candidate']['birthdate']
+    candidate.cautioner = params['candidate']['cautioner']
+    candidate.save
+
+    # redirect to step 2 si il y a encore des candidates à renseigner
+    session['next_step'] = "2-1" if candidates.size > 1
+
+  end
+
+  # TODO: avoid loading each time ?
+  def set_steps_list
+    @steps = YAML.load_file(Rails.root + 'config/steps.yml')
+    #@steps['step1.1']
+  end
+
+  # TODO: secure inputs
+  def set_step
+    step_id = params['id'] ? params['id'] : @steps['init']
+    @step = @steps[step_id]
+  end
 
   def step_params
      params.require(:candidate).permit(:id, :dossier_zip, :dossier_people, :dossier_max_rent)

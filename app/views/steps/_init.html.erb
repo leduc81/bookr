@@ -1,12 +1,19 @@
 <% @steps = YAML.load_file(Rails.root + 'config/steps.yml') %>
-<% @step = @steps[@steps['init']] %>
+<% @step = @steps[page] %>
 
 
-<!-- <p><%= @step['intro'] %></p> -->
+<!-- <p><%# @step['intro'] %></p> -->
+<div class="third text-center">
+  <div class="container">
+    <div class="row padded">
+      <div>
+        <%= render 'steps/form' %>
+      </div>
+    </div>
+  </div>
+</div>
 
-<%= render 'steps/form' %>
-
-<!-- <p><%= "Info: " + @step['info'] %></p> -->
+<!-- <p><%# "Info: " + @step['info'] %></p> -->
 
 
 

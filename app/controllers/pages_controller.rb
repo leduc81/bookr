@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  before_action :set_candidates, only: [:step_two]
+  before_action :set_candidates, only: [:step_two, :step_three]
 
   def home
   end
@@ -8,6 +8,9 @@ class PagesController < ApplicationController
     @rental_surface = YAML.load_file(Rails.root + 'config/avr_price_per_district.yml')
 
     @max_surface = @user_candidate.dossier_max_rent / @rental_surface[@user_candidate.dossier_zip.to_i].to_i
+  end
+
+  def step_three
   end
 
   private
