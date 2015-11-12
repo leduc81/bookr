@@ -37,6 +37,12 @@
 
   <% end %>
 
+  <% if @candidate %>
+    <%= hidden_field_tag("candidate[id]", @candidate.id) %>
+  <% end %>
+   <% if @step['persist'] %>
+    <%= hidden_field_tag("persist", true) %>
+  <% end %>
   <%= hidden_field_tag(:next, @step['next']) %>
   <%= submit_tag(@step['validate']) %>
 

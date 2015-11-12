@@ -38,7 +38,7 @@ init: 1-1
     0:
       text: Où souhaitez-vous vivre ?
       format: text
-      name: "user[zipcode]"
+      name: "candidate[dossier_zip]"
       label: Code postal
       default: 75011
   info: "Le prix et les attentes des propriétaires en terme de garantie dépendent du loyer, du type de bien et de leur localisation. Par exemple, dans tous les arrondissements de Paris, la demande est forte et les propriétaires peuvent donc être très exigeants. Un dossier clair et complet vous permet de gagner des places dans la file d'attente !"
@@ -51,7 +51,7 @@ init: 1-1
     0:
       text: Combien de personnes seront sur le bail ? (vous inclus)
       format: integer
-      name: "user[people]"
+      name: "candidate[dossier_people]"
       label: Personne(s)
       default: 1
   info: "Dans un bail d'habitation, les différentes personnes sont collectivement responsables du règlement du loyer mensuel."
@@ -65,12 +65,13 @@ init: 1-1
     0:
       text: Montant maximum du loyer pour le bien recherché ? (pour toutes les personnes)
       format: integer
-      name: "user[max_rent]"
+      name: "candidate[dossier_max_rent]"
       label: Loyer maximum
       default: 1000
   info: "L'INSEE recommande un loyer mensuel ne dépassant pas un tiers des revenus. C'est la norme généralement appliquée sur le marché par les agences et les propriétaires pour accepter les candidatures de locataires."
   validate: Valider
-  next: root_path
+  persist: true
+  next: pages_step2_path
 
 
 
