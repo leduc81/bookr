@@ -13,6 +13,8 @@ class StepsController < ApplicationController
 
   def next
     # TODO : avoid that user changes the GET value
+
+
     next_step = params['next']
     session['next_step'] = next_step
     # TODO : allow only permit data
@@ -23,9 +25,9 @@ class StepsController < ApplicationController
       # TODO: securité limiter au méthodes setter attendues
       session[param[0]] = param[1]
     end
-
     # PERSIST CANDIDATE IF REQUESTED IN YML
     if params[:persist]
+
       # construire / mettre à jour l'objet
       step_two if next_step == "pages_step2_path"
       # step_three + route
