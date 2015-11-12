@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   get "pages/step2" => "pages#step_two"
+  get "pages/step3" => "pages#step_three"
 
 
    resources :candidates #do
