@@ -32,7 +32,7 @@
 
       <!-- CHECKBOX field -->
       <% elsif q[1]['format'] == "checkbox" %>
-        <%= check_box_tag(q_symbol) %>
+        <%= check_box_tag(q_symbol, nil, class:'form-control round-form text-center', checked: nil) %>
 
 
       <!-- SELECT field -->

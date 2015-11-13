@@ -40,7 +40,7 @@
 
             <!-- DATE field -->
             <% elsif q[1]['format'] == "date" %>
-              <%= date_field_tag(q_symbol, "", class:'form-control round-form bigger') %>
+              <%= date_field_tag(q_symbol, "", class:'form-control round-form') %>
 
             <!-- EMAIL field -->
             <% elsif q[1]['format'] == "email" %>
@@ -52,7 +52,7 @@
 
             <!-- CHECKBOX field -->
             <% elsif q[1]['format'] == "checkbox" %>
-              <%= check_box_tag(q_symbol, class:'form-control round-form text-center') %>
+              <%= check_box_tag(q_symbol) %>
 
 
             <!-- SELECT field -->
