@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  before_action :set_candidates, only: [:step_two, :step_three]
+  before_action :set_candidates, only: [:step_two, :step_three, :step_four]
 
   def home
   end
@@ -11,6 +11,9 @@ class PagesController < ApplicationController
   end
 
   def step_three
+  end
+
+  def step_four
   end
 
   private

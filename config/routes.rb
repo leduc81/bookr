@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   get "pages/step2" => "pages#step_two"
   get "pages/step3" => "pages#step_three"
-
+  get "pages/step4" => "pages#step_four"
 
    resources :candidates #do
   #   resources :proofs

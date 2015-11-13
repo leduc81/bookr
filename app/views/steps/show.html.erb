@@ -54,6 +54,10 @@
 
 
             <!-- SELECT field -->
+            <% elsif q[1]['format'] == "select" %>
+              <% option = [name: "1",name: "2",name: "3"] %>
+              <%= select_tag q_symbol, options_for_select(q[1]['options']) %>
+
             <!-- TODO -->
 
             <% end %>
