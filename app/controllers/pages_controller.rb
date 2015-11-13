@@ -2,6 +2,7 @@ class PagesController < ApplicationController
   before_action :set_candidates, only: [:step_two, :step_three, :step_four]
 
   def home
+    reset_session
   end
 
   def step_two
@@ -21,7 +22,7 @@ class PagesController < ApplicationController
   def set_candidates
     # session['candidates'] # [25,26,27]
     @candidates = Candidate.where(id: session['candidates'])
-    @user_candidate = Candidate.find(session['user_candidate'])
+    @user_candidate = Candidate.find(session['current_candidate'])
   end
 
 

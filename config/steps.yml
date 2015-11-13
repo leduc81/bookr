@@ -38,7 +38,7 @@ init: 1-1
   questions:
     0:
       text: Dans quel arrondissement souhaitez-vous chercher votre futur appartement ?
-      format: text
+      format: integer
       name: "candidate[dossier_zip]"
       label: Code postal
       default: 75011
@@ -47,7 +47,7 @@ init: 1-1
   next: 1-2
 
 1-2:
-  intro: "Hello!"
+  intro: "Votre bail"
   questions:
     0:
       text: Combien de personnes seront sur le bail ? (vous inclus)
@@ -68,7 +68,7 @@ init: 1-1
       format: integer
       name: "candidate[dossier_max_rent]"
       label: Loyer maximum
-      default: 1000
+      default: 800€
   info: "L'INSEE recommande un loyer mensuel ne dépassant pas un tiers des revenus. C'est la norme généralement appliquée sur le marché par les agences et les propriétaires pour accepter les candidatures de locataires."
   validate: Valider
   persist: true
@@ -78,7 +78,7 @@ init: 1-1
   intro:
   questions:
     0:
-      text: On se présente ?
+      text: "Faisons connaissance, utilisateur ID %:id% lol"
       format: text
       name: "candidate[firstname]"
       label: Prénom
@@ -99,14 +99,15 @@ init: 1-1
       label: A un garant ?
   info: ""
   validate: Bonjour!
-  persist: true
+  loop_if: is_populated_step2
+  loop: 2-1
   next: pages_step3_path
 
 3-1:
   intro:
   questions:
     0:
-      text: Quelle est la situation de %Prénom% aujourd'hui?
+      text: Quelle est la situation de %:firstname% aujourd'hui?
       format: select
       options: ['CDI', 'Autre situation de travail (CDD, intérim, TNS)', 'Étudiant', 'Sans emploi']
       name: "candidate[status]"
@@ -124,10 +125,11 @@ init: 1-1
   intro:
   questions:
     0:
-      text: Quelle est le revenu de %Prénom% aujourd'hui?
+      text: Quell est le revenu de %:firstname% aujourd'hui?
       format: integer
       name: "candidate[income]"
       label: Revenu mensuel net
+      default: 1500€
   info: ""
   validate: valider
   next: 3-3
@@ -136,7 +138,7 @@ init: 1-1
   intro:
   questions:
     0:
-      text: Quelle est la relation de %Prénom% avec son garant ?
+      text: Quelle est la relation de %:firstname% avec son garant ?
       format: select
       options: ['Parent', 'Ami', 'Banque', 'Employeur']
       name: "candidate[cautioner_relationship]"
@@ -146,8 +148,11 @@ init: 1-1
       # format: integer
       # name: "candidate[cautioner_income]" # field does not exist yet !
       # label: Revenu mensuel net
+      # default: 1500€
   info: ""
   validate: valider
+  loop_if: is_populated_step3
+  loop: 3-1
   next: pages_step4_path
 
 
