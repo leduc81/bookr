@@ -6,7 +6,7 @@ class PagesController < ApplicationController
 
   def step_two
     @rental_surface = YAML.load_file(Rails.root + 'config/avr_price_per_district.yml')
-
+    # raise
     @max_surface = @user_candidate.dossier_max_rent / @rental_surface[@user_candidate.dossier_zip.to_i].to_i
   end
 

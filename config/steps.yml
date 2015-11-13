@@ -36,7 +36,7 @@ init: 1-1
   intro: ""
   questions:
     0:
-      text: Où souhaitez-vous vivre ?
+      text: Dans quel arrondissement souhaitez-vous chercher votre futur appartement ?
       format: text
       name: "candidate[dossier_zip]"
       label: Code postal
