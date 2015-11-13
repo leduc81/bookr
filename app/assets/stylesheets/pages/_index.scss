@@ -11,6 +11,7 @@
   &img {
     border: 1px solid yellow;
   }
+
 }
 
 #step-intro {
@@ -42,6 +43,7 @@
 #step-img img {
   width: 400px;
   text-align: right;
+  z-index:3;
 }
 
 #step-info {
@@ -55,5 +57,28 @@
 #step-info img {
   width: 137px;
   text-align: right;
+}
+
+#document {
+
+  margin-top:-200px;
+  left:100px;
+  right:100px;
+  bottom:0;
+  width: 800px;
+  height: 45vh;
+  overflow: hidden;
+  background-color: white;
+  border-radius: 2px;
+  border:1px dotted lightgrey;
+  z-index:0;
+  box-shadow: -1px 2px 5px 1px rgba(0, 0, 0, 0.7);
+  padding-top:100px;
+  &h3 {
+    z-index:0;
+  }
+  &h4 {
+    z-index:0;
+  }
 }
 

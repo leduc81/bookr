@@ -1,49 +1,49 @@
 <div class="third">
+
   <div class="container">
-    <div class="col-xs-12 col-md-6">
+    <div class="row">
+      <div class="col-xs-12 col-md-6">
+
+          <h3>Félicitations! La première partie de ton dossier de location est déjà prête !</h3>
+          <h5>Une fois ton dossier complété, tu pourras l'envoyer aux propriétaires de logement correspondant à tes critères.</h5>
+          <h5>Cependant, il reste quelques étapes à compléter pour avoir un dossier digne de ce nom !</h5>
+          <%= link_to "Continuer !", step_path('3-1'), class: "btn custom-btn", disabled: "disabled" %>
+
+      </div>
+      <div class="col-xs-12 col-md-6">
         <div class="land">
-          <%= image_tag "congratulation.png"%>
-        </div>
-      </div>
-    <div class="col-xs-12 col-md-6">
-      <div class= 'text-center'>
-        <div>
-          <h3>Félicitations... </h3>
-          <h5>Tu viens de créer ta première fiche de présentation. Une fois ton dossier complété, nous allons l'envoyer aux propriétaires de logement correspondant à tes critères </h5>
-        </div>
-        <div type="submit" name="commit" class="btn custom-btn">
-          <%= link_to "Continuer", step_path('3-1') %>
-        </div>
-        <div type="submit" name="commit" class="btn custom-btn">
-          <%= link_to "télécharger", step_path('3-1') %>
-        </div>
-      </div>
-      <div class="container text-center">
-        <div class="row">
-          <% @candidates.each do |candidate| %>
-            <div class="col-xs-12 col-md-4">
-              <%= "#{candidate.firstname} #{candidate.lastname}" %>
-            </div>
-            <div class="col-xs-12 col-md-4">
-              <%= "#{candidate.birthdate}" %>
-            </div>
-          <% end %>
-          <h4>Revenu global : <%="+#{@candidates.first.dossier_max_rent * 3} Euros"%>
-          </h4>
+          <%= image_tag "growing.png", style:" <width:400px;" %>
         </div>
       </div>
     </div>
   </div>
+
+
+  <div id="document" class="container">
+
+    <div class="row">
+      <% x = @candidates.size %>
+      <% @candidates.each do |candidate| %>
+        <div class="col-xs-12 col-md-6 text-center">
+          <h4><%= "#{candidate.firstname} #{candidate.lastname}" %></h4>
+
+<% now = Time.now.utc.to_date %>
+<% bd = now.year - candidate.birthdate.year - (candidate.birthdate.to_date.change(:year => now.year) > now ? 1 : 0) %>
+
+
+          <h5><%= bd %> ans</h5>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="row text-center">
+      <h4> <%= "Revenu global : #{@candidates.first.dossier_max_rent}€" %></h4>
+    </div>
+
+
+
+  </div>
+
+
 </div>
 
-
-
-<!--
-
-<div class="col-xs-12 col-md-6">
-<div class="row">
-<div class="col-xs-12 col-md-6">
-</div>
-
-</div>
-</div> -->
