@@ -6,7 +6,7 @@
 
       <h3><%= q[1]['text'] %></h3>
 
-      <h6><%= label_tag(q_symbol, q[1]['label']) %></h6>
+      <h6 class="shy"><%= label_tag(q_symbol, q[1]['label']) %></h6>
 
       <!-- INTEGER field -->
 
@@ -16,7 +16,7 @@
       <!-- TEXT field -->
       <% elsif q[1]['format'] == "integer" %>
 
-        <%= number_field_tag(q_symbol, q[1]['default'], class:'form-control round-form text-center') %>
+        <%= number_field_tag(q_symbol, q[1]['default'], class:'form-control round-form text-center shy') %>
 
       <!-- DATE field -->
       <% elsif q[1]['format'] == "date" %>
@@ -49,6 +49,6 @@
     <%= hidden_field_tag("persist", true) %>
   <% end %>
   <%= hidden_field_tag(:next, @step['next']) %>
-  <%= submit_tag(@step['validate'], class: "btn custom-btn") %>
+  <%= submit_tag(@step['validate'], class: "btn custom-btn validate-zip shy") %>
 
 <% end %>
