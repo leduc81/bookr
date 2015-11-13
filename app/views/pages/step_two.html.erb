@@ -1,3 +1,26 @@
-<p>La surface maximale que vous pouvez louez dans cette arrondissement est : <%= @max_surface %> m2</p>
-<%= link_to "Continuer !", step_path('2-1') %>
+<div class="third">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-md-6">
 
+        <% arrondissement = (@user_candidate.dossier_zip == "75001") ? "#{@user_candidate.dossier_zip[-2,2]}er" : "#{@user_candidate.dossier_zip[-2,2]}è" %>
+
+
+
+        <h3 class="text-center text-justify">La surface moyenne que vous pouvez louez dans le <%= arrondissement %> arrondissement est : <strong><%= @max_surface %> m2</strong>
+        </h3>
+        <div type="submit" name="commit" class="btn custom-btn">
+          <%= link_to "Continuer !", step_path('2-1') %>
+        </div>
+        <div type="submit" name="commit" class="btn custom-btn">
+          <%= link_to "Recommencer...", step_path('1-1') %>
+        </div>
+      </div>
+      <div class="col-xs-12 col-md-6">
+        <div class="land">
+          <%= image_tag "laptop.png"%>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

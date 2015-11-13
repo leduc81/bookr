@@ -1,6 +1,6 @@
 <div class="container padded">
   <div class="row">
-    <h1>Candidates <%= link_to "ADD", new_candidate_path, class: "btn btn-primary"%></h1>
+    <h1>Candidates <%= link_to "ADD", new_candidate_path, class: "btn"%></h1>
     <% @candidates.each do |candidate| %>
     <h5><%= candidate.firstname %> <%= candidate.lastname %></h5>
     <%end%>

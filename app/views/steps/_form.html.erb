@@ -1,5 +1,3 @@
-
-
 <%= form_tag( steps_next_path , method: "post") do %>
 
   <% @step['questions'].each do |q| %>
@@ -51,6 +49,6 @@
     <%= hidden_field_tag("persist", true) %>
   <% end %>
   <%= hidden_field_tag(:next, @step['next']) %>
-  <%= submit_tag(@step['validate'], class: "btn btn-primary custom-btn") %>
+  <%= submit_tag(@step['validate'], class: "btn custom-btn") %>
 
 <% end %>
