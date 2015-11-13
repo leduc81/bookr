@@ -1,9 +1,11 @@
+<% current_candidate = Candidate.find(session['current_user']) if session['current_user'] %>
+
 
 <div class="step text-center">
 
   <div class="row text-center hidden-xs" id="step-intro">
     <div class="col-xs-12">
-      <p><%= @step['intro'] %></p>
+      <h2><%= @step['intro'] %></h2>
     </div>
   </div>
 
@@ -29,12 +31,12 @@
             <!-- INTEGER field -->
 
             <% if q[1]['format'] == "text" %>
-              <%= text_field_tag(q_symbol, q[1]['default'], class:'form-control round-form text-center') %>
+              <%= text_field_tag(q_symbol, "", class:'form-control round-form text-center', placeholder: q[1]['default'], autofocus: true, required: true)%>
 
             <!-- TEXT field -->
             <% elsif q[1]['format'] == "integer" %>
 
-              <%= number_field_tag(q_symbol, q[1]['default'], class:'form-control round-form text-center') %>
+              <%= number_field_tag(q_symbol, "", class:'form-control round-form text-center', placeholder: q[1]['default'], autofocus: true, required: true) %>
 
             <!-- DATE field -->
             <% elsif q[1]['format'] == "date" %>
@@ -69,6 +71,10 @@
         <% end %>
          <% if @step['persist'] %>
           <%= hidden_field_tag("persist", true) %>
+        <% end %>
+        <% if @step['loop'] %>
+          <%= hidden_field_tag("loop", @step['loop']) %>
+          <%= hidden_field_tag("loop_if", @step['loop_if']) %>
         <% end %>
         <%= hidden_field_tag(:next, @step['next']) %>
 
