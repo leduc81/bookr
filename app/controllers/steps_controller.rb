@@ -48,6 +48,7 @@ class StepsController < ApplicationController
       candidate = Candidate.find(session['current_candidate'])
       params['candidate'].each do |param|
         candidate.send("#{param[0]}=", param[1])
+        candidate.performed_step = next_step
       end
 
       candidate.save
@@ -72,7 +73,6 @@ class StepsController < ApplicationController
 
     # CHANGE REDIRECT IF LOOP & CANDIDATES TO POPULATE
     if params['loop']
-
       loop_method = params['loop_if']
       loop_to = params['loop']
       candidates = Candidate.where(id: session['candidates']).select{ |c| !c.send(loop_method) }
@@ -93,66 +93,6 @@ class StepsController < ApplicationController
   end
 
   private
-
-  # def step_two
-  #   candidates = []
-  #   session['dossier_people'].to_i.times do
-  #     candidate = Candidate.new
-  #     candidate.dossier_zip = session['dossier_zip']
-  #     candidate.dossier_people = session['dossier_people'].to_i
-  #     candidate.dossier_max_rent = session['dossier_max_rent'].to_i
-  #     candidate.performed_step = params['next']
-  #     candidate.save
-  #     candidates << candidate.id
-  #   end
-  #   ns = session['next_step']
-  #   reset_session
-  #   session['candidates'] = candidates
-  #   session['user_candidate'] = session['candidates'].first
-  #   session['next_step'] = ns
-  # end
-
-  # def step_three
-
-  #   # on récupère la liste des candidats de cette session qui ne sont pas encore populated
-  #   candidates = Candidate.where(id: session['candidates']).select{ |c| !c.is_populated_step2 }
-  #   candidate = candidates.first
-
-  #   # on alimente le candidat concerné avec ses données
-  #   candidate.firstname = params['candidate']['firstname']
-  #   candidate.lastname = params['candidate']['lastname']
-  #   candidate.birthdate = params['candidate']['birthdate']
-  #   candidate.cautioner = params['candidate']['cautioner']
-  #   candidate.save
-
-  #   # redirect to step 2 si il y a encore des candidates à renseigner
-  #   session['next_step'] = "2-1" if candidates.size > 1
-  #   session['current_user'] = candidates.second if candidates.size > 1
-
-  # end
-
-  # def step_four
-
-  #   # on récupère la liste des candidats de cette session qui ne sont pas encore populated
-  #   candidates = Candidate.where(id: session['candidates']).select{ |c| !c.is_populated_step3 }
-  #   candidate = candidates.first
-
-  #   # on alimente le candidat concerné avec ses données
-  #   candidate.income = session['income']
-  #   candidate.status = session['status']
-  #   candidate.save
-
-  #   # redirect to step 3 si il y a encore des candidates à renseigner
-  #   session['next_step'] = "3-1" if candidates.size > 1
-  #   if candidates.size > 1
-  #     session['current_user'] = candidates.second
-  #   else
-  #     session['current_user'] = candidates.first
-
-  # end
-
-
-
 
   def set_steps_list
     @steps = YAML.load_file(Rails.root + 'config/steps.yml')

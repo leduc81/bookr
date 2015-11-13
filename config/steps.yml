@@ -35,6 +35,7 @@ init: 1-1
 
 1-1:
   intro: ""
+  picture: navigating.png
   questions:
     0:
       text: Dans quel arrondissement souhaitez-vous chercher votre futur appartement ?
@@ -47,7 +48,8 @@ init: 1-1
   next: 1-2
 
 1-2:
-  intro: "Votre bail"
+  intro: ""
+  picture: people.png
   questions:
     0:
       text: Combien de personnes seront sur le bail ? (vous inclus)
@@ -62,6 +64,7 @@ init: 1-1
 
 1-3:
   intro: ""
+  picture: rent.png
   questions:
     0:
       text: Montant maximum du loyer pour le bien recherché ? (pour toutes les personnes)
@@ -76,6 +79,7 @@ init: 1-1
 
 2-1:
   intro:
+  picture: meditating.png
   questions:
     0:
       text: "Faisons connaissance, utilisateur ID %:id% lol"
@@ -97,7 +101,7 @@ init: 1-1
       format: checkbox
       name: "candidate[cautioner]"
       label: A un garant ?
-  info: ""
+  info: "Ces informations figureront dans l'entête de votre dossier de location. Attentif au respect de votre vie privée ? Edos vous propose d'anonymiser votre dossier par la suite."
   validate: Bonjour!
   loop_if: is_populated_step2
   loop: 2-1
@@ -105,11 +109,12 @@ init: 1-1
 
 3-1:
   intro:
+  picture: work.png
   questions:
     0:
       text: Quelle est la situation de %:firstname% aujourd'hui?
       format: select
-      options: ['CDI', 'Autre situation de travail (CDD, intérim, TNS)', 'Étudiant', 'Sans emploi']
+      options: ['Contrat à durée indéterminée', 'Autre situation de travail (CDD, intérim, TNS)', 'Étudiant', 'Sans emploi']
       name: "candidate[status]"
       label: Situations
     # 2: # si CDI
@@ -117,25 +122,27 @@ init: 1-1
     #   format: checkbox
     #   name: "candidate[try_period]"  # field does not exist yet !
     #   label: Période d'essai
-  info: ""
+  info: "Il est plus simple de trouver un appartement lorsqu'on a un revenu régulier. Cependant, présenter un garant peut permettre aux personnes à plus faibles ressources d'accéder à un logement."
   validate: valider
   next: 3-2
 
 3-2:
   intro:
+  picture: income.png
   questions:
     0:
-      text: Quell est le revenu de %:firstname% aujourd'hui?
+      text: Quel est le revenu de %:firstname% aujourd'hui?
       format: integer
       name: "candidate[income]"
       label: Revenu mensuel net
       default: 1500€
-  info: ""
+  info: "Soyez précis! Cette information permet à Edos de construire un dossier sur-mesure et maximiser vos chances de trouver l'appartement de vos rêves."
   validate: valider
   next: 3-3
 
 3-3:
   intro:
+  picture: cautioner.png
   questions:
     0:
       text: Quelle est la relation de %:firstname% avec son garant ?
@@ -149,7 +156,7 @@ init: 1-1
       # name: "candidate[cautioner_income]" # field does not exist yet !
       # label: Revenu mensuel net
       # default: 1500€
-  info: ""
+  info: "Habituellement, on fait appel à sa famille pour garantir le règlement du loyer mensuel. Quand ce n'est pas possible, il est possible d'obtenir des garanties auprès de sa banque ou de son employeur."
   validate: valider
   loop_if: is_populated_step3
   loop: 3-1
