@@ -71,3 +71,15 @@ h4 {
 .land {
   padding-top: 116px;
 }
+
+.step {
+  height: 800px;
+  background-color: $color2;
+  h3 {
+  color: $color4;
+  font-weight: 100;
+  }
+  img {
+    width: 100%;
+  }
+}
