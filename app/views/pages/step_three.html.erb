@@ -1,5 +1,49 @@
-<p>ok</p>
-<% @candidates.each do |candidate| %>
-  <%= "#{candidate.firstname} #{candidate.lastname}" %>
-<% end %>
-<%= link_to "Continuer !", step_path('3-1') %>
+<div class="third">
+  <div class="container">
+    <div class="col-xs-12 col-md-6">
+        <div class="land">
+          <%= image_tag "congratulation.png"%>
+        </div>
+      </div>
+    <div class="col-xs-12 col-md-6">
+      <div class= 'text-center'>
+        <div>
+          <h3>Félicitations... </h3>
+          <h5>Tu viens de créer ta première fiche de présentation. Une fois ton dossier complété, nous allons l'envoyer aux propriétaires de logement correspondant à tes critères </h5>
+        </div>
+        <div type="submit" name="commit" class="btn custom-btn">
+          <%= link_to "Continuer", step_path('3-1') %>
+        </div>
+        <div type="submit" name="commit" class="btn custom-btn">
+          <%= link_to "télécharger", step_path('3-1') %>
+        </div>
+      </div>
+      <div class="container text-center">
+        <div class="row">
+          <% @candidates.each do |candidate| %>
+            <div class="col-xs-12 col-md-4">
+              <%= "#{candidate.firstname} #{candidate.lastname}" %>
+            </div>
+            <div class="col-xs-12 col-md-4">
+              <%= "#{candidate.birthdate}" %>
+            </div>
+          <% end %>
+          <h4>Revenu global : <%="+#{@candidates.first.dossier_max_rent * 3} Euros"%>
+          </h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!--
+
+<div class="col-xs-12 col-md-6">
+<div class="row">
+<div class="col-xs-12 col-md-6">
+</div>
+
+</div>
+</div> -->
