@@ -79,8 +79,28 @@ class StepsController < ApplicationController
 
     # redirect to step 2 si il y a encore des candidates à renseigner
     session['next_step'] = "2-1" if candidates.size > 1
+    session['current_user'] = candidates.second if candidates.size > 1
 
   end
+
+  def step_four
+
+    # on récupère la liste des candidats de cette session qui ne sont pas encore populated
+    candidates = Candidate.where(id: session['candidates']).select{ |c| !c.is_populated_step3 }
+    candidate = candidates.first
+
+    # on alimente le candidat concerné avec ses données
+    candidate.income = params['candidate']['income']
+    candidate.status = params['candidate']['status']
+    candidate.save
+
+    # redirect to step 3 si il y a encore des candidates à renseigner
+    session['next_step'] = "3-1" if candidates.size > 1
+    session['current_user'] = candidates.second if candidates.size > 1
+
+  end
+
+
 
   # TODO: avoid loading each time ?
   def set_steps_list

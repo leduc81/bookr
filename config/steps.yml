@@ -9,7 +9,8 @@ init: 1-1
 #   questions:
 #     id_question_1:
 #       text: "how old are you ?" # optional
-#       format: integer|text|date|email|password # mandatory
+#       format: integer|text|date|email|password|checkbox|select # mandatory
+#       options: [A,B,C] # optional (options pour le select)
 #       name: age # mandatory
 #       label: "Your Age" # optional
 #       default: 25 # optional
@@ -101,5 +102,52 @@ init: 1-1
   persist: true
   next: pages_step3_path
 
+3-1:
+  intro:
+  questions:
+    0:
+      text: Quelle est la situation de %Prénom% aujourd'hui?
+      format: select
+      options: ['CDI', 'Autre situation de travail (CDD, intérim, TNS)', 'Étudiant', 'Sans emploi']
+      name: "candidate[status]"
+      label: Situations
+    # 2: # si CDI
+    #   text: En période d'essai ?
+    #   format: checkbox
+    #   name: "candidate[try_period]"  # field does not exist yet !
+    #   label: Période d'essai
+  info: ""
+  validate: valider
+  next: 3-2
+
+3-2:
+  intro:
+  questions:
+    0:
+      text: Quelle est le revenu de %Prénom% aujourd'hui?
+      format: integer
+      name: "candidate[income]"
+      label: Revenu mensuel net
+  info: ""
+  validate: valider
+  next: 3-3
+
+3-3:
+  intro:
+  questions:
+    0:
+      text: Quelle est la relation de %Prénom% avec son garant ?
+      format: select
+      options: ['Parent', 'Ami', 'Banque', 'Employeur']
+      name: "candidate[cautioner_relationship]"
+      label: Situation
+    # #: # si parent
+      # text: Quelle est le revenu du garant de %Prénom% aujourd'hui?
+      # format: integer
+      # name: "candidate[cautioner_income]" # field does not exist yet !
+      # label: Revenu mensuel net
+  info: ""
+  validate: valider
+  next: pages_step4_path
 
 

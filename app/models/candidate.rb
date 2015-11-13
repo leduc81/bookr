@@ -7,4 +7,9 @@ class Candidate < ActiveRecord::Base
     return false
   end
 
+  def is_populated_step3
+    return true if self.income && self.status
+    return false
+  end
+
 end
