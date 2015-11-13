@@ -4,19 +4,26 @@
 // PAGE STESPS
 
 #step {
-  position: fixed;
-  top:0;
-  bottom:0;
-  left:100px;
-  right:100px;
+  display: flex;
+  justify-content: space-arround;
+  align-items: center;
+
   &img {
     border: 1px solid yellow;
   }
 }
 
+#step-intro {
+  height:10vh;
+  text-align: center;
+  display: flex;
+  justify-content: space-arround;
+  align-items: center;
+}
+
 #step-form {
   width: 100%;
-  height:60vh;
+  height:40vh;
   text-align: center;
   display: flex;
   justify-content: space-arround;
@@ -25,7 +32,7 @@
 }
 
 #step-img {
-  height:60vh;
+  height:40vh;
   display: flex;
   justify-content: space-arround;
   align-items: center;
@@ -43,5 +50,10 @@
   display: flex;
   justify-content: space-arround;
   align-items: center;
+}
+
+#step-info img {
+  width: 137px;
+  text-align: right;
 }
 
