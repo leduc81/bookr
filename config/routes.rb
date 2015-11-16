@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   # get 'steps/:id' => 'steps#show', as: "step"
   resources :steps, only: :show
   post 'steps/next'
+  # post 'steps/register_candidates'
 
   get 'dashboard/index'
 
