@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   # post 'steps/register_candidates'
 
   resources :dashboard, only: :index
+
   # devise_for :users
   # root to: 'pages#home'
 
