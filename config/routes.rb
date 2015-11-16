@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   resources :steps, only: :show
   post 'steps/next'
 
-  get 'dashboard/index'
 
   # devise_for :users
   # root to: 'pages#home'
