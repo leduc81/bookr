@@ -12,8 +12,19 @@ class StepsController < ApplicationController
     customize_step
   end
 
-  def next
+  # def register_candidates
+  #   if user_signed_in?
+  #     session['candidates'].each do |candidate_id|
+  #       candidate = Candidate.find(candidate_id)
+  #       candidate.user_id = current_user.id
+  #       candidate.save
+  #     end
+  #   end
+  #   redirect(dashboard_index_path)
+  # end
 
+
+  def next
     # TODO : avoid that user changes the GET value
     # TODO : allow only permit data
     # => in this case goto current_user passed step instead
@@ -22,16 +33,6 @@ class StepsController < ApplicationController
     # TODO: secure inputs
 
     next_step = params['next']
-
-    # session['next_step'] = next_step # useful ?
-
-   # SAVE INPUTS TO SESSION
-
-
-        # OLD
-        # step_two if next_step == "pages_step2_path"
-        # step_three if next_step == "pages_step3_path"
-        # step_four if next_step == "pages_step4_path"
 
     # PERSIST CANDIDATE IN OBJECT OR SESSION
 
@@ -83,16 +84,19 @@ class StepsController < ApplicationController
     end
 
     # REDIRECT TO STEP OR PATH
+    redirect(next_step)
+  end
+
+  private
+
+  def redirect(next_step)
     if next_step[-5,5] == "_path"
       session['current_candidate'] = session['candidates'].first
       redirect_to send next_step # as a PATH
     else
       redirect_to step_path(next_step) # as an ID
     end
-
   end
-
-  private
 
   def set_steps_list
     @steps = YAML.load_file(Rails.root + 'config/steps.yml')

@@ -3,12 +3,9 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-md-6">
-
-          <h3>Félicitations! La première partie de ton dossier de location est déjà prête !</h3>
-          <h5>Une fois ton dossier complété, tu pourras l'envoyer aux propriétaires de logement correspondant à tes critères.</h5>
-          <h5>Cependant, il reste quelques étapes à compléter pour avoir un dossier digne de ce nom !</h5>
-          <%= link_to "Continuer !", step_path('3-1'), class: "btn custom-btn"%>
-
+        <h3>Félicitations! Ton dossier est prêt !</h3>
+        <h5>Tu peux maintenant télécharger l'entête en pdf et y joindre tes justificatifs pour l'envoyer aux propriétaires des appartements qui t'intéressent, ou uploader tes justificatifs pour avoir un dossier consultable en ligne directement ! ouh ouh</h5>
+        <%= link_to "Uploader mes justificatifs !", "#", class: "btn custom-btn", disabled: "disabled" %>
       </div>
       <div class="col-xs-12 col-md-6">
         <div class="land">
@@ -20,32 +17,58 @@
 
 
   <div id="document" class="container">
-
     <div class="row">
       <% x = @candidates.size %>
       <% @candidates.each do |candidate| %>
-        <div class="col-xs-12 col-md-6 text-center">
-          <h4><%= "#{candidate.firstname} #{candidate.lastname}" %></h4>
-
-<% now = Time.now.utc.to_date %>
-<% bd = now.year - candidate.birthdate.year - (candidate.birthdate.to_date.change(:year => now.year) > now ? 1 : 0) %>
-
-          <%# image_tag "logo.png", class: "text-center"%>
-          <br><h5><%= bd %> ans</h5></br>
-        </div>
+      <div class="col-xs-12 col-md-6 text-center">
+        <h4><%= "#{candidate.firstname} #{candidate.lastname}" %></h4>
+        <% now = Time.now.utc.to_date %>
+        <% bd = now.year - candidate.birthdate.year - (candidate.birthdate.to_date.change(:year => now.year) > now ? 1 : 0) %>
+        <h5><%= bd %> ans</h5>
+      </div>
       <% end %>
     </div>
-
     <div class="row text-center">
-      <h4> <%= "Revenu global : #{@candidates.first.income}€" %></h4>
-      <h6> <%= "Situation : #{@candidates.first.status}" %></h6>
-      <p><%= Time.now.utc.to_date %></p>
+      <h4> <%= "Revenu global : #{@candidates.first.dossier_max_rent}€" %></h4>
     </div>
-
-
-
+</div>
+  <!-- Sign-up Modal -->
+<div data-backdrop="static" class="modal show" id="signUp" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"> -->
+        <!--  <span aria-hidden="true">&times;</span> -->
+        <!-- </button> -->
+        <div class="row">
+          <div class="col-xs-12 col-md-8">
+            <h4 class="modal-title" id="myModalLabel">Génial !</h4>
+            <p>Votre dossier est maintenant prêt. Pour exploiter 100% du service, vous devez confirmer la création de votre compte</p>
+          </div>
+          <div class="col-xs-12 hidden-xs hidden-sm col-md-4">
+            <%= image_tag "account.png" %>
+          </div>
+        </div>
+      </div>
+      <div class="modal-body text-justify">
+        <!-- Your signup form -->
+        <%# render "devise/registrations/new" %>
+        <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+        <div><%= f.label :email %><br />
+          <%= f.email_field :email, class: "form-control input-lg" %>
+        </div>
+        <div><%= f.label :password %><br />
+          <%= f.password_field :password, class: "form-control input-lg" %>
+        </div>
+        <div><%= f.label :password_confirmation %><br />
+          <%= f.password_field :password_confirmation, class: "form-control input-lg" %>
+        </div>
+        <div class="text-center">
+          <%= f.submit "Sign up", class: "btn btn-warning" %>
+        </div>
+        <% end %>
+      </div>
+    </div>
   </div>
-
-
 </div>
 
