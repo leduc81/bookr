@@ -57,9 +57,12 @@
 
 
 #step-complement {
-  height: 100px;
-  width: 500px;
+  width: 100%;
   background-color: red;
+}
+
+#step-complement p {
+  color: blue;
 }
 
 #document {

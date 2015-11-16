@@ -8,6 +8,17 @@
     <h3>Proofs</h3>
     <h3>Dossiers</h3>
 
+<button type="button" id="myButton" data-loading-text="Loading..." class="btn btn-primary" autocomplete="off">
+  Download PDF
+</button>
+
+<script>
+  $('#myButton').on('click', function () {
+    var $btn = $(this).button('loading')
+    // business logic...
+    $btn.button('reset')
+  })
+</script>
 
   </div>
 </div>

@@ -14,7 +14,22 @@ $(document).ready(function() {
   // any text field filled
   $('.form-control').on(EVENTS, function(e) {
     valid[this.id] = validateField(this.id);
-    validateForm();
+  });
+
+  $('#candidate_dossier_people').on(EVENTS, function(e) {
+    console.log($('#candidate_dossier_people').val());
+    if ( $('#candidate_dossier_people').val() == $('#step-complement').attr('display-if')) {
+      $('#step-complement').collapse('show');
+    } else {
+      $('#step-complement').collapse('hide');
+    }
+    // if $('#candidate_dossier_people').val() == '2' {
+    //   alert('lol')
+    //   // $('#step-complement').collapse('show');
+    // }
+  //   if $(q_symbol).val() == 2 {
+  //alert('ok');
+  //   }
   });
 
 })

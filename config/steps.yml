@@ -122,6 +122,11 @@ init: 1-1
       options: ['Contrat à durée indéterminée', 'Autre situation de travail (CDD, intérim, TNS)', 'Étudiant', 'Sans emploi']
       name: "candidate[status]"
       label: Situations
+      complement:
+        display_if: 'Contrat à durée indéterminée'
+        format: checkbox
+        name: "candidate[trial_period]"
+        label: En période d'essai
     # 2: # si CDI
     #   text: En période d'essai ?
     #   format: checkbox
