@@ -1,7 +1,7 @@
 <nav class="navbar-wagon <%= user_signed_in? ? '' : 'is-hidden' %>">
   <div class="container navbar-wagon-container">
     <div id="navbar-logo">
-      <a href="pages#home">
+      <a href="/">
         <%= image_tag "logo_nav.jpeg"%>
       </a>
     </div>
@@ -32,7 +32,7 @@
               <% end %>
             </li>
             <li>
-              <%= link_to "#" do %>
+              <%= link_to "/" do %>
                 <i class="fa fa-home"></i>  <%= t ".profile", default: "Home" %>
               <% end %>
             </li>
