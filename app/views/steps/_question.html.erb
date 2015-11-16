@@ -1,0 +1,43 @@
+
+<% if q['name'] && q['format'] %>
+
+  <% q_symbol = q['name'].to_sym %>
+
+  <h3><%= q['text'] %></h3>
+
+  <h6><%= label_tag(q_symbol, q['label']) %></h6>
+
+  <!-- INTEGER field -->
+
+  <% if q['format'] == "text" %>
+  <%= text_field_tag(q_symbol, "", class:'form-control round-form text-center', placeholder: q['default'], autofocus: true, required: true)%>
+
+  <!-- TEXT field -->
+  <% elsif q['format'] == "integer" %>
+
+  <%= number_field_tag(q_symbol, "", class:'form-control round-form text-center', placeholder: q['default'], autofocus: true, required: true) %>
+
+  <!-- DATE field -->
+  <% elsif q['format'] == "date" %>
+  <%= date_field_tag(q_symbol, "", class:'form-control round-form') %>
+
+  <!-- EMAIL field -->
+  <% elsif q['format'] == "email" %>
+  <%= email_field_tag(q_symbol, class:'form-control round-form text-center') %>
+
+  <!-- PASSWORD field -->
+  <% elsif q['format'] == "password" %>
+  <%= password_field_tag(q_symbol, class:'form-control round-form text-center') %>
+
+  <!-- CHECKBOX field -->
+  <% elsif q['format'] == "checkbox" %>
+  <%= check_box_tag(q_symbol) %>
+
+  <!-- SELECT field -->
+  <% elsif q['format'] == "select" %>
+  <% display_button = true %>
+  <%= select_tag q_symbol, options_for_select(q['options']), class: 'form-control', autofocus: true %>
+
+  <% end %>
+
+<% end %>

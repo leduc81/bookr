@@ -19,75 +19,38 @@
 
       <div id="step-form">
       <%= form_tag( steps_next_path , method: "post") do %>
-
+        <% c = [] %>
         <% @step['questions'].each do |q| %>
-
-          <% q_symbol = q[1]['name'].to_sym %>
-
-            <h3><%= q[1]['text'] %></h3>
-
-            <h6><%= label_tag(q_symbol, q[1]['label']) %></h6>
-
-            <!-- INTEGER field -->
-
-            <% if q[1]['format'] == "text" %>
-              <%= text_field_tag(q_symbol, "", class:'form-control round-form text-center', placeholder: q[1]['default'], autofocus: true, required: true)%>
-
-            <!-- TEXT field -->
-            <% elsif q[1]['format'] == "integer" %>
-
-              <%= number_field_tag(q_symbol, "", class:'form-control round-form text-center', placeholder: q[1]['default'], autofocus: true, required: true) %>
-
-            <!-- DATE field -->
-            <% elsif q[1]['format'] == "date" %>
-              <%= date_field_tag(q_symbol, "", class:'form-control round-form') %>
-
-            <!-- EMAIL field -->
-            <% elsif q[1]['format'] == "email" %>
-              <%= email_field_tag(q_symbol, class:'form-control round-form text-center') %>
-
-            <!-- PASSWORD field -->
-            <% elsif q[1]['format'] == "password" %>
-              <%= password_field_tag(q_symbol, class:'form-control round-form text-center') %>
-
-            <!-- CHECKBOX field -->
-            <% elsif q[1]['format'] == "checkbox" %>
-              <%= check_box_tag(q_symbol) %>
-
-            <!-- SELECT field -->
-            <% elsif q[1]['format'] == "select" %>
-              <% display_button = true %>
-              <%= select_tag q_symbol, options_for_select(q[1]['options']), class: 'form-control', autofocus: true %>
-
-<!--             <div class="btn-group-center" role="group" aria-label="..." style='margin:0 100px 0 100px;padding:20px;'>
-              <% q[1]['options'].each do |option| %>
-                <button type="button" class="btn btn-default" name="<%= q_symbol %>"><%= option %></button>
-              <% end %>
-            </div> -->
-
-            <!-- TODO -->
-
-            <% end %>
-
+          <%= render "question", :q => q[1] %>
+          <% if q[1]['complement'] %>
+            <div class="collapse" id="step-complement" display-if='<%= q[1]['complement']['display_if'] %>'>
+              <%= render "question", :q => q[1]['complement'] %>
+            </div>
+          <% end %>
         <% end %>
+
 
         <% if @candidate %>
           <%= hidden_field_tag("candidate[id]", @candidate.id) %>
         <% end %>
+
          <% if @step['persist'] %>
           <%= hidden_field_tag("persist", true) %>
         <% end %>
+
         <% if @step['loop'] %>
           <%= hidden_field_tag("loop", @step['loop']) %>
           <%= hidden_field_tag("loop_if", @step['loop_if']) %>
         <% end %>
+
         <%= hidden_field_tag(:next, @step['next']) %>
 
-        <% if !@step['questions'][1].nil? || display_button %> <%# si + de 1 seule quetion ou si on doit afficher le bouton %>
+        <%# if !@step['questions'][1].nil? || display_button %>
           <%= submit_tag(@step['validate'], id: "submit-next", class: "btn custom-btn") %>
-        <% end %>
+        <%# end %>
 
-      <% end %>
+      <% end %> <!-- / form tag -->
+
       </div>
     </div>
   </div>

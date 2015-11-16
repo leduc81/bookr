@@ -14,7 +14,15 @@ $(document).ready(function() {
   // any text field filled
   $('.form-control').on(EVENTS, function(e) {
     valid[this.id] = validateField(this.id);
-    validateForm();
+  });
+
+  $('.form-control').on(EVENTS, function(e) {
+    console.log($('.form-control').val());
+    if ( $('.form-control').val() == $('#step-complement').attr('display-if')) {
+      $('#step-complement').collapse('show');
+    } else {
+      $('#step-complement').collapse('hide');
+    }
   });
 
 })
