@@ -1,4 +1,51 @@
-<p>ok</p>
-<% @candidates.each do |candidate| %>
-  <%= "#{candidate.firstname} #{candidate.lastname}" %>
-<% end %>
+<div class="third">
+
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-md-6">
+
+          <h3>Félicitations! La première partie de ton dossier de location est déjà prête !</h3>
+          <h5>Une fois ton dossier complété, tu pourras l'envoyer aux propriétaires de logement correspondant à tes critères.</h5>
+          <h5>Cependant, il reste quelques étapes à compléter pour avoir un dossier digne de ce nom !</h5>
+          <%= link_to "Continuer !", step_path('3-1'), class: "btn custom-btn"%>
+
+      </div>
+      <div class="col-xs-12 col-md-6">
+        <div class="land">
+          <%= image_tag "growing.png", style:" <width:400px;" %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div id="document" class="container">
+
+    <div class="row">
+      <% x = @candidates.size %>
+      <% @candidates.each do |candidate| %>
+        <div class="col-xs-12 col-md-6 text-center">
+          <h4><%= "#{candidate.firstname} #{candidate.lastname}" %></h4>
+
+<% now = Time.now.utc.to_date %>
+<% bd = now.year - candidate.birthdate.year - (candidate.birthdate.to_date.change(:year => now.year) > now ? 1 : 0) %>
+
+          <%# image_tag "logo.png", class: "text-center"%>
+          <br><h5><%= bd %> ans</h5></br>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="row text-center">
+      <h4> <%= "Revenu global : #{@candidates.first.income}€" %></h4>
+      <h6> <%= "Situation : #{@candidates.first.status}" %></h6>
+      <p><%= Time.now.utc.to_date %></p>
+    </div>
+
+
+
+  </div>
+
+
+</div>
+
