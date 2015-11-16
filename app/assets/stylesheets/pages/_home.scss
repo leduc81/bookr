@@ -47,21 +47,23 @@
   color: $color4;
   font-weight: 100;
   }
-  img {
-    width: 100%;
-  }
+}
+
+.landing_img {
+  width: 100%;
+}
+
+.logo {
+  width: 10%;
 }
 
 .third {
-  height: 800px;
+  min-height: 800px;
   background-color: $color2;
   h3 {
   padding-top: 200px;
   color: $color4;
   font-weight: 100;
-  }
-  img {
-    width: 100%;
   }
 }
 
