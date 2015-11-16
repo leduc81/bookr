@@ -77,12 +77,12 @@
     background-color: $color5;
     color: $color1;
     font-size: 14px;
-    border: 2px solid $color4;
+    border: 2px $color4;
 
     &:hover {
       color: white;
       background: $color3;
-      border-color: darken($color2, 10%);
+      // border-color: darken($color2, 10%);
     }
     &:visited {
       color: white;
@@ -95,13 +95,13 @@
     li > a {
       transition: color 0.3s ease;
       font-weight: lighter !important;
-      color: #999999 !important;
+      color: $color3 !important;
       font-size: 15px !important;
       line-height: 22px !important;
       padding: 10px 20px;
       &:hover {
         background: transparent !important;
-        color: black !important;
+        color: $color4 !important;
       }
     }
     &:before {
@@ -113,19 +113,22 @@
       top: -6px;
       background-color: transparent;
       transform: rotate(45deg);
-      border-left: 1px solid #E6E6E6;
-      border-top: 1px solid #E6E6E6;
+      // border-left: 1px solid #E6E6E6;
+      // border-top: 1px solid #E6E6E6;
     }
   }
 
-  hr {
-    height: 12px;
-    width: 1px;
-    background-color: transparent;
-    margin-left: 10px;
-    margin-right: 10px;
-  }
+  // hr {
+  //   height: 12px;
+  //   width: 1px;
+  //   background-color: transparent;
+  //   margin-left: 10px;
+  //   margin-right: 10px;
+  // }
 }
 #navbar-logo img {
     width: 20%;
   }
+.navbar-wagon-button {
+  background-color: $color3;
+}
