@@ -1,10 +1,10 @@
 <nav class="navbar-wagon">
   <div class="container navbar-wagon-container">
-
-    <a href="">
-      <%= image_tag "logo.png" %>
-    </a>
-
+    <div id="navbar-logo">
+      <a href="">
+        <%= image_tag "logo_nav.jpeg"%>
+      </a>
+    </div>
     <div class="navbar-wagon-pusher"></div>
 
     <!-- <form action="" class="navbar-wagon-search hidden-xs hidden-sm">
@@ -48,6 +48,6 @@
       <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
     <% end %>
 <!--     <hr> -->
-    <%= link_to t(".top_call_to_action", default: "Commencer!"), "#", class: "navbar-wagon-item navbar-wagon-button btn" %>
+    <%= link_to t(".top_call_to_action", default: "Essayer !"), step_path('1-1'), class: "navbar-wagon-item navbar-wagon-button btn"  %>
   </div>
 </nav>
