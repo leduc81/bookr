@@ -57,6 +57,11 @@ init: 1-1
       name: "candidate[dossier_people]"
       label: Personne(s)
       default: 1
+      complement:
+        display_if: 2
+        format: checkbox
+        name: "candidate[couple]"
+        label: En couple ?
   info: "Dans un bail d'habitation, les différentes personnes sont collectivement responsables du règlement du loyer mensuel."
   validate: Valider
   next: 1-3
