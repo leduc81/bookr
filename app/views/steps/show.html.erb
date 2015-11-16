@@ -54,15 +54,6 @@
             <% elsif q[1]['format'] == "checkbox" %>
               <%= check_box_tag(q_symbol) %>
 
-              <div class="btn-group" role="group" aria-label="...">
-                <button type="button" class="btn btn-default">Left</button>
-                <button type="button" class="btn btn-default">Middle</button>
-                <button type="button" class="btn btn-default">Right</button>
-              </div>
-
-
-
-
             <!-- SELECT field -->
             <% elsif q[1]['format'] == "select" %>
               <% display_button = true %>
