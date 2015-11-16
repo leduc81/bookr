@@ -1,19 +1,15 @@
 <div class="third">
-
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-md-6">
-
-          <h3>Félicitations! La première partie de ton dossier de location est déjà prête !</h3>
-          <h5>Une fois ton dossier complété, tu pourras l'envoyer aux propriétaires de logement correspondant à tes critères.</h5>
-          <h5>Cependant, il reste quelques étapes à compléter pour avoir un dossier digne de ce nom !</h5>
-
-          <%= link_to "Continuer !", step_path('3-1'), class: "btn custom-btn" %>
-
+        <h3>Félicitations! La première partie de ton dossier de location est déjà prête !</h3>
+        <h5>Une fois ton dossier complété, tu pourras l'envoyer aux propriétaires de logement correspondant à tes critères.</h5>
+        <h5>Cependant, il reste quelques étapes à compléter pour avoir un dossier digne de ce nom !</h5>
+        <%= link_to "Continuer !", step_path('3-1'), class: "btn custom-btn" %>
       </div>
       <div class="col-xs-12 col-md-6">
         <div class="land">
-          <%= image_tag "growing.png", style:" <width:400px;" %>
+          <%= image_tag "growing.png", style:" <width:400px;", class: "landing_img" %>
         </div>
       </div>
     </div>
@@ -21,30 +17,28 @@
 
 
   <div class="document" class="container">
-
-    <div class="row">
+    <div>
+    <%= image_tag "logo_doc.png", class: "dossier_logo" %>
+    </div>
       <% x = @candidates.size %>
       <% @candidates.each do |candidate| %>
-        <div class="col-xs-12 col-md-6 text-center">
-          <h4><%= "#{candidate.firstname} #{candidate.lastname}" %></h4>
-
-<% now = Time.now.utc.to_date %>
-<% bd = now.year - candidate.birthdate.year - (candidate.birthdate.to_date.change(:year => now.year) > now ? 1 : 0) %>
-
-
-          <h5><%= bd %> ans</h5>
-        </div>
+      <div class="dossier_candidates">
+        <h4><%= "#{candidate.firstname} #{candidate.lastname}" %></h4>
+        <% now = Time.now.utc.to_date %>
+        <% bd = now.year - candidate.birthdate.year - (candidate.birthdate.to_date.change(:year => now.year) > now ? 1 : 0) %>
+        <h5><%= bd %> ans</h5>
+      </div>
       <% end %>
+    <div>
+      <h4 class="revenue"> <%= "Revenu mensuel : #{@candidates.first.dossier_max_rent}€" %></h4>
     </div>
-
-    <div class="row text-center">
-      <h4> <%= "Revenu global : #{@candidates.first.dossier_max_rent}€" %></h4>
+    <div class="separator"> <p>Employement and Income</p>
     </div>
-
-
-
+    <div>
+      <h4>Google Enterprises</h4>
+      <h6>Product Manager</h6>
+      <p>Since: October 2012</p>
+    </div>
   </div>
-
-
 </div>
 

@@ -9,27 +9,36 @@
       </div>
       <div class="col-xs-12 col-md-6">
         <div class="land">
-          <%= image_tag "growing.png", style:" <width:400px;" %>
+          <%= image_tag "growing.png", style:" <width:400px;", class: "landing_img" %>
         </div>
       </div>
     </div>
   </div>
-  <div class="document" class="container">
-    <div class="row">
+<div class="document" class="container">
+    <div>
+    <%= image_tag "logo_doc.png", class: "dossier_logo" %>
+    </div>
       <% x = @candidates.size %>
       <% @candidates.each do |candidate| %>
-      <div class="col-xs-12 col-md-6 text-center">
+      <div class="dossier_candidates">
         <h4><%= "#{candidate.firstname} #{candidate.lastname}" %></h4>
         <% now = Time.now.utc.to_date %>
         <% bd = now.year - candidate.birthdate.year - (candidate.birthdate.to_date.change(:year => now.year) > now ? 1 : 0) %>
         <h5><%= bd %> ans</h5>
       </div>
       <% end %>
+    <div>
+      <h4 class="revenue"> <%= "Revenu mensuel : #{@candidates.first.dossier_max_rent}€" %></h4>
     </div>
-    <div class="row text-center">
-      <h4> <%= "Revenu global : #{@candidates.first.dossier_max_rent}€" %></h4>
+    <div class="separator"> <p>Employement and Income</p>
+    </div>
+    <div>
+      <h4>Google Enterprises</h4>
+      <h6>Product Manager</h6>
+      <p>Since: October 2012</p>
     </div>
   </div>
+</div>>
 
   <!-- Sign-up Modal -->
   <div data-backdrop="static" class="modal show" id="signUp" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -45,7 +54,7 @@
               <p>Votre dossier est maintenant prêt. Pour exploiter 100% du service, vous devez confirmer la création de votre compte</p>
             </div>
             <div class="col-xs-12 hidden-xs hidden-sm col-md-4">
-              <%= image_tag "account.png" %>
+              <%= image_tag "account.png", class: "landing_img" %>
             </div>
           </div>
         </div>
