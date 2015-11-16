@@ -1,0 +1,20 @@
+.document {
+
+  margin:auto;
+  margin-top: 5vh;
+  width: 800px;
+  height: 80vh;
+  overflow: hidden;
+  background-color: white;
+  border-radius: 2px;
+  border:1px dotted lightgrey;
+  z-index:0;
+  box-shadow: -1px 2px 5px 1px rgba(0, 0, 0, 0.7);
+  padding-top:100px;
+  &h3 {
+    z-index:0;
+  }
+  &h4 {
+    z-index:0;
+  }
+}
