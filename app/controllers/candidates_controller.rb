@@ -15,7 +15,7 @@ class CandidatesController < ApplicationController
   def create
     @candidate = Candidate.new(candidate_params)
     if @candidate.save
-      redirect_to dashboard_index_path
+      redirect_to candidates_path
     else
       render :new
     end
