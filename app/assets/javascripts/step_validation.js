@@ -16,20 +16,13 @@ $(document).ready(function() {
     valid[this.id] = validateField(this.id);
   });
 
-  $('#candidate_dossier_people').on(EVENTS, function(e) {
-    console.log($('#candidate_dossier_people').val());
-    if ( $('#candidate_dossier_people').val() == $('#step-complement').attr('display-if')) {
+  $('.form-control').on(EVENTS, function(e) {
+    console.log($('.form-control').val());
+    if ( $('.form-control').val() == $('#step-complement').attr('display-if')) {
       $('#step-complement').collapse('show');
     } else {
       $('#step-complement').collapse('hide');
     }
-    // if $('#candidate_dossier_people').val() == '2' {
-    //   alert('lol')
-    //   // $('#step-complement').collapse('show');
-    // }
-  //   if $(q_symbol).val() == 2 {
-  //alert('ok');
-  //   }
   });
 
 })

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151113134351) do
+ActiveRecord::Schema.define(version: 20151116161458) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,8 @@ ActiveRecord::Schema.define(version: 20151113134351) do
     t.boolean  "cautioner"
     t.date     "birthdate"
     t.string   "cautioner_relationship"
+    t.boolean  "couple"
+    t.boolean  "trial_period"
   end
 
   add_index "candidates", ["user_id"], name: "index_candidates_on_user_id", using: :btree

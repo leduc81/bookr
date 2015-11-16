@@ -23,8 +23,6 @@
         <% @step['questions'].each do |q| %>
           <%= render "question", :q => q[1] %>
           <% if q[1]['complement'] %>
-            <!-- print js condition -->
-
             <div class="collapse" id="step-complement" display-if='<%= q[1]['complement']['display_if'] %>'>
               <%= render "question", :q => q[1]['complement'] %>
             </div>
