@@ -13,23 +13,53 @@
   <div class="row">
 
     <div class="document" class="container">
-      <div class="row">
-        <% x = @candidates.size %>
-        <% @candidates.each do |candidate| %>
-          <div class="col-xs-12 col-md-6 text-center">
-            <h4><%= "#{candidate.firstname} #{candidate.lastname}" %></h4>
-            <p><%= "#{candidate.user.email}" %></p>
-            <% now = Time.now.utc.to_date %>
-            <% bd = now.year - candidate.birthdate.year - (candidate.birthdate.to_date.change(:year => now.year) > now ? 1 : 0) %>
-            <h5><%= bd %> ans</h5>
-            <p>Louer Maximum: <%= "#{candidate.dossier_max_rent}" %></p>
-          </div>
-        <% end %>
-      </div>
-      <div class="row text-center">
-        <h4> <%= "Revenu global : #{@candidates.first.income}€" %></h4>
-      </div>
+    <div>
+      <%= image_tag "logo_doc.png", class: "dossier_logo" %>
     </div>
+    <div class="dossier_candidates">
+      <% x = @candidates.size %>
+      <% @candidates.each do |candidate| %>
+        <% now = Time.now.utc.to_date %>
+        <% bd = now.year - candidate.birthdate.year - (candidate.birthdate.to_date.change(:year => now.year) > now ? 1 : 0) %>
+        <h4><i class="fa fa-user"></i> <%= "#{candidate.firstname} #{candidate.lastname}" %> - <%= bd %> ans</h4>
+        <p><i class="fa fa-envelope-o"></i> <%= current_user.email %></p>
+        <p><i class="fa fa-phone"></i> (01) 42 42 42 42</p>
+
+        <% @bio_name = "#{candidate.firstname} #{candidate.lastname}" %>
+      <% end %>
+    </div>
+    <ul class="list-inline">
+      <li><%= image_tag "http://placehold.it/150x150", class: "img-circle biopic"%></li>
+    </ul>
+    <div class="separator">
+      <h4>Biography</h4>
+    </div>
+    <div><p class="dossier_bio"> My name is <%= @bio_name %> and I have been married for ___ years. I'm expecting a child so we decided to look for a bigger place. I've been working as a ___________ at ____________ for __ years and my husband is a ___________ at ____. We don't have pets and we are non-smokers. Here's our dossier for your appraisal, I really do hope it pleases you, Thank you! <%= @bio_name %></p></div>
+    <div>
+      <h4 class="revenue"> <%= "Total Revenue :"%>
+      <% if @candidates.count > 1%>
+        <%= @revenue_total = @candidates.first.income + @candidates.last.income  %>
+      <% else %>
+        <%= @revenue_total = @candidates.first.income %>
+      <%end%>
+      </h4>
+      <h6>environ <%= @revenue_total * 12%>€ par an</h6>
+    </div>
+    <div class="separator">
+      <h4>Employement and Income</h4>
+    </div>
+     <div>
+      <h4></h4>
+      <h6><%= @candidates.first.status%></h6>
+      <h6>depuis: </h6>
+    </div>
+    <div>
+      <h4 class="revenue">Past Rentals</h4>
+    </div>
+    <div class="separator">
+      <h4>References</h4>
+    </div>
+  </div>
 
   </div>
 
