@@ -1,0 +1,9 @@
+
+<div class="row">
+  <ul class="nav nav-tabs">
+    <li role="presentation" <%= 'class=active' if active == "index" %>><a href="<%= url_for dashboard_index_path %>">Dossier</a></li>
+    <li role="presentation" <%= 'class=active' if active == "candidates" %>><a href="<%= url_for dashboard_candidates_path %>">Candidats</a></li>
+    <li role="presentation" <%= 'class=active' if active == "proofs" %>><a href="<%= url_for dashboard_proofs_path %>">Justificatifs</a></li>
+    <li role="presentation" <%= 'class=active' if active == "share" %>><a href="<%= url_for dashboard_share_path %>">Partages</a></li>
+  </ul>
+</div>

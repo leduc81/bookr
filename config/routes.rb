@@ -1,15 +1,17 @@
 Rails.application.routes.draw do
 
-  get 'steps/init'
-  # get 'steps/:id' => 'steps#show', as: "step"
+  get 'guests/token'
+
   resources :steps, only: :show
   post 'steps/next'
   # post 'steps/register_candidates'
+  # get 'steps/init'
 
   resources :dashboard, only: :index
+  get "dashboard/candidates"
+  get "dashboard/proofs"
+  get "dashboard/share"
 
-  # devise_for :users
-  # root to: 'pages#home'
 
   devise_for :users
   root to: 'pages#home'
@@ -18,7 +20,15 @@ Rails.application.routes.draw do
   get "pages/step3" => "pages#step_three"
   get "pages/step4" => "pages#step_four"
 
-   resources :candidates, only: []
+  resources :guests, only: :show
+  get "guests/error"
+
+  # namespace :guest do
+  #   resources :dossiers, only: [ :show ]
+  # end
+
+
+  # resources :candidates, only: []
   # resources :candidates, only: [] do
   #   resources :proofs
   # end
@@ -30,10 +40,6 @@ Rails.application.routes.draw do
   #     end
   #   end
   # end
-
-
-
-
   # namespace :admin do
   #   resources :user_profiles
   #   resources :dossiers
