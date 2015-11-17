@@ -1,0 +1,47 @@
+
+<div class="container padded">
+
+  <%= render 'tab', active: "share" %>
+
+  <div class="row text-center padded">
+    <div class="col-xs-12 ">
+    <%= link_to "Ajouter un partage", "#", class: "btn btn-primary" %>
+    </div>
+  </div>
+
+
+  <div class="row">
+
+    <div class="panel panel-default">
+      <div class="panel-heading">Liste des partages</div>
+      <div class="panel-body">
+        <p>Voici les partages de votre dossier de location. Il est recommandé de créer un nouveau partage à chaque fois que vous devez transmettre votre dossier à un propriétaire.</p>
+      </div>
+      <table class="table">
+        <tr>
+          <th>Token</th>
+          <th>Email</th>
+          <th>Start</th>
+          <th>Expires</th>
+          <th>Status</th>
+          <th>Viewed</th>
+          <th>Actions</th>
+        </tr>
+        <% current_user.guests.each do |guest| %>
+          <tr>
+            <td><%= "#{guest.token[0,3]}**[..]**#{guest.token[-3,3]}" %></td>
+            <td><%= guest.email %></td>
+            <td><%= guest.start %></td>
+            <td><%= guest.expires %></td>
+            <td><%= guest.expires > Date.today ? "expired" : "active" %></td>
+            <td><%= guest.viewed_t.nil? ? "no" : "#{guest.viewed_t} times" %></td>
+            <td><%= link_to "copy link", "#", class: "btn btn-primary btn-xs" %> <%= link_to "stop sharing", "#", class: "btn btn-danger btn-xs" %></td>
+          </tr>
+        <% end %>
+
+      </table>
+    </div>
+
+  </div>
+
+</div>
