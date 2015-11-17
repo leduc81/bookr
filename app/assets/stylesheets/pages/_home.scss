@@ -37,73 +37,82 @@
     margin-bottom: 50px;
     font-weight: 100;
   }
-  .second {
-    height: 800px;
-    background-color: $color1;
-    h3 {
-    padding-top: 200px;
-    color: $color4;
-    font-weight: 100;
-    }
+}
+.second {
+  height: 800px;
+  background-color: $color1;
+  h3 {
+  padding-top: 200px;
+  color: $color4;
+  font-weight: 100;
   }
 }
-  .landing_img {
-    width: 100%;
+.landing_img {
+  width: 100%;
+}
+.logo {
+  width: 10%;
+}
+.third {
+  min-height: 800px;
+  background-color: $color2;
+  h3 {
+  padding-top: 200px;
+  color: $color4;
+  font-weight: 100;
   }
-  .logo {
-    width: 10%;
-  }
-  .third {
-    min-height: 800px;
-    background-color: $color2;
-    h3 {
-    padding-top: 200px;
+}
+.shy {
+  visibility: hidden;
+}
+.land {
+  padding-top: 116px;
+}
+.step {
+  height: 800px;
+  background-color: $color2;
+  h3 {
     color: $color4;
     font-weight: 100;
-    }
   }
-  .shy {
-    visibility: hidden;
+  img {
+    width: 100%;
   }
-  .land {
-    padding-top: 116px;
+}
+.landing-btn {
+  position: fixed;
+  right: 15px;
+  top: 25px;
+  color: white !important;
+  background-color: transparent;
+  border-radius: 15px;
+  // border-color: $color5;
+  // border-width: 1px;
+  text-decoration: none !important;
+  a:hover {
+    background-color: #F8CB6F;
+    color: white !important;
+    // border-color: $color1;
+    text-decoration: none !important;
   }
-  .step {
-    height: 800px;
-    background-color: $color2;
-    h3 {
-      color: $color4;
-      font-weight: 100;
-    }
-    img {
-      width: 100%;
-    }
-  }
-  // .landing-btn {
-  //   position: fixed;
-  //   right: 15px;
-  //   top: 25px;
-  //   color: white !important;
-  //   background-color: $color4;
-  //   border-radius: 15px;
-  //   border-color: $color5;
-  //   border-width: 1px;
+  // &:link {
+  //   color: white;
   //   text-decoration: none !important;
-  //   &:hover {
-  //     background-color: $color6;
-  //     color: white !important;
-  //     border-color: $color1;
-  //     text-decoration: none !important;
-  //   }
-  //   &:link {
-  //     color: white;
-  //     text-decoration: none !important;
-  //   }
-  //   &-btn {
-  //     text-decoration: none !important;
-  //     color: white;
-  //   }
   // }
+  // &-btn {
+  //   text-decoration: none !important;
+  //   color: white;
+  // }
+}
+
+// .landing-btn > a,
+// .landing-btn > .fa {
+//   color: white;
+
+//   &:hover {
+//     text-decoration: none;
+//   }
+// }
   // #landing-buttom {
   //   text-decoration: none;
   //   &:link {

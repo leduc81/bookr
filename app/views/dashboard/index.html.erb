@@ -13,6 +13,22 @@
   <div class="row">
 
     <div class="document" class="container">
+      <div class="row">
+        <% x = @candidates.size %>
+        <% @candidates.each do |candidate| %>
+          <div class="col-xs-12 col-md-6 text-center">
+            <h4><%= "#{candidate.firstname} #{candidate.lastname}" %></h4>
+            <p><%= "#{candidate.user.email}" %></p>
+            <% now = Time.now.utc.to_date %>
+            <% bd = now.year - candidate.birthdate.year - (candidate.birthdate.to_date.change(:year => now.year) > now ? 1 : 0) %>
+            <h5><%= bd %> ans</h5>
+            <p>Loyer Maximum: <%= "#{candidate.dossier_max_rent}" %></p>
+          </div>
+        <% end %>
+      </div>
+      <div class="row text-center">
+        <h4> <%= "Revenu global : #{@candidates.first.income}€" %></h4>
+      </div>
     <div>
       <%= image_tag "logo_doc.png", class: "dossier_logo" %>
     </div>
