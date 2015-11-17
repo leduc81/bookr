@@ -10,11 +10,15 @@
   z-index:0;
   box-shadow: -1px 2px 5px 1px rgba(0, 0, 0, 0.7);
   padding:10px;
-  &h3 {
+  position: relative;
+  h3 {
     z-index:0;
   }
-  &h4 {
+  h4 {
     z-index:0;
+  }
+  p {
+    margin-bottom: 2px !important;
   }
 }
 
@@ -37,4 +41,18 @@
 .separator {
   background-color: $color6;
   text-align: center;
+}
+
+.dossier_bio {
+  text-align: justify;
+  text-justify: inter-word;
+  padding-top: 10px;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+.biopic {
+  position: absolute;
+  top: 90px;
+  right: 40px;
 }

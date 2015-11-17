@@ -14,30 +14,39 @@
       </div>
     </div>
   </div>
-
-
   <div class="document" class="container">
     <div>
-    <%= image_tag "logo_doc.png", class: "dossier_logo" %>
+      <%= image_tag "logo_doc.png", class: "dossier_logo" %>
     </div>
+    <div class="dossier_candidates">
       <% x = @candidates.size %>
       <% @candidates.each do |candidate| %>
-      <div class="dossier_candidates">
-        <h4><%= "#{candidate.firstname} #{candidate.lastname}" %></h4>
         <% now = Time.now.utc.to_date %>
         <% bd = now.year - candidate.birthdate.year - (candidate.birthdate.to_date.change(:year => now.year) > now ? 1 : 0) %>
-        <h5><%= bd %> ans</h5>
-      </div>
+        <h4><i class="fa fa-user"></i> <%= "#{candidate.firstname} #{candidate.lastname}" %> - <%= bd %> ans</h4>
+        <p><i class="fa fa-envelope-o"></i> hello@world.com</p>
+        <p><i class="fa fa-phone"></i> (01) 42 42 42 42</p>
+
+        <% @bio_name = "#{candidate.firstname} #{candidate.lastname}" %>
       <% end %>
-    <div>
-      <h4 class="revenue"> <%= "Revenu mensuel : #{@candidates.first.dossier_max_rent}€" %></h4>
     </div>
-    <div class="separator"> <p>Employement and Income</p>
+    <ul class="list-inline">
+      <li><%= image_tag "http://placehold.it/150x150", class: "img-circle biopic"%></li>
+    </ul>
+    <div class="separator">
+      <h4>Biography</h4>
     </div>
     <div>
-      <h4>Google Enterprises</h4>
-      <h6>Product Manager</h6>
-      <p>Since: October 2012</p>
+      <h4 class="revenue"> <%= "Loyer Maximum : #{@candidates.first.dossier_max_rent}€" %></h4>
+    </div>
+    <div class="separator">
+      <h4>Employement and Income</h4>
+    </div>
+    <div>
+      <h4 class="revenue">Past Rentals</h4>
+    </div>
+    <div class="separator">
+      <h4>References</h4>
     </div>
   </div>
 </div>
