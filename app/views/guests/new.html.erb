@@ -1,0 +1,32 @@
+
+<div class="container padded">
+
+  <%= render 'dashboard/tab', active: "share" %>
+
+  <div class="row padded">
+
+    <div class="col-xs-12 col-md-6 col-md-offset-3">
+      <h3>Nouveau partage</h3>
+      <p class="text-justify">Vous êtes sur le point de partager votre dossier.</p>
+      <p class="text-justify">Partager votre dossier vous donne accès à un lien de partage unique. Il est aussi possible d'envoyer un email à un destinataire.</p>
+      <%= simple_form_for [current_user, @guest] do |f| %>
+        <label for="days">Durée du partage</label>
+        <select name="guest[days]" id="days" class="form-control">
+          <option value="5">5 jours</option>
+          <option value="15">15 jours</option>
+          <option value="30">30 jours</option>
+        </select>
+         <br>
+        <%= f.input :email, as: :email, class: "form-control" %>
+        <%= f.hint "Un email sera envoyé au destinataire renseigné (facultatif)", class: "text-center" %>
+        <br>
+        <%= f.button :submit, "Créer le partage!", class: "btn btn-danger" %>
+      <% end %>
+    </div>
+
+
+
+
+  </div>
+
+</div>

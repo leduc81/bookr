@@ -5,7 +5,7 @@
 
   <div class="row text-center padded">
     <div class="col-xs-12 ">
-    <%= link_to "Ajouter un partage", "#", class: "btn btn-primary" %>
+    <%= link_to "Ajouter un partage", new_user_guest_path(current_user), class: "btn btn-primary" %>
     </div>
   </div>
 
@@ -27,15 +27,23 @@
           <th>Viewed</th>
           <th>Actions</th>
         </tr>
+
         <% current_user.guests.each do |guest| %>
+
+          <% if guest.canceled == true %>
+            <% status = "canceled" %>
+          <% else %>
+            <% status = guest.expires < Date.today ? "expiré" : "actif" %>
+          <% end %>
+
           <tr>
-            <td><%= "#{guest.token[0,3]}**[..]**#{guest.token[-3,3]}" %></td>
-            <td><%= guest.email %></td>
+            <td><%= "#{guest.token[0,15]}***..." %></td>
+            <td><%= guest.email != "" ? guest.email : "-" %></td>
             <td><%= guest.start %></td>
             <td><%= guest.expires %></td>
-            <td><%= guest.expires > Date.today ? "expired" : "active" %></td>
+            <td><%= status %></td>
             <td><%= guest.viewed_t.nil? ? "no" : "#{guest.viewed_t} times" %></td>
-            <td><%= link_to "copy link", "#", class: "btn btn-primary btn-xs" %> <%= link_to "stop sharing", "#", class: "btn btn-danger btn-xs" %></td>
+            <td><% if status == "actif" %><button onclick="copyToClipboard('<%= guest.token %>')" class="btn btn-primary btn-xs">Copier url</button><% end %> <%= link_to "stop sharing", user_guest_path(current_user, guest), method: "patch", class: "btn btn-danger btn-xs" if status == "actif" %> <%= "-" if status != "actif" %> </td>
           </tr>
         <% end %>
 
@@ -45,3 +53,7 @@
   </div>
 
 </div>
+
+<script>
+
+</script>
