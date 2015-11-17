@@ -1,4 +1,4 @@
 class Guest < ActiveRecord::Base
   belongs_to :user
-  attr_reader :user_id
+  validates :token, uniqueness: { case_sensitive: false }
 end

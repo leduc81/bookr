@@ -9,8 +9,8 @@ class ApplicationController < ActionController::Base
   # end
 
  def after_sign_in_path_for(resource)
-  if user_signed_in?
-    current_user.candidates.each do |candidate_id|
+  if user_signed_in? && current_user.candidates.size == 0
+    session['candidates'].each do |candidate_id|
       candidate = Candidate.find(candidate_id)
       candidate.user_id = current_user.id
       candidate.save
