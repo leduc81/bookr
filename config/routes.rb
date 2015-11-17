@@ -18,7 +18,8 @@ Rails.application.routes.draw do
   get "pages/step3" => "pages#step_three"
   get "pages/step4" => "pages#step_four"
 
-   resources :candidates #do
+   resources :candidates, only: []
+  # resources :candidates, only: [] do
   #   resources :proofs
   # end
 

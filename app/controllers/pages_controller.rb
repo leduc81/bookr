@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
   before_action :set_candidates, only: [:step_two, :step_three, :step_four]
+  skip_before_action :authenticate_user!
 
   def home
     reset_session

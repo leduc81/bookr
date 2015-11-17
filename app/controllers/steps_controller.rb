@@ -4,6 +4,8 @@ class StepsController < ApplicationController
   before_action :set_step, only: [:init, :show]
   before_action :set_candidate, only: [:show]
 
+  skip_before_action :authenticate_user!
+
   def init
      @candidate = Candidate.new
   end
