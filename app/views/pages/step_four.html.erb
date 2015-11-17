@@ -38,7 +38,13 @@
     </div>
     <div><p class="dossier_bio"> My name is <%= @bio_name %> and I have been married for ___ years. I'm expecting a child so we decided to look for a bigger place. I've been working as a ___________ at ____________ for __ years and my husband is a ___________ at ____. We don't have pets and we are non-smokers. Here's our dossier for your appraisal, I really do hope it pleases you, Thank you! <%= @bio_name %></p></div>
     <div>
-      <h4 class="revenue"> <%= "Total Revenue :"%> <%= @revenue_total = @candidates.first.income + @candidates.last.income  %></h4>
+      <h4 class="revenue"> <%= "Total Revenue :"%>
+      <% if @candidates.count > 1%>
+        <%= @revenue_total = @candidates.first.income + @candidates.last.income  %>
+      <% else %>
+        <%= @revenue_total = @candidates.first.income %>
+      <%end%>
+      </h4>
       <h6>environ <%= @revenue_total * 12%>€ par an</h6>
     </div>
     <div class="separator">

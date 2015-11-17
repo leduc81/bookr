@@ -20,8 +20,11 @@ Rails.application.routes.draw do
   get "pages/step3" => "pages#step_three"
   get "pages/step4" => "pages#step_four"
 
-  resources :guests, only: :show
+  resources :users, only: [] do
+    resources :guests, only: [:update, :new, :create]
+  end
   get "guests/error"
+  resources :guests, only: :show
 
   # namespace :guest do
   #   resources :dossiers, only: [ :show ]
