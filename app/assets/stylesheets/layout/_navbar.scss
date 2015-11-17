@@ -12,9 +12,6 @@
     top: 0;
     z-index: 5;;
   }
-  &-logo {
-    resize-picture: 20px;
-  }
   &-container {
     display: flex;
     height: 70px;
@@ -27,6 +24,7 @@
     flex: 0 1 auto;
     cursor: pointer;
     padding: 0 10px;
+    color: $color3;
   }
   &-search {
     flex: 0 1 300px;
@@ -81,7 +79,7 @@
 
     &:hover {
       color: white;
-      background: $color3;
+      background: $color4;
       // border-color: darken($color2, 10%);
     }
     &:visited {
@@ -131,4 +129,7 @@
   }
 .navbar-wagon-button {
   background-color: $color3;
+}
+#navbar-wagon-menu img {
+  color: $color3;
 }
