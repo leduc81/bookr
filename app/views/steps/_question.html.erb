@@ -31,7 +31,9 @@
 
   <!-- CHECKBOX field -->
   <% elsif q['format'] == "checkbox" %>
-  <%= check_box_tag(q_symbol) %>
+  <%# check_box_tag(q_symbol) %>
+   <button name="<%= q_symbol %>" class="btn custom-btn radio_a form-control round-form" value="1" role="button">Oui</button>
+   <button name="<%= q_symbol %>" class="btn custom-btn radio_a form-control round-form" value="0" role="button">Non</button>
 
   <!-- SELECT field -->
   <% elsif q['format'] == "select" %>

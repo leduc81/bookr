@@ -3,7 +3,7 @@ class Candidate < ActiveRecord::Base
   has_many :proofs
 
   def is_populated_step2
-    return true if self.firstname && self.lastname && self.birthdate && self.cautioner
+    return true if self.firstname && self.lastname && self.birthdate
     return false
   end
 

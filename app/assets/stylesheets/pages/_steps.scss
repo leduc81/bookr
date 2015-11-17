@@ -54,4 +54,13 @@
   text-align: right;
 }
 
+checkbox.radio_a {
+}
+
+checkbox.radio_a.clicked {
+  background-color: $color6;
+  color: $color5;
+  border-color: $color1;
+  text-decoration: none;
+}
 

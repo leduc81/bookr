@@ -44,9 +44,9 @@
         <% end %>
 
         <%= hidden_field_tag(:next, @step['next']) %>
-
+        <br>
         <%# if !@step['questions'][1].nil? || display_button %>
-          <%= submit_tag(@step['validate'], id: "submit-next", class: "btn custom-btn") %>
+          <%= submit_tag(@step['validate'], data: { disable_with: "Traitement..." }, id: "submit-next", class: "btn custom-btn") %>
         <%# end %>
 
       <% end %> <!-- / form tag -->
