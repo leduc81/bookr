@@ -11,7 +11,6 @@ class StepsController < ApplicationController
   end
 
   def show
-    raise
     customize_step
   end
 
