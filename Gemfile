@@ -16,7 +16,12 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'autoprefixer-rails'
 gem 'country_select'
+<<<<<<< HEAD
 gem 'zeroclipboard-rails'
+=======
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
+>>>>>>> master
 
 group :development, :test do
   gem 'binding_of_caller'
