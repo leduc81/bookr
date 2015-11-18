@@ -4,3 +4,7 @@
 function copyToClipboard(text) {
   window.prompt("Copier le lien suivant:", text);
 }
+
+$(document).ready(function() {
+  var clip = new ZeroClipboard($(".my_clip_button"))
+});

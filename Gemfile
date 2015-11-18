@@ -16,6 +16,7 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'autoprefixer-rails'
 gem 'country_select'
+gem 'zeroclipboard-rails'
 
 group :development, :test do
   gem 'binding_of_caller'
