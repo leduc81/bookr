@@ -7,7 +7,12 @@ $(document).ready(function() {
       $(".landing-btn").css("margin-top", "0px");
     }
   });
-  // $('.login-modal').modal('hide')
+//   $('.login-modal').click(function(event){
+//   event.preventDefault();
+//   console.log("salut")
+//   $(this).modal("show")
+// });
+
 });
 
 
