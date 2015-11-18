@@ -1,35 +1,32 @@
+<div class="dash-home">
 
-<div class="container padded">
+  <div class="container padded">
 
-  <%= render 'dashboard/tab', active: "share" %>
+    <%= render 'dashboard/tab', active: "share" %>
 
-  <div class="row padded">
+    <div class="row padded">
 
-    <div class="col-xs-12 col-md-6 col-md-offset-3">
-      <h3>Nouveau partage</h3>
-      <p class="text-justify">Vous êtes sur le point de partager votre dossier.</p>
-      <p class="text-justify">Partager votre dossier  donne accès à un lien de partage unique que vous pouvez transmettre par email aux propriétaires ou par vos propres moyens!</p>
-      <%= simple_form_for [current_user, @guest] do |f| %>
-        <label for="days">Durée du partage</label>
-        <select name="guest[days]" id="days" class="form-control">
-          <option value="5">5 jours</option>
-          <option value="15">15 jours</option>
-          <option value="30">30 jours</option>
-        </select>
-         <br>
-        <%= f.hint "Si vous le souhaitez, prenez des notes sur ce partage (facultatif) :", class: "text-center" %>
-        <%= f.input :description, input_html: { maxlength: 50 }, class: "form-control", placeholder: "appartement 2 pièces 1200€ ref BG75011F2" %>
-        <%= f.input :url, class: "form-control", placeholder: "http://www.leboncoin.fr/locations/0123456789.htm?ca=12_s" %>
-         <%= f.hint "Envoyer une invitation par email à cette adresse email (facultatif) :", class: "text-center" %>
-        <%= f.input :email, as: :email, class: "form-control", placeholder: "proprietairedel@ppartement.fr" %>
-        <br>
-        <%= f.button :submit, "Créer le partage!", class: "btn btn-danger" %>
-      <% end %>
+      <div class="col-xs-12 col-md-6 col-md-offset-3">
+        <h3>Nouveau partage</h3>
+        <p class="text-justify">Vous êtes sur le point de partager votre dossier.</p>
+        <p class="text-justify">Partager votre dossier  donne accès à un lien de partage unique que vous pouvez transmettre par email aux propriétaires ou par vos propres moyens!</p>
+        <%= simple_form_for [current_user, @guest] do |f| %>
+          <label for="days">Durée du partage</label>
+          <select name="guest[days]" id="days" class="form-control">
+            <option value="5">5 jours</option>
+            <option value="15">15 jours</option>
+            <option value="30">30 jours</option>
+          </select>
+           <br>
+          <%= f.hint "Si vous le souhaitez, prenez des notes sur ce partage (facultatif) :", class: "text-center" %>
+          <%= f.input :description, input_html: { maxlength: 50 }, class: "form-control", placeholder: "appartement 2 pièces 1200€ ref BG75011F2" %>
+          <%= f.input :url, class: "form-control", placeholder: "http://www.leboncoin.fr/locations/0123456789.htm?ca=12_s" %>
+           <%= f.hint "Envoyer une invitation par email à cette adresse email (facultatif) :", class: "text-center" %>
+          <%= f.input :email, as: :email, class: "form-control", placeholder: "proprietairedel@ppartement.fr" %>
+          <br>
+          <%= f.button :submit, "Créer le partage!", class: "btn btn-danger" %>
+        <% end %>
+      </div>
     </div>
-
-
-
-
   </div>
-
 </div>
