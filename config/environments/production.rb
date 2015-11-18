@@ -77,4 +77,16 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  config.action_mailer.delivery_method = :smtp
+  # SMTP settings for mailjet
+  config.action_mailer.smtp_settings = {
+   :address              => "in-v3.mailjet.com",
+   :port                 => 587,
+   :user_name            => ENV['mailjet_key'],
+   :password             => ENV['mailjet_secret'],
+   :authentication       => "plain",
+  :enable_starttls_auto => true
+  }
+
 end

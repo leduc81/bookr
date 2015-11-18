@@ -1,0 +1,13 @@
+<h2>edoss.fr</h2>
+
+<% phrase = " pour le bien : #{@guest.description}" if @guest.description %>
+
+<p><%= "#{@user.candidates.first.firstname} #{@user.candidates.first.lastname} vous invite à consulter son dossier de location en ligne#{phrase}" %></p>
+
+<p><strong><%= link_to "Consulter le dossier en ligne sur Edoss.fr", guest_path(@guest.token) %></strong></p>
+
+<h3>Contacter le candidat:</h3>
+<p><%= @user.candidates.first.firstname + " " + @user.candidates.first.lastname %></p>
+<p><%= @user.email %></p>
+
+<p>Service fourni par Edoss.fr, le dossier de location en ligne</p>

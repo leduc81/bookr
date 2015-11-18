@@ -26,6 +26,8 @@ Rails.application.routes.draw do
   get "guests/error"
   resources :guests, only: :show
 
+  get "285ef748a537dc60030f195a602f7420.txt"
+
   # namespace :guest do
   #   resources :dossiers, only: [ :show ]
   # end

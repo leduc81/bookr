@@ -15,7 +15,12 @@ class GuestsController < ApplicationController
   end
 
   def update
-    @guest.canceled = true
+    #toggle canceled
+    if @guest.canceled == true
+      @guest.canceled = false
+    else
+      @guest.canceled = true
+    end
     @guest.save
     redirect_to dashboard_share_path
   end
@@ -27,6 +32,8 @@ class GuestsController < ApplicationController
   def create
     days_last = params['guest']['days'].to_i
     email = params['guest']['email'].nil? ? "" : params['guest']['email']
+    description = params['guest']['description'].nil? ? "-" : params['guest']['description']
+    url = params['guest']['url'].nil? ? "" : params['guest']['url']
     start = Time.now
     expires = start + days_last.days
     guest = Guest.create(
@@ -35,9 +42,13 @@ class GuestsController < ApplicationController
       email: email,
       start: start,
       expires: expires,
+      url: url,
+      description: description,
       viewed_t: 0,
       dl_t: 0
     )
+    # déplacé dans le modèle
+    # UserMailer.invite_guest(guest, current_user).deliver_now
     redirect_to dashboard_share_path
   end
 

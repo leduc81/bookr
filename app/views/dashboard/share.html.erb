@@ -20,8 +20,8 @@
       <table class="table">
         <tr>
           <th>Token</th>
-          <th>Email</th>
-          <th>Start</th>
+          <th>Description</th>
+          <th>Envoyé à:</th>
           <th>Expires</th>
           <th>Status</th>
           <th>Viewed</th>
@@ -38,12 +38,29 @@
 
           <tr>
             <td><%= "#{guest.token[0,15]}***..." %></td>
+            <td><%= guest.description %> <%= link_to "Voir", guest.url, class: "btn btn-default btn-xs", target: "_blank" unless guest.url.nil? %></td>
             <td><%= guest.email != "" ? guest.email : "-" %></td>
-            <td><%= guest.start %></td>
             <td><%= guest.expires %></td>
-            <td><%= status %></td>
+            <td>
+              <% if status == "actif" %>
+                <%= link_to status, user_guest_path(current_user, guest), method: "patch", class: "btn btn-success btn-xs", title: "partagé depuis #{guest.start}, expirera le #{guest.expires}, cliquer pour désactiver" %>
+              <% else %>
+                <% if status == "canceled" && guest.expires > Date.today %>
+                  <%= link_to status, user_guest_path(current_user, guest), method: "patch", class: "btn btn-danger btn-xs", title: "partage désactivé à votre demande, expirera le #{guest.expires}, cliquer pour réactiver" %>
+                <% else %> <%# expiré %>
+                  <%= link_to status, "#", class: "btn btn-default btn-xs", title: "expiré le #{guest.expires}" %>
+                <% end %>
+
+
+              <% end %>
+            </td>
             <td><%= guest.viewed_t.nil? ? "no" : "#{guest.viewed_t} times" %></td>
-            <td><% if status == "actif" %><button onclick="copyToClipboard('<%= guest.token %>')" class="btn btn-primary btn-xs">Copier url</button><% end %> <%= link_to "stop sharing", user_guest_path(current_user, guest), method: "patch", class: "btn btn-danger btn-xs" if status == "actif" %> <%= "-" if status != "actif" %> </td>
+            <td>
+              <% if status == "actif" %>
+                <button onclick="copyToClipboard('<%= guest.token %>')" class="btn btn-primary btn-xs">Copier url</button>
+              <% end %>
+              <%= "-" if status != "actif" %>
+            </td>
           </tr>
         <% end %>
 
