@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get "dashboard/proofs"
   get "dashboard/share"
 
-  resources :candidates, only: :edit
+  resources :candidates, only: [:edit, :update ]
 
   devise_for :users
   root to: 'pages#home'
