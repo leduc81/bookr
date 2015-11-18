@@ -189,13 +189,10 @@ GEM
     unicode_utils (1.4.0)
     warden (1.2.3)
       rack (>= 1.0)
-<<<<<<< HEAD
-    zeroclipboard-rails (0.1.1)
-      railties (>= 3.1)
-=======
     wicked_pdf (1.0.0)
     wkhtmltopdf-binary (0.9.9.3)
->>>>>>> master
+    zeroclipboard-rails (0.1.1)
+      railties (>= 3.1)
 
 PLATFORMS
   ruby
@@ -223,12 +220,9 @@ DEPENDENCIES
   simple_form
   spring
   uglifier
-<<<<<<< HEAD
-  zeroclipboard-rails
-=======
   wicked_pdf
   wkhtmltopdf-binary
->>>>>>> master
+  zeroclipboard-rails
 
 BUNDLED WITH
    1.10.6
