@@ -1,17 +1,18 @@
+<div class="dash-home">
+  <div class="container padded">
 
-<div class="container padded">
+    <%= render 'tab', active: "proofs" %>
 
-  <%= render 'tab', active: "proofs" %>
-
-  <div class="row text-center padded">
-    <div class="col-xs-12 ">
-    <%= link_to "télécharger PDF", "#", class: "btn btn-primary" %>
-    <%= link_to "partager email", "#", class: "btn btn-primary" %>
+    <div class="row text-center padded">
+      <div class="col-xs-12 ">
+      <%= link_to '<i class="fa fa-cloud-download"></i> PDF'.html_safe, "#", class: "navbar-wagon-button btn" %>
+      <%= link_to '<i class="fa fa-share-alt"></i> Share!'.html_safe, "#", class: "navbar-wagon-button btn" %>
+      </div>
     </div>
-  </div>
 
-  <div class="row">
-    <p>WIP</p>
-  </div>
+    <div class="row">
+      <p>WIP</p>
+    </div>
 
+  </div>
 </div>

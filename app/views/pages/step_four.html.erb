@@ -16,7 +16,7 @@
   </div>
   <div class="document" class="container">
     <div>
-      <%= image_tag "logo_doc.png", class: "dossier_logo" %>
+      <%= image_tag "logo_new_name.png", class: "dossier_logo" %>
     </div>
     <div class="dossier_candidates">
       <% x = @candidates.size %>
@@ -31,12 +31,12 @@
       <% end %>
     </div>
     <ul class="list-inline">
-      <li><%= image_tag "http://placehold.it/150x150", class: "img-circle biopic"%></li>
+      <li><%= image_tag "default-user.png", class: "img-circle biopic"%></li>
     </ul>
     <div class="separator">
       <h4>Biography</h4>
     </div>
-    <div><p class="dossier_bio"> My name is <%= @bio_name %> and I have been married for ___ years. I'm expecting a child so we decided to look for a bigger place. I've been working as a ___________ at ____________ for __ years and my husband is a ___________ at ____. We don't have pets and we are non-smokers. Here's our dossier for your appraisal, I really do hope it pleases you, Thank you! <%= @bio_name %></p></div>
+    <div><p class="dossier_bio"></p></div>
     <div>
       <h4 class="revenue"> <%= "Total Revenue :"%>
       <% if @candidates.count > 1%>
@@ -53,7 +53,7 @@
      <div>
       <h4></h4>
       <h6><%= @candidates.first.status%></h6>
-      <h6>depuis: </h6>
+
     </div>
     <div>
       <h4 class="revenue">Past Rentals</h4>

@@ -1,16 +1,17 @@
 <nav class="navbar-wagon <%= user_signed_in? ? '' : 'is-hidden' %>">
   <div class="container navbar-wagon-container">
     <div id="navbar-logo">
-      <a href="/">
-        <%= image_tag "logo_nav.jpeg"%>
+      <a href="/dashboard">
+        <%= image_tag "logo_new.png"%>
       </a>
     </div>
     <div class="navbar-wagon-pusher"></div>
 
+
     <!-- <form action="" class="navbar-wagon-search hidden-xs hidden-sm">
       <input type="text" class="navbar-wagon-search-input" placeholder="Search something">
       <button type="submit" class="navbar-wagon-search-btn">
-        <i class="fa fa-search"></i>
+
       </button>
     </form> -->
     <hr class="hidden-xs hidden-sm">
@@ -24,7 +25,7 @@
       <!-- <hr> -->
       <div class="navbar-wagon-item">
         <div class="dropdown">
-          <%= image_tag "favicon.ico", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+          <%= image_tag "default-user.png", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
               <%= link_to "#" do %>
@@ -48,6 +49,6 @@
       <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
     <% end %>
 <!--     <hr> -->
-    <%= link_to t(".top_call_to_action", default: "Essayer !"), step_path('1-1'), class: "navbar-wagon-item navbar-wagon-button btn"  %>
+    <%# link_to t(".top_call_to_action", default: "Essayer !"), step_path('1-1'), class: "navbar-wagon-item navbar-wagon-button btn"  %>
   </div>
 </nav>
