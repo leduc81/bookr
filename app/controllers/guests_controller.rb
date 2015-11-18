@@ -34,6 +34,7 @@ class GuestsController < ApplicationController
     email = params['guest']['email'].nil? ? "" : params['guest']['email']
     description = params['guest']['description'].nil? ? "-" : params['guest']['description']
     url = params['guest']['url'].nil? ? "" : params['guest']['url']
+    url = "http://" + url if url[0,7] != "http://"
     start = Time.now
     expires = start + days_last.days
     guest = Guest.create(

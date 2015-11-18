@@ -5,7 +5,11 @@
 
     <div class="row text-center padded">
       <div class="col-xs-12 ">
+        <% if current_user.picture.nil?%>
+      <%= link_to '<i class="fa fa-file-text"></i> Dossier'.html_safe, "#", class: "navbar-wagon-button btn pulse" %>
+        <% else %>
       <%= link_to '<i class="fa fa-file-text"></i> Dossier'.html_safe, "#", class: "navbar-wagon-button btn" %>
+        <% end %>
       <%= link_to '<i class="fa fa-cloud-download"></i> PDF'.html_safe, "#", class: "navbar-wagon-button btn" %>
       <%= link_to '<i class="fa fa-share-alt"></i> Share!'.html_safe, "#", class: "navbar-wagon-button btn" %>
       </div>
@@ -30,7 +34,11 @@
         <% end %>
       </div>
       <ul class="list-inline">
-        <li><%= image_tag "default-user.png", class: "img-circle biopic"%></li>
+        <% if current_user.picture.nil?%>
+          <li><%= image_tag "default-user.png", class: "img-circle biopic tossing"%></li>
+        <% else %>
+          <li><%= image_tag "current_user.picture", class: "img-circle biopic"%></li>
+        <% end %>
       </ul>
       <div class="separator">
         <h4>Biography</h4>
