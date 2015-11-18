@@ -7,4 +7,7 @@ $(document).ready(function() {
       $(".landing-btn").css("margin-top", "0px");
     }
   });
+  // $('.login-modal').modal('hide')
 });
+
+

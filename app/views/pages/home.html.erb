@@ -4,11 +4,11 @@
   <div class="container home-container text-center">
     <div class="row">
       <div class="col-xs-12">
-        <div class="landing-btn btn", id="landing-buttom">
+        <div class="landing-btn btn", id="landing-buttom", data-toggle="modal", data-target=".login-modal">
           <% unless user_signed_in? %>
-            <%= link_to new_user_session_path, class: 'landing-btn btn' do %>
+            <%= link_to new_user_session_path, class: 'landing-btn btn login-modal', id: 'login-modal' do %>
               <i class="fa fa-folder-open"></i>
-              <%= t(".sign_in", default: "Accéder à mon dossier") %>
+              <%= t(".sign_in", default: "J'ai déjà un dossier") %>
             <% end %>
           <% end %>
         </div>
@@ -69,33 +69,39 @@
     </div>
   </div>
 </div>
-<!-- <div>
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12">
-        <div class="padded">
-          <%# image_tag "laptop_mock.png"%>
+<div data-backdrop="static" class="modal hide fade" id="login-modal" tabindex="-1" role="dialog"  aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+         <span aria-hidden="true">&times;</span>
+        </button>
+        <div class="row">
+          <div class="col-xs-12 col-md-8">
+            <h1 class="modal-title" id="myModalLabel">Log in</h1>
+          </div>
+          <div class="col-xs-12 hidden-xs hidden-sm col-md-4">
+            <%= image_tag "account.png", class: "landing_img" %>
+          </div>
+        </div>
+        <div class="modal-body text-justify">
+          <!-- Your signup form -->
+          <% render "devise/registrations/new" %>
+          <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div class="form-inputs">
+            <%= f.input :email, required: false, autofocus: true %>
+            <%= f.input :password, required: false %>
+            <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+          </div>
+          <div class="form-actions">
+            <%= f.button :submit, "Log in" %>
+          </div>
+            <%= render "devise/shared/links" %>
+            <% end %>
         </div>
       </div>
     </div>
   </div>
-</div> -->
+</div>
 
 <%= render 'steps/init', page: "1-1" %>
-
-<%# render 'steps/init' %>
-<!-- <div class="third">
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12 col-md-6">
-        <%# image_tag "archive.png"%>
-      </div>
-      <div class="col-xs-12 col-md-6">
-        <h3 class="text-justify">Une fois votre inscription terminée, vous envoyez via votre espace Edoss les justificatifs demandés sur la plateforme Edoss.
-        L’ensemble des justificatifs demandés par Edoss constituera votre dossier de location universel.
-        Vous pouvez aussi nous transmettre vos documents par courrier postal ou par email, nous les mettrons pour vous dans votre espace !
-        </h3>
-      </div>
-    </div>
-  </div>
-</div> -->
