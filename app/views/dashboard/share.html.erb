@@ -56,7 +56,9 @@
               <td><%= guest.viewed_t.nil? ? "no" : "#{guest.viewed_t} times" %></td>
               <td>
                 <% if status == "actif" %>
-                  <button onclick="copyToClipboard('<%= guest.token %>')" class="btn btn-primary btn-xs">Copier url</button>
+                  <button class='btn btn-primary btn-xs my_clip_button' data-clipboard-target='fe_text' data-clipboard-text='<%= root_url + guest_path(guest.token) %>' id='d_clip_button' title='Click me to copy to clipboard.'>
+                    <i class="fa fa-paperclip"></i> url
+                  </button>
                 <% end %>
                 <%= "-" if status != "actif" %>
               </td>
