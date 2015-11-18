@@ -5,9 +5,9 @@
 
     <div class="row text-center padded">
       <div class="col-xs-12 ">
-      <%= link_to "completer dossier", "#", class: "navbar-wagon-button btn" %>
-      <%= link_to "télécharger PDF", "#", class: "navbar-wagon-button btn" %>
-      <%= link_to "partager email", "#", class: "navbar-wagon-button btn" %>
+      <%= link_to '<i class="fa fa-file-text"></i> Dossier'.html_safe, "#", class: "navbar-wagon-button btn" %>
+      <%= link_to '<i class="fa fa-cloud-download"></i> PDF'.html_safe, "#", class: "navbar-wagon-button btn" %>
+      <%= link_to '<i class="fa fa-share-alt"></i> Share!'.html_safe, "#", class: "navbar-wagon-button btn" %>
       </div>
     </div>
 
@@ -15,7 +15,7 @@
 
       <div class="document container">
       <div>
-        <%= image_tag "logo_doc.png", class: "dossier_logo" %>
+        <%= image_tag "logo_new_name.png", class: "dossier_logo" %>
       </div>
       <div class="dossier_candidates">
         <% x = @candidates.size %>
