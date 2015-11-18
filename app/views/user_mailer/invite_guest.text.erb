@@ -1,0 +1,13 @@
+edoss.fr
+
+<% phrase = " pour le bien : #{@guest.description}" if @guest.description %>
+
+<%= "#{@user.candidates.first.firstname} #{@user.candidates.first.lastname} vous invite à consulter son dossier de location en ligne#{phrase}" %>
+
+guest_path(@guest.token)
+
+--- Contacter le candidat ---
+<%= @user.candidates.first.firstname + " " + @user.candidates.first.lastname %>
+<%= @user.email %>
+
+Service fourni par Edoss.fr, le dossier de location en ligne
