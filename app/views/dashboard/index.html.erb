@@ -10,7 +10,7 @@
         <% else %>
       <%= link_to '<i class="fa fa-file-text"></i> Dossier'.html_safe, "#", class: "navbar-wagon-button btn" %>
         <% end %>
-      <%= link_to '<i class="fa fa-cloud-download"></i> PDF'.html_safe, "#", class: "navbar-wagon-button btn" %>
+      <%= link_to '<i class="fa fa-cloud-download"></i> PDF'.html_safe, dashboard_pdf_path(:format => :pdf), target: "_blank", class: "navbar-wagon-button btn" %>
       <%= link_to '<i class="fa fa-share-alt"></i> Share!'.html_safe, "#", class: "navbar-wagon-button btn" %>
       </div>
     </div>

@@ -19,4 +19,4 @@
   # (but can be overridden in `render :pdf` calls)
   # layout: 'pdf.html',
 
-WickedPdf.config = { :exe_path => "#{Rails.root}/bin/wkhtmltopdf" }
+#WickedPdf.config = { :exe_path => "#{Rails.root}/bin/wkhtmltopdf" }
