@@ -20,7 +20,7 @@
               <p><%= current_user.email %></p>
               <%= f.input :phone_number, as: :tel, label: "Numéro de téléphone" %>
               <%= f.hint "Si vous souhaitez être joignable par téléphone, pensez à renseigner ce numéro." %>
-              <%= f.button :submit, 'Mettre à jour mon dossier' %>
+              <%= f.button :submit, 'Mettre à jour mon dossier', class: "btn custom-btn" %>
             <% end %>
           </div>
         </div>

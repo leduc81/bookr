@@ -1,23 +1,35 @@
 <div class="dash-home">
+
   <div class="container padded">
-    <div class="formulaires">
-    <%#render 'tab', active: "index" %>
-        <%= simple_form_for @candidate do |f| %>
-          <%= f.label :picture %>
-          <%= f.file_field :picture %>
-          <%= f.input :firstname %>
-          <%= f.input :lastname %>
-          <%= f.input :phone_number %>
-          <%= f.input :biographie %>
-          <%= f.input :income %>
-          <%= f.input :status, :collection => ['Contrat à durée indéterminée', 'Autre situation de travail (CDD, intérim, TNS)', 'Étudiant', 'Sans emploi'] %>
-          <%= f.input :companie %>
-          <%= f.input :position %>
-          <%= f.input :status_from_date %>
-          <%= f.submit class: "btn btn-danger" %>
-        <% end %>
+    <%= render 'dashboard/tab', active: "candidates" %>
+
+
+    <div class="page_content">
+        <div class="row">
+          <div class="col-xs-12 col-md-6 col-md-offset-3">
+            <h3>Modifier le profil: <strong><%= @candidate.firstname.downcase.capitalize %> <%= @candidate.lastname.upcase %></strong></h3>
+            <%= simple_form_for @candidate do |f| %>
+              <h4>Identité</h4>
+              <%= f.label :picture %>
+              <%= f.file_field :picture %>
+              <%= f.input :firstname, label: "Prénom" %>
+              <%= f.input :lastname, label: "Nom" %>
+              <%= f.input :birthdate, label: "Date de naissance" %>
+              <h4>Situation</h4>
+              <%= f.input :income, label: "Revenu mensuel net" %>
+              <%= f.input :status, :collection => ['Contrat à durée indéterminée', 'Autre situation de travail (CDD, intérim, TNS)', 'Étudiant', 'Sans emploi'] %>
+              <%= f.input :companie, label: "Société" %>
+              <%= f.input :position, label: "Poste" %>
+              <%= f.input :status_from_date, label: "Depuis le" %>
+               <h4>Contact</h4>
+              <%= f.input :phone_number %>
+              <%= f.button :submit, 'Mettre à jour le profil', class: "btn custom-btn" %>
+            <% end %>
+          </div>
+        </div>
       </div>
     </div>
+  </div>
 </div>
 
 <!--
