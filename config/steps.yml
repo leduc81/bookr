@@ -83,7 +83,7 @@
   picture: meditating.png
   questions:
     0:
-      text: "Faisons connaissance, utilisateur ID %:id% lol"
+      text: "Faisons connaissance" # todo : iter
       format: text
       name: "candidate[firstname]"
       label: Prénom
