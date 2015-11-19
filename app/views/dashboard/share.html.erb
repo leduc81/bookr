@@ -1,72 +1,50 @@
 <div class="dash-home">
   <div class="container padded">
-    <div class="row text-center padded">
-      <div class="col-xs-12 ">
-        <%= link_to '<i class="fa fa-share-alt"></i> Ajouter un partage'.html_safe,  new_user_guest_path(current_user), class: "navbar-wagon-button btn" %>
+    <div class="row text-center">
+      <div class="col-xs-12">
+        <%= link_to '<i class="fa fa-share-alt"></i> Ajouter un partage'.html_safe,  new_user_guest_path(current_user), class: "navbar-wagon-button btn btn_pad" %>
       </div>
     </div>
-
     <div class="row">
-
-      <div class="panel panel-default slideLeft">
-        <div class="panel-heading">Liste des partages</div>
-        <div class="panel-body">
-          <p>Voici les partages de votre dossier de location. Il est recommandé de créer un nouveau partage à chaque fois que vous devez transmettre votre dossier à un propriétaire.</p>
+      <% current_user.guests.each do |guest| %>
+        <% if guest.canceled == true %>
+          <% status = "canceled" %>
+        <% else %>
+          <% status = guest.expires < Date.today ? "expiré" : "actif" %>
+        <% end %>
+        <div class="col-xs-12 col-sm-6">
+          <div class="card">
+            <div class="card-content">
+              <h4><%= guest.description %> <%= link_to "Voir", guest.url, class: "btn btn-default btn-xs", target: "_blank" unless guest.url.nil? %></h4>
+              <% if guest.email != "" %>
+                <p class="card-sent-to"><i class='fa fa-envelope-o'></i> sent to <span><%= guest.email%></span></p>
+              <% end %>
+              <h5> Expires: <%= guest.expires %> </h5>
+              <% if status == "actif" %>
+                <h5> Active ? <%= link_to '<i class="fa fa-thumbs-o-up"></i>'.html_safe, user_guest_path(current_user, guest), method: "patch", class: "btn btn-success btn-xs", title: "partagé depuis #{guest.start}, expirera le #{guest.expires}, cliquer pour désactiver" %> </h5>
+              <% else %>
+                <% if status == "canceled" && guest.expires > Date.today %>
+                  <h5> Active ? <%= link_to '<i class="fa fa-thumbs-o-down"></i>'.html_safe, user_guest_path(current_user, guest), method: "patch", class: "btn btn-danger btn-xs", title: "partage désactivé à votre demande, expirera le #{guest.expires}, cliquer pour réactiver" %> </h5>
+                <% else %> <%# expiré %>
+                  <%= link_to status, "#", class: "btn btn-default btn-xs", title: "expiré le #{guest.expires}" %>
+                <% end %>
+              <% end %>
+            </div>
+            <div class="card-views">
+              <p> Viewed: <%= guest.viewed_t.nil? ? "no" : "#{guest.viewed_t} times" %> </p>
+            </div>
+            <div class="card-controls">
+              <% if status == "actif" %>
+                <button class='btn btn-primary btn-xs my_clip_button' data-clipboard-target='fe_text' data-clipboard-text='<%= root_url + guest_path(guest.token) %>' id='d_clip_button' title='Click me to copy to clipboard.'>
+                  <i class="fa fa-paperclip"></i> Copy URL
+                </button>
+              <% end %>
+            </div>
+          </div>
         </div>
-
-        <table class="table">
-
-          <tr>
-            <th>Token</th>
-            <th>Description</th>
-            <th>Envoyé à:</th>
-            <th>Expires</th>
-            <th>Status</th>
-            <th>Viewed</th>
-            <th>Actions</th>
-          </tr>
-
-          <% current_user.guests.each do |guest| %>
-
-            <% if guest.canceled == true %>
-              <% status = "canceled" %>
-            <% else %>
-              <% status = guest.expires < Date.today ? "expiré" : "actif" %>
-            <% end %>
-
-            <tr>
-              <td><%= "#{guest.token[0,15]}***..." %></td>
-              <td><%= guest.description %> <%= link_to "Voir", guest.url, class: "btn btn-default btn-xs", target: "_blank" unless guest.url.nil? %></td>
-              <td><%= guest.email != "" ? guest.email : "-" %></td>
-              <td><%= guest.expires %></td>
-              <td>
-                <% if status == "actif" %>
-                  <%= link_to status, user_guest_path(current_user, guest), method: "patch", class: "btn btn-success btn-xs", title: "partagé depuis #{guest.start}, expirera le #{guest.expires}, cliquer pour désactiver" %>
-                <% else %>
-                  <% if status == "canceled" && guest.expires > Date.today %>
-                    <%= link_to status, user_guest_path(current_user, guest), method: "patch", class: "btn btn-danger btn-xs", title: "partage désactivé à votre demande, expirera le #{guest.expires}, cliquer pour réactiver" %>
-                  <% else %> <%# expiré %>
-                    <%= link_to status, "#", class: "btn btn-default btn-xs", title: "expiré le #{guest.expires}" %>
-                  <% end %>
-                <% end %>
-              </td>
-              <td><%= guest.viewed_t.nil? ? "no" : "#{guest.viewed_t} times" %></td>
-              <td>
-                <% if status == "actif" %>
-                  <button class='btn btn-primary btn-xs my_clip_button' data-clipboard-target='fe_text' data-clipboard-text='<%= root_url + guest_path(guest.token) %>' id='d_clip_button' title='Click me to copy to clipboard.'>
-                    <i class="fa fa-paperclip"></i> url
-                  </button>
-                <% end %>
-                <%= "-" if status != "actif" %>
-              </td>
-            </tr>
-
-          <% end %>
-
-        </table>
-      </div>
-
+      <% end %>
     </div>
-
   </div>
 </div>
+
+
