@@ -1,22 +1,16 @@
 <% current_candidate = Candidate.find(session['current_user']) if session['current_user'] %>
 <% display_button = false %>
-
 <div class="step text-center">
-
   <div class="row text-center hidden-xs" id="step-intro">
     <div class="col-xs-12">
       <h2><%= @step['intro'] %></h2>
     </div>
   </div>
-
   <div class="row">
-
     <div class="col-xs-12 col-sm-4 col-md-2 col-md-offset-2 hidden-xs" id="step-img">
         <%= image_tag @step['picture'] %>
     </div>
-
-    <div class="col-xs-12 col-sm-8 col-md-6 col-md-offset-r-2">
-
+    <div class="col-xs-12 col-sm-8 col-md-6">
       <div id="step-form">
       <%= form_tag( steps_next_path , method: "post") do %>
         <% c = [] %>
@@ -28,33 +22,25 @@
             </div>
           <% end %>
         <% end %>
-
-
         <% if @candidate %>
           <%= hidden_field_tag("candidate[id]", @candidate.id) %>
         <% end %>
-
          <% if @step['persist'] %>
           <%= hidden_field_tag("persist", true) %>
         <% end %>
-
         <% if @step['loop'] %>
           <%= hidden_field_tag("loop", @step['loop']) %>
           <%= hidden_field_tag("loop_if", @step['loop_if']) %>
         <% end %>
-
         <%= hidden_field_tag(:next, @step['next']) %>
         <br>
         <%# if !@step['questions'][1].nil? || display_button %>
           <%= submit_tag(@step['validate'], data: { disable_with: "Traitement..." }, id: "submit-next", class: "btn custom-btn") %>
         <%# end %>
-
       <% end %> <!-- / form tag -->
-
       </div>
     </div>
   </div>
-
   <% if @step['info'] != "" %>
     <div class="row text-justify" id="step-info">
       <div class="col-sm-2 col-sm-offset-2 col-md-1 col-md-offset-3 hidden-xs">
@@ -65,6 +51,5 @@
       </div>
     </div>
   <% end %>
-
 </div>
 

@@ -1,22 +1,18 @@
 <div class="dash-home">
-  <div class="container padded">
-
-    <%= render 'tab', active: "candidates" %>
-
-    <div class="row text-center padded">
-      <div class="col-xs-12 ">
-      <%= link_to '<i class="fa fa-cloud-download"></i> PDF'.html_safe, "#", class: "navbar-wagon-button btn" %>
-      <%= link_to '<i class="fa fa-share-alt"></i> Share!'.html_safe, "#", class: "navbar-wagon-button btn" %>
+<!--   <div> -->
+    <div class="container padded">
+      <%= render 'tab', active: "candidates" %>
+      <div class="row text-center padded">
+        <div class="col-xs-12 ">
+        <%= link_to '<i class="fa fa-cloud-download"></i> PDF'.html_safe, "#", class: "navbar-wagon-button btn" %>
+        <%= link_to '<i class="fa fa-share-alt"></i> Share!'.html_safe, "#", class: "navbar-wagon-button btn" %>
+        </div>
+      </div>
+      <div class="row">
+        <% @candidates.each do |candidate| %>
+          <p><%= candidate.firstname %> <%= candidate.lastname %> <%= link_to "edit", edit_candidate_path(candidate), class: "navbar-wagon-button btn" %></p>
+        <% end %>
       </div>
     </div>
-
-    <div class="row">
-
-      <% @candidates.each do |candidate| %>
-        <p><%= candidate.firstname %> <%= candidate.lastname %></p>
-      <% end %>
-
-    </div>
-
-  </div>
+<!--   </div> -->
 </div>

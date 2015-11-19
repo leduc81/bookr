@@ -1,0 +1,66 @@
+#step {
+  display: flex;
+  justify-content: space-arround;
+  align-items: center;
+
+  &img {
+    border: 1px solid yellow;
+  }
+
+}
+
+#step-intro {
+  height:10vh;
+  text-align: center;
+  display: flex;
+  justify-content: space-arround;
+  align-items: center;
+}
+
+#step-form {
+  width: 100%;
+  height:40vh;
+  text-align: center;
+  display: flex;
+  justify-content: space-arround;
+  align-items: center;
+  padding:50px;
+}
+
+#step-img {
+  height:40vh;
+  display: flex;
+  justify-content: space-arround;
+  align-items: center;
+  padding:50px;
+}
+
+#step-img img {
+  width: 400px;
+  text-align: right;
+  z-index:0;
+}
+
+#step-info {
+  height:20vh;
+  text-align: center;
+  display: flex;
+  justify-content: space-arround;
+  align-items: center;
+}
+
+#step-info img {
+  width: 137px;
+  text-align: right;
+}
+
+checkbox.radio_a {
+}
+
+checkbox.radio_a.clicked {
+  background-color: $color6;
+  color: $color5;
+  border-color: $color1;
+  text-decoration: none;
+}
+

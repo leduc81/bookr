@@ -1,0 +1,36 @@
+<div class="dash-home">
+  <div class="container padded">
+    <div class="formulaires">
+    <%#render 'tab', active: "index" %>
+        <%= simple_form_for @candidate do |f| %>
+          <%= f.input :firstname %>
+          <%= f.input :lastname %>
+          <%= f.input :income %>
+          <%= f.input :status, :collection => ['Contrat à durée indéterminée', 'Autre situation de travail (CDD, intérim, TNS)', 'Étudiant', 'Sans emploi'] %>
+          <%= f.input :status_from_date %>
+          <%= f.submit class: "btn btn-danger" %>
+        <% end %>
+      </div>
+    </div>
+</div>
+
+<!--
+t.string   "nationality"
+    t.string   "firstname"
+    t.string   "lastname"
+    t.integer  "income"
+    t.string   "status"
+    t.date     "status_from_date"
+    t.integer  "user_id"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.string   "dossier_zip"
+    t.integer  "dossier_people"
+    t.integer  "dossier_max_rent"
+    t.string   "performed_step"
+    t.boolean  "cautioner"
+    t.date     "birthdate"
+    t.string   "cautioner_relationship"
+    t.boolean  "couple"
+    t.boolean  "trial_period"
+ -->
