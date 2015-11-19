@@ -1,3 +1,57 @@
+<div class="text-center">
 <h3><%= "#{@user.candidates.first.firstname} #{@user.candidates.first.lastname}" %></h3>
 <p>Vous partage son dossier de location</p>
+ <%= link_to '<i class="fa fa-cloud-download"></i> Télécharger en PDF'.html_safe, dashboard_pdf_path(:format => :pdf), target: "_blank", class: "navbar-wagon-button btn" %>
+</div>
 
+
+
+<div class="row">
+
+      <div class="document container">
+      <div>
+        <%= image_tag "logo_new_name.png", class: "dossier_logo" %>
+      </div>
+      <div class="dossier_candidates">
+        <% x = @candidates.size %>
+        <% @candidates.each do |candidate| %>
+          <% now = Time.now.utc.to_date %>
+          <% bd = now.year - candidate.birthdate.year - (candidate.birthdate.to_date.change(:year => now.year) > now ? 1 : 0) %>
+          <h4><i class="fa fa-user"></i> <%= "#{candidate.firstname} #{candidate.lastname}" %> - <%= bd %> ans</h4>
+          <p><i class="fa fa-envelope-o"></i> <%= current_user.email %></p>
+          <p><i class="fa fa-phone"></i> (01) 42 42 42 42</p>
+
+          <% @bio_name = "#{candidate.firstname} #{candidate.lastname}" %>
+        <% end %>
+      </div>
+      <div class="separator">
+        <h4>Biography</h4>
+      </div>
+      <div><p><%= @bio_name %></p></div>
+      <div>
+        <h4 class="revenue"> <%= "Total Revenue :"%>
+        <% if @candidates.count > 1%>
+          <%= @revenue_total = @candidates.first.income + @candidates.last.income  %>
+        <% else %>
+          <%= @revenue_total = @candidates.first.income %>
+        <%end%>
+        </h4>
+        <h6>environ <%= @revenue_total * 12%>€ par an</h6>
+      </div>
+      <div class="separator">
+        <h4>Employement and Income</h4>
+      </div>
+       <div>
+        <h4></h4>
+        <h6><%= @candidates.first.status%></h6>
+        <h6></h6>
+      </div>
+      <div>
+        <h4 class="revenue">Past Rentals</h4>
+      </div>
+      <div class="separator">
+        <h4>References</h4>
+      </div>
+    </div>
+
+    </div>
