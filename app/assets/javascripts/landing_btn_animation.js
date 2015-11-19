@@ -10,7 +10,9 @@ $(document).ready(function() {
       $(".landing-btn").css("margin-top", "0px");
     }
   });
-
+  $("#login-modal").on("shown.bs.modal", function() {
+    $(this).find("input.email").focus();
+  });
 });
 
 
