@@ -3,7 +3,7 @@
   position: relative;
   display: flex;
   align-items: center;
-  background: white;
+  background: $gray-lighter;
   height: 200px;
   padding: 20px;
   margin-bottom: 20px;
@@ -27,7 +27,7 @@
   }
   .card-sent-to {
     font-weight: lighter;
-    color: #C0C0C0;
+    color: #9C9C9C;
     span {
       font-weight: bold;
     }

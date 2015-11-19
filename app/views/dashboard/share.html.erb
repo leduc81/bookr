@@ -17,9 +17,8 @@
           <div class="card">
             <div class="card-content">
               <h4><%= guest.description %> <%= link_to "Voir", guest.url, class: "btn btn-default btn-xs", target: "_blank" unless guest.url.nil? %></h4>
-
               <% if guest.email != "" %>
-                <p class="card-sent-to"><i class='fa fa-envelope-o'></i> send to <span><%= guest.email%></span></p>
+                <p class="card-sent-to"><i class='fa fa-envelope-o'></i> sent to <span><%= guest.email%></span></p>
               <% end %>
               <h5> Expires: <%= guest.expires %> </h5>
               <% if status == "actif" %>
