@@ -14,6 +14,7 @@ class CandidatesController < ApplicationController
 
   def create
     @candidate = Candidate.new(candidate_params)
+    @candidate.biographie = @candidate.intro
     if @candidate.save
       redirect_to candidates_path
     else
@@ -26,6 +27,8 @@ class CandidatesController < ApplicationController
 
   def update
     @candidate.update(candidate_params)
+    @candidate.biographie = @candidate.intro
+    @candidate.save
     redirect_to dashboard_index_path
   end
 

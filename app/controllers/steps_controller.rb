@@ -53,7 +53,6 @@ class StepsController < ApplicationController
         candidate.send("#{param[0]}=", param[1])
         candidate.performed_step = next_step
       end
-
       candidate.save
     else
       # init des candidates
@@ -65,6 +64,7 @@ class StepsController < ApplicationController
           session['candidate'].each do |attribute|
             candidate.send("#{attribute[0]}=", attribute[1])
           end
+          candidate.biographie = candidate.intro
           candidate.save
           candidates_id << candidate.id
         end

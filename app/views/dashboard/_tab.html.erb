@@ -1,11 +1,12 @@
 <div class="row text-center">
   <div class="nav-center">
     <ul class="nav nav-pills">
-      <li role="presentation" <%= 'class=active' if active == "index" %>><a href="<%= url_for dashboard_index_path %>"><i class="fa fa-file-text-o"></i> Dossier</a></li>
+      <li role="presentation" <%= 'class=active' if active == "index" %>><a href="<%= url_for dashboard_index_path %>"><i class="fa fa-eye"></i> Aperçu</a></li>
+      <li role="presentation" <%= 'class=active' if active == "dossier" %>><a href="<%= url_for dashboard_application_path %>"><i class="fa fa-file-text-o"></i> Dossier</a></li>
       <li role="presentation" <%= 'class=active' if active == "candidates" %>><a href="<%= url_for dashboard_candidates_path %>"><i class="fa fa-user"></i> Candidats</a></li>
       <% if false%> <li role="presentation" <%= 'class=active' if active == "proofs" %>><a href="<%= url_for dashboard_proofs_path %>"><i class="fa fa-file-image-o"></i> Justificatifs</a></li> <%end%>
       <li role="presentation" <%= 'class=active' if active == "share" %>><a href="<%= url_for dashboard_share_path %>"><i class="fa fa-share-alt"></i> Partages</a></li>
-      <li role="presentation" <%= 'class=active' if active == "share" %>><a href="<%= url_for dashboard_pdf_path(:format => :pdf) %>"><i class="fa fa-cloud-download"></i> PDF</a></li>
+      <li role="presentation"><a target="_blank" href="<%= url_for dashboard_pdf_path(:format => :pdf) %>"><i class="fa fa-cloud-download"></i> PDF</a></li>
     </ul>
   </div>
 </div>
