@@ -69,7 +69,7 @@
   padding-top: 116px;
 }
 .step {
-  min-height: 100vh;
+  min-height: 92vh;
   background-color: $color2;
   h3 {
     color: $color4;
@@ -96,6 +96,10 @@
     text-decoration: none !important;
   }
 
+}
+
+.step_min_height {
+  min-height: 92vh;
 }
 
 // .landing-btn > a,
