@@ -2,7 +2,7 @@ class Candidate < ActiveRecord::Base
   belongs_to :user
   has_many :proofs
   has_attached_file :picture,
-    styles: { medium: "300x300>", thumb: "150x150>" }
+    styles: { medium: "300x300#", thumb: "150x150#" }
     validates_attachment_content_type :picture,
     content_type: /\Aimage\/.*\z/
 

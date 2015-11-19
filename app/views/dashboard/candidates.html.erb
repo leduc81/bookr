@@ -10,7 +10,12 @@
       </div>
       <div class="row">
         <% @candidates.each do |candidate| %>
+        <%if candidate.picture_file_size.nil?%>
           <p><%= candidate.firstname %> <%= candidate.lastname %> <%= link_to "edit", edit_candidate_path(candidate), class: "navbar-wagon-button btn" %></p>
+        <%else%>
+          <p><%= image_tag candidate.picture.url(:medium), class: "img-circle" %> <%= link_to "edit", edit_candidate_path(candidate), class: "navbar-wagon-button btn" %></p>
+        <%end%>
+
         <% end %>
       </div>
     </div>
