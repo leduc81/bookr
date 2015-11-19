@@ -16,4 +16,15 @@ class Candidate < ActiveRecord::Base
     return false
   end
 
+  def intro
+    recherche = "un logement dans le #{self.dossier_zip[3,2]}è arrondissement pour un loyer mensuel de #{self.dossier_max_rent}€"
+    if self.dossier_people > 1
+      intro = "Nous sommes #{self.couple? ? "un couple" : "#{self.dossier_people} colocataires" } et cherchons #{recherche}";
+    else
+      intro = "Je cherche #{recherche}";
+    end
+    return intro
+  end
+
+
 end

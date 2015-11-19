@@ -1,11 +1,13 @@
 <nav class="navbar-wagon <%= user_signed_in? ? '' : 'is-hidden' %>">
   <div class="container navbar-wagon-container">
-    <div id="navbar-logo">
-      <a href="/dashboard">
-        <%= image_tag "logo_new.png"%>
-      </a>
-    </div>
-    <div class="navbar-wagon-pusher"></div>
+
+      <div id="navbar-logo">
+        <a href="/dashboard"><%= image_tag "logo_new.png"%></a>
+      </div>
+      <div class="navbar-wagon-pusher"></div>
+      <div class='navbar-tab'>
+        <%= render 'dashboard/tab', active: "index" %>
+      </div>
 
 
     <!-- <form action="" class="navbar-wagon-search hidden-xs hidden-sm">

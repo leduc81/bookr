@@ -14,10 +14,13 @@ class DashboardController < ApplicationController
   def proofs
   end
 
+  def application
+  end
+
   def pdf
     respond_to do |format|
       format.pdf do
-        render :pdf => "dossier",
+        render :pdf => "dossier_#{current_user.candidates.first.firstname}_#{current_user.candidates.first.lastname}",
                :template => 'dashboard/pdf.pdf.erb',
                :layout => 'pdf',
                :footer => {

@@ -1,6 +1,6 @@
 .navbar-wagon {
   box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
-  background: none;
+  background: $color4;
   transition: all 0.3s ease;
   &.is-hidden {
     display: none
@@ -85,6 +85,9 @@
     &:visited {
       color: white;
     }
+    &:active {
+      color: white;
+    }
   }
   &-dropdown-menu {
     margin-top: 15px;
@@ -93,13 +96,16 @@
     li > a {
       transition: color 0.3s ease;
       font-weight: lighter !important;
-      color: $color3 !important;
+      color: $color4 !important;
       font-size: 15px !important;
       line-height: 22px !important;
       padding: 10px 20px;
       &:hover {
         background: transparent !important;
-        color: $color4 !important;
+        color: $color6 !important;
+      }
+      &:active {
+        color: white;
       }
     }
     &:before {
@@ -130,9 +136,9 @@
 .navbar-wagon-button {
   background-color: $color3;
 }
-#navbar-wagon-menu img {
-  color: $color3;
-}
 .dropdown > .avatar {
   border: 1.5px solid #FFE449;
+}
+.navbar-tab {
+  padding-right: 220px;
 }

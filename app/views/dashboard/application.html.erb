@@ -1,0 +1,27 @@
+<div class="dash-home">
+<!--   <div> -->
+    <div class="container padded">
+      <div class="page_content">
+        <div class="row">
+          <div class="col-xs-12 col-md-6 col-md-offset-3">
+            <%= simple_form_for current_user.candidates.first do |f| %>
+              <h4>Votre recherche</h4>
+              <%= f.input :dossier_zip, label: "Département de recherche" %>
+              <%# f.input :dossier_people %>
+              <%= f.input :dossier_max_rent, label: "Loyer maximum recherché (€)" %>
+              <h4>Votre situation</h4>
+              <%= f.input :biographie, label: "Quelques mots sur vous" %>
+              <%= f.input :couple, label: "En Couple" %>
+              <h4>Contact</h4>
+              <label>Email</label>
+              <p><%= current_user.email %></p>
+              <%= f.input :phone_number, as: :tel, label: "Numéro de téléphone" %>
+              <%= f.hint "Si vous souhaitez être joignable par téléphone, pensez à renseigner ce numéro." %>
+              <%= f.button :submit, 'Mettre à jour mon dossier', class: "btn custom-btn" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+    </div>
+</div>
