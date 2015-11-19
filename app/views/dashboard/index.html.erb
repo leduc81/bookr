@@ -1,22 +1,7 @@
 <div class="dash-home">
   <div class="container padded">
-
     <%= render 'tab', active: "index" %>
-
-    <div class="row text-center padded">
-      <div class="col-xs-12 ">
-        <% if current_user.candidates.first.picture_file_size.nil?%>
-      <%= link_to '<i class="fa fa-file-text"></i> Dossier'.html_safe, edit_candidate_path(@candidates.first), class: "navbar-wagon-button btn pulse" %>
-        <% else %>
-      <%= link_to '<i class="fa fa-file-text"></i> Dossier'.html_safe, "#", class: "navbar-wagon-button btn" %>
-        <% end %>
-      <%= link_to '<i class="fa fa-cloud-download"></i> PDF'.html_safe, dashboard_pdf_path(:format => :pdf), target: "_blank", class: "navbar-wagon-button btn" %>
-      <%= link_to '<i class="fa fa-share-alt"></i> Share!'.html_safe, "#", class: "navbar-wagon-button btn" %>
-      </div>
-    </div>
-
     <div class="row">
-
       <div class="document container">
       <div>
         <%= image_tag "logo_new_name.png", class: "dossier_logo" %>
@@ -29,18 +14,20 @@
           <h4><i class="fa fa-user"></i> <%= "#{candidate.firstname} #{candidate.lastname}" %> - <%= bd %> ans</h4>
           <p><i class="fa fa-envelope-o"></i> <%= current_user.email %></p>
           <p><i class="fa fa-phone"></i> <%= candidate.phone_number %></p>
-
           <% @bio_name = "#{candidate.firstname} #{candidate.lastname}" %>
         <% end %>
       </div>
       <ul class="list-inline biopic">
         <% if current_user.candidates.first.picture_file_size.nil?%>
           <li><%= image_tag "default-user.png", class: "img-circle tossing"%></li>
+          <% if @candidates.count > 1 %>
+            <li><%= image_tag "default-user.png", class: "img-circle tossing"%></li>
+          <% end %>
         <% else %>
           <li><%= image_tag current_user.candidates.first.picture.url(:medium), class: "img-circle"%></li>
-        <% end %>
-        <% if @candidates.count > 1%>
-          <li><%= image_tag current_user.candidates.last.picture.url(:medium), class: "img-circle"%></li>
+          <% if @candidates.count > 1 && current_user.candidates.last.picture_file_size != nil %>
+            <li><%= image_tag current_user.candidates.last.picture.url(:medium), class: "img-circle"%></li>
+          <% end %>
         <% end %>
       </ul>
       <div class="separator">
@@ -55,7 +42,6 @@
           <%= @revenue_total = @candidates.first.income %> ( environ <%= @revenue_total * 12%>€ par an )
         <%end%>
         </h4>
-
       </div>
       <div class="separator">
         <h4>Employement and Income</h4>
@@ -73,8 +59,6 @@
         <h4>References</h4>
       </div>
     </div>
-
-    </div>
-
+  </div>
   </div>
 </div>
