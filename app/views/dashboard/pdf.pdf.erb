@@ -18,9 +18,9 @@
     <h4>Contact</h4>
   </div>
 
-  <p style="text-align:center;"><strong><%= dossier.firstname %> <%= dossier.lastname %></strong>
-  <br><%= current_user.email %>
-  <br>06 15 01 02 03</p>
+  <p style="text-align:center;"><strong><%= dossier.firstname %> <%= dossier.lastname %></strong></p>
+  </p><%= current_user.email %></p>
+  <% if dossier.phone_number != "" %><p><%= dossier.phone_number %></p><% end %>
 
   <div class="section">
     <h4>Situation</h4>
