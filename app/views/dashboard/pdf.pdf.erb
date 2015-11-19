@@ -1,18 +1,10 @@
 <% dossier = current_user.candidates.first %>
 <% many = current_user.candidates.size > 1 ? true : false %>
 <% revenue_dossier = 0 %>
-
 <% current_user.candidates.each do |candidate| %>
   <% revenue_dossier = revenue_dossier + candidate.income %>
 <% end %>
 
-
-<% recherche = "un logement dans le #{dossier.dossier_zip[3,2]}è arrondissement pour un loyer mensuel de #{dossier.dossier_max_rent}€" %>
-<% if many %>
-  <% intro = "Nous sommes #{dossier.couple? ? "un couple" : "#{dossier.dossier_people} colocataires" } et cherchons #{recherche}"; %>
-<% else %>
-  <% intro = "Je cherche #{recherche}"; %>
-<% end %>
 
 <div class="document">
 
@@ -20,7 +12,7 @@
 
   <br><br>
 
-  <h3><strong><%= intro %></strong></h3>
+  <h3><strong><%= dossier.biographie %></strong></h3>
 
   <div class="section">
     <h4>Contact</h4>
@@ -47,10 +39,11 @@
 
     <tr>
       <% current_user.candidates.each do |candidate| %>
+
         <% now = Time.now.utc.to_date %>
         <% bd = now.year - candidate.birthdate.year - (candidate.birthdate.to_date.change(:year => now.year) > now ? 1 : 0) %>
         <% phrase = " depuis le #{candidate.status_from_date}" if candidate.status == 'Contrat à durée indéterminée' && candidate.status_from_date %>
-        <% phrase += " (en période d'essai)" if candidate.trial_period == true %>
+        <% phrase = (phrase + " (en période d'essai)") if phrase && candidate.trial_period == true %>
         <td>
 
           <h3><%= "#{candidate.firstname.downcase.capitalize} #{candidate.lastname.upcase}" %></h3>
