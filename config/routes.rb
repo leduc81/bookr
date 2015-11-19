@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :dashboard, only: :index
   get "dashboard/candidates"
   get "dashboard/proofs"
+  get "dashboard/application"
   get "dashboard/share"
   get "dashboard/pdf" => "dashboard#pdf"
 
