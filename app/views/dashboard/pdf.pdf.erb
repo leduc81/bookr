@@ -1,0 +1,88 @@
+<% dossier = current_user.candidates.first %>
+<% many = current_user.candidates.size > 1 ? true : false %>
+<% revenue_dossier = 0 %>
+
+<% current_user.candidates.each do |candidate| %>
+  <% revenue_dossier = revenue_dossier + candidate.income %>
+<% end %>
+
+
+<% recherche = "un logement dans le #{dossier.dossier_zip[3,2]}è arrondissement pour un loyer mensuel de #{dossier.dossier_max_rent}€" %>
+<% if many %>
+  <% intro = "Nous sommes #{dossier.couple? ? "un couple" : "#{dossier.dossier_people} colocataires" } et cherchons #{recherche}"; %>
+<% else %>
+  <% intro = "Je cherche #{recherche}"; %>
+<% end %>
+
+<div class="document">
+
+  <%= wicked_pdf_image_tag "logo_new_name.png" %>
+
+  <br><br>
+
+  <h3><strong><%= intro %></strong></h3>
+
+  <div class="section">
+    <h4>Contact</h4>
+  </div>
+
+  <p style="text-align:center;"><strong><%= dossier.firstname %> <%= dossier.lastname %></strong>
+  <br><%= current_user.email %>
+  <br>06 15 01 02 03</p>
+
+  <div class="section">
+    <h4>Situation</h4>
+  </div>
+
+  <h2><strong>Revenu mensuel total: <%= revenue_dossier %>€</strong></h2>
+  <h3>(environ <%= revenue_dossier * 12%>€ par an)</h3>
+
+  <div class="section">
+    <h4>Candidats</h4>
+  </div>
+
+  <br>
+
+  <table>
+
+    <tr>
+      <% current_user.candidates.each do |candidate| %>
+        <% now = Time.now.utc.to_date %>
+        <% bd = now.year - candidate.birthdate.year - (candidate.birthdate.to_date.change(:year => now.year) > now ? 1 : 0) %>
+        <% phrase = " depuis le #{candidate.status_from_date}" if candidate.status == 'Contrat à durée indéterminée' && candidate.status_from_date %>
+        <% phrase += " (en période d'essai)" if candidate.trial_period == true %>
+        <td>
+
+          <h3><%= "#{candidate.firstname.downcase.capitalize} #{candidate.lastname.upcase}" %></h3>
+
+          <p><%= bd %> ans
+          <br><%= "#{candidate.status}#{phrase}" %>
+          <br>Salaire mensuel: <strong><%= candidate.income %>€</strong></p>
+
+          <p><%= "Avec garant (#{candidate.cautioner_relationship.downcase})" if candidate.cautioner? %></p>
+
+        </td>
+      <% end %>
+    </tr>
+
+  </table>
+
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+  <h4>Documents à joindre à votre dossier :</h4>
+
+  <% current_user.candidates.each do |candidate| %>
+    <h5><%= candidate.firstname %></h5>
+    <ul>
+      <li>Carte nationale d'identité</li>
+      <li>3 dernières fiches de paye</li>
+      <% if candidate.cautioner %><li>Avis d'imposition du garant</li><% end %>
+
+    </ul>
+  <% end %>
+
+
+
+
+
+</div>

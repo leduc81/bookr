@@ -14,6 +14,19 @@ class DashboardController < ApplicationController
   def proofs
   end
 
+  def pdf
+    respond_to do |format|
+      format.pdf do
+        render :pdf => "dossier",
+               :template => 'dashboard/pdf.pdf.erb',
+               :layout => 'pdf',
+               :footer => {
+                  :center => "Edoss, votre dossier en ligne",
+               }
+      end
+    end
+  end
+
   private
 
   def set_candidates
