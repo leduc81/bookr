@@ -5,8 +5,8 @@
 
     <div class="row text-center padded">
       <div class="col-xs-12 ">
-        <% if current_user.picture.nil?%>
-      <%= link_to '<i class="fa fa-file-text"></i> Dossier'.html_safe, "#", class: "navbar-wagon-button btn pulse" %>
+        <% if current_user.candidates.first.picture_file_size.nil?%>
+      <%= link_to '<i class="fa fa-file-text"></i> Dossier'.html_safe, edit_candidate_path(@candidates.first), class: "navbar-wagon-button btn pulse" %>
         <% else %>
       <%= link_to '<i class="fa fa-file-text"></i> Dossier'.html_safe, "#", class: "navbar-wagon-button btn" %>
         <% end %>
@@ -28,39 +28,43 @@
           <% bd = now.year - candidate.birthdate.year - (candidate.birthdate.to_date.change(:year => now.year) > now ? 1 : 0) %>
           <h4><i class="fa fa-user"></i> <%= "#{candidate.firstname} #{candidate.lastname}" %> - <%= bd %> ans</h4>
           <p><i class="fa fa-envelope-o"></i> <%= current_user.email %></p>
-          <p><i class="fa fa-phone"></i> (01) 42 42 42 42</p>
+          <p><i class="fa fa-phone"></i> <%= candidate.phone_number %></p>
 
           <% @bio_name = "#{candidate.firstname} #{candidate.lastname}" %>
         <% end %>
       </div>
-      <ul class="list-inline">
-        <% if current_user.picture.nil?%>
-          <li><%= image_tag "default-user.png", class: "img-circle biopic tossing"%></li>
+      <ul class="list-inline biopic">
+        <% if current_user.candidates.first.picture_file_size.nil?%>
+          <li><%= image_tag "default-user.png", class: "img-circle tossing"%></li>
         <% else %>
-          <li><%= image_tag "current_user.picture", class: "img-circle biopic"%></li>
+          <li><%= image_tag current_user.candidates.first.picture.url(:medium), class: "img-circle"%></li>
+        <% end %>
+        <% if @candidates.count > 1%>
+          <li><%= image_tag current_user.candidates.last.picture.url(:medium), class: "img-circle"%></li>
         <% end %>
       </ul>
       <div class="separator">
         <h4>Biography</h4>
       </div>
-      <div><p><%= @bio_name %></p></div>
+      <div><p class="dossier_bio"> <%= current_user.candidates.first.biographie %> </p></div>
       <div>
         <h4 class="revenue"> <%= "Total Revenue :"%>
         <% if @candidates.count > 1%>
-          <%= @revenue_total = @candidates.first.income + @candidates.last.income  %>
+          <%= @revenue_total = @candidates.first.income + @candidates.last.income  %> ( environ <%= @revenue_total * 12%>€ par an )
         <% else %>
-          <%= @revenue_total = @candidates.first.income %>
+          <%= @revenue_total = @candidates.first.income %> ( environ <%= @revenue_total * 12%>€ par an )
         <%end%>
         </h4>
-        <h6>environ <%= @revenue_total * 12%>€ par an</h6>
+
       </div>
       <div class="separator">
         <h4>Employement and Income</h4>
       </div>
        <div>
-        <h4></h4>
+        <h4> <%= @candidates.first.companie %></h4>
         <h6><%= @candidates.first.status%></h6>
-        <h6></h6>
+        <h6><%= @candidates.first.position %></h6>
+        <h6><%= @candidates.first.status_from_date %></h6>
       </div>
       <div>
         <h4 class="revenue">Past Rentals</h4>

@@ -3,10 +3,16 @@
     <div class="formulaires">
     <%#render 'tab', active: "index" %>
         <%= simple_form_for @candidate do |f| %>
+          <%= f.label :picture %>
+          <%= f.file_field :picture %>
           <%= f.input :firstname %>
           <%= f.input :lastname %>
+          <%= f.input :phone_number %>
+          <%= f.input :biographie %>
           <%= f.input :income %>
           <%= f.input :status, :collection => ['Contrat à durée indéterminée', 'Autre situation de travail (CDD, intérim, TNS)', 'Étudiant', 'Sans emploi'] %>
+          <%= f.input :companie %>
+          <%= f.input :position %>
           <%= f.input :status_from_date %>
           <%= f.submit class: "btn btn-danger" %>
         <% end %>

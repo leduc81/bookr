@@ -25,6 +25,8 @@ class CandidatesController < ApplicationController
   end
 
   def update
+    @candidate.update(candidate_params)
+    redirect_to dashboard_index_path
   end
 
   def destroy
@@ -39,6 +41,7 @@ class CandidatesController < ApplicationController
   end
 
   def candidate_params
-    params.require(:candidate).permit(:firstname, :lastname, :nationality, :income, :status, :status_from_date, :dossier_zip, :dossier_people, :dossier_max_rent, :performed_step)
+    params.require(:candidate).permit(:firstname, :lastname, :nationality, :income, :status, :status_from_date, :phone_number, :biographie, :status, :companie, :position, :picture )
   end
 end
+
