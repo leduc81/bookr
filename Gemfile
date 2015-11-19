@@ -19,6 +19,8 @@ gem 'country_select'
 gem 'zeroclipboard-rails'
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
+gem 'aws-sdk', '< 2.0'
+gem 'paperclip'
 
 group :development, :test do
   gem 'binding_of_caller'

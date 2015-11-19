@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151118095644) do
+ActiveRecord::Schema.define(version: 20151119102056) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,15 @@ ActiveRecord::Schema.define(version: 20151118095644) do
     t.string   "cautioner_relationship"
     t.boolean  "couple"
     t.boolean  "trial_period"
+    t.text     "biographie"
+    t.string   "phone_number"
+    t.string   "companie"
+    t.string   "position"
+    t.date     "position_depuis"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
   end
 
   add_index "candidates", ["user_id"], name: "index_candidates_on_user_id", using: :btree
@@ -84,7 +93,6 @@ ActiveRecord::Schema.define(version: 20151118095644) do
     t.string   "uid"
     t.string   "firstname"
     t.string   "lastname"
-    t.string   "picture"
     t.string   "token"
     t.datetime "token_expiry"
   end
