@@ -1,7 +1,5 @@
-.document {
-
-  margin:auto;
-  margin-top: 5vh;
+.preview_document {
+  margin-top: 50px;
   width: 80%;
   overflow: hidden;
   background-color: white;
@@ -9,24 +7,39 @@
   border:1px dotted lightgrey;
   z-index:0;
   box-shadow: -1px 2px 5px 1px rgba(0, 0, 0, 0.7);
-  padding:10px;
+  padding:15px;
   position: relative;
+  padding-left:50px;
+  padding-top:50px;
+  padding-bottom:50px;
+  padding-right:50px;
+
+  img#logo {
+    width: 100px;
+  }
+
   h3 {
     z-index:0;
   }
   h4 {
     z-index:0;
+    text-transform: uppercase;
   }
   p {
     margin-bottom: 2px !important;
   }
+  .candidat {
+    background-color: #D6E5E3;
+    padding: 25px;
+    margin-top: 1px;
+  }
 }
 
-.dossier_logo {
-  width: 10%;
-  margin: auto;
-  display: block;
-}
+// .dossier_logo {
+//   width: 10%;
+//   margin: auto;
+//   display: block;
+// }
 
 .dossier_candidates {
   font-family: Open Sans;
@@ -55,4 +68,5 @@
   position: absolute;
   top: 12%;
   right: 2%;
+  visibility: hidden;
 }

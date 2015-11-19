@@ -1,0 +1,129 @@
+<% dossier = @candidates.first %>
+
+<% revenue_dossier = 0 %>
+<% current_user.candidates.each do |candidate| %>
+  <% revenue_dossier = revenue_dossier + candidate.income %>
+<% end %>
+
+<% many = current_user.candidates.size > 1 ? true : false %>
+
+<div class="preview_document container">
+
+  <div class="row">
+    <div class="col-xs-12">
+      <%= image_tag "logo_new_name.png", id: "logo" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12 text-center">
+      <h3><%= dossier.biographie %></h3>
+    </div>
+  </div>
+
+<% if display == "full" %>
+  <div class="row">
+    <div class="col-xs-12 text-center">
+      <div class="separator">
+        <h4>Contact</h4>
+      </div>
+      <div>
+        <h4><strong><%= dossier.firstname.downcase.capitalize %> <%= dossier.lastname.upcase %></strong></h4>
+        <% if dossier.phone_number != "" %><p><strong><%= dossier.phone_number %></strong></p><% end %>
+        <p><%= current_user.email %></p>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<% if display == "full" %>
+  <div class="row">
+    <div class="col-xs-12 text-center">
+      <div class="separator">
+        <h4>SITUATION</h4>
+      </div>
+      <div>
+        <h2>Revenu mensuel total: <br><strong><%= revenue_dossier %>€</strong></h2>
+        <h4>(environ <%= revenue_dossier * 12%>€ / annuel)</h4>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<% if display == "full" || display == "step3" %>
+  <div class="row">
+    <div class="col-xs-12 text-center">
+      <div class="separator">
+        <h4>CANDIDATS</h4>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<% if display == "full" || display == "step3" %>
+  <div class="row">
+    <% if !@candidates.size.odd? || @candidates.size == 1 %> <%# if !odd candidates : 2 per lines %>
+      <% @candidates.each do |candidate| %>
+
+        <% now = Time.now.utc.to_date %>
+        <% bd = now.year - candidate.birthdate.year - (candidate.birthdate.to_date.change(:year => now.year) > now ? 1 : 0) %>
+        <% phrase = " depuis le #{candidate.status_from_date}" if candidate.status == 'Contrat à durée indéterminée' && candidate.status_from_date %>
+
+        <div class="cols-xs-12 col-md-6">
+          <div class="candidat text-center">
+
+            <h4><strong><%= candidate.firstname.downcase.capitalize %> <%= candidate.lastname.upcase %></strong></h4>
+            <p><%= bd %> ans</p>
+
+            <% if display == "full" %>
+              <% unless candidate.picture_file_size.nil? %>
+                <%= image_tag candidate.picture.url(:medium), class: "img-circle"%>
+              <% end %>
+            <% end %>
+
+            <% if display == "full" %>
+              <p>
+                <strong><%= candidate.status %></strong>
+                <% if candidate.position && (candidate.status == 'Contrat à durée indéterminée' || candidate.status == 'Autre situation de travail (CDD, intérim, TNS)') %>
+                  :<br><strong><%= candidate.position %></strong>
+                <% end %>
+                <% if candidate.companie && (candidate.status == 'Contrat à durée indéterminée' || candidate.status == 'Autre situation de travail (CDD, intérim, TNS)') %>
+                   chez <strong><%= candidate.companie %></strong
+                <% end %>
+                <% if candidate.trial_period == true && candidate.status == 'Contrat à durée indéterminée' %>
+                  " (en période d'essai)"
+                <% end %>
+              </p>
+            <% end %>
+
+            <p>Salaire mensuel: <strong><%= candidate.income %>€</strong>
+
+            <% if display == "full" %>
+              <br><%= "Avec garant (#{candidate.cautioner_relationship.downcase})" if candidate.cautioner? %></p>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+    <% end %>
+  </div>
+<% end %>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="separator">
+        <h4>Documents présentés :</h4>
+      </div>
+    </div>
+    <div class="col-xs-12 col-md-4 col-md-offset-4">
+      <div>
+        <ul>
+          <li>Carte<% "s" if many %> d'identité nationale</li>
+          <li>Fiches de paye</li>
+          <li>Avis d'imposition des garants</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
