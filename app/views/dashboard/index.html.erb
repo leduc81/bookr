@@ -36,11 +36,14 @@
       <ul class="list-inline biopic">
         <% if current_user.candidates.first.picture_file_size.nil?%>
           <li><%= image_tag "default-user.png", class: "img-circle tossing"%></li>
+          <% if @candidates.count > 1 %>
+            <li><%= image_tag "default-user.png", class: "img-circle tossing"%></li>
+          <% end %>
         <% else %>
           <li><%= image_tag current_user.candidates.first.picture.url(:medium), class: "img-circle"%></li>
-        <% end %>
-        <% if @candidates.count > 1%>
-          <li><%= image_tag current_user.candidates.last.picture.url(:medium), class: "img-circle"%></li>
+          <% if @candidates.count > 1 && current_user.candidates.last.picture_file_size != nil %>
+            <li><%= image_tag current_user.candidates.last.picture.url(:medium), class: "img-circle"%></li>
+          <% end %>
         <% end %>
       </ul>
       <div class="separator">
