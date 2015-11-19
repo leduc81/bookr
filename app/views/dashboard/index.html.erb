@@ -1,17 +1,17 @@
 <div class="dash-home">
   <div class="container padded">
     <%= render 'tab', active: "index" %>
-    <div class="row text-center padded">
+    <!-- <div class="row text-center padded">
       <div class="col-xs-12 ">
-        <% if current_user.candidates.first.picture_file_size.nil?%>
-      <%= link_to '<i class="fa fa-file-text"></i> Dossier'.html_safe, edit_candidate_path(@candidates.first), class: "navbar-wagon-button btn pulse" %>
-        <% else %>
-      <%= link_to '<i class="fa fa-file-text"></i> Dossier'.html_safe, "#", class: "navbar-wagon-button btn" %>
-        <% end %>
-      <%= link_to '<i class="fa fa-cloud-download"></i> PDF'.html_safe, "#", class: "navbar-wagon-button btn" %>
-      <%= link_to '<i class="fa fa-share-alt"></i> Share!'.html_safe, "#", class: "navbar-wagon-button btn" %>
+        <%# if current_user.candidates.first.picture_file_size.nil?%>
+      <%# link_to '<i class="fa fa-file-text"></i> Dossier'.html_safe, edit_candidate_path(@candidates.first), class: "navbar-wagon-button btn pulse" %>
+        <%# else %>
+      <%# link_to '<i class="fa fa-file-text"></i> Dossier'.html_safe, "#", class: "navbar-wagon-button btn" %>
+        <%# end %>
+      <%# link_to '<i class="fa fa-cloud-download"></i> PDF'.html_safe, "#", class: "navbar-wagon-button btn" %>
+      <%# link_to '<i class="fa fa-share-alt"></i> Share!'.html_safe, "#", class: "navbar-wagon-button btn" %>
       </div>
-    </div>
+    </div> -->
     <div class="row">
       <div class="document container">
       <div>
