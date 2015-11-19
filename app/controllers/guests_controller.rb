@@ -6,8 +6,11 @@ class GuestsController < ApplicationController
 
   skip_before_action :authenticate_user!
 
+  layout "guest"
+
   def show
     if @user
+      @candidates = @user.candidates
       increment_viewed_counter
     else
       render text: "You don't have the permission to access this ressource"
