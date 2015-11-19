@@ -6,7 +6,7 @@ class Guest < ActiveRecord::Base
   private
 
   def send_invitation_email
-    if self.email
+    if self.email != ""
       UserMailer.invite_guest(self, self.user).deliver_now
     end
   end

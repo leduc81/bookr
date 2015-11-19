@@ -24,13 +24,6 @@
           <% @bio_name = "#{candidate.firstname} #{candidate.lastname}" %>
         <% end %>
       </div>
-      <ul class="list-inline">
-        <% if current_user.picture.nil?%>
-          <li><%= image_tag "default-user.png", class: "img-circle biopic"%></li>
-        <% else %>
-          <li><%= image_tag "current_user.picture", class: "img-circle biopic"%></li>
-        <% end %>
-      </ul>
       <div class="separator">
         <h4>Biography</h4>
       </div>
