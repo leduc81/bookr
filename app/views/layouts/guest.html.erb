@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Edoss - Ton dossier de location en ligne</title>
+    <title>Edoss - Mon dossier de location en ligne</title>
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= csrf_meta_tags %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,12 +9,9 @@
     <%= favicon_link_tag 'favicon.ico' %>
   </head>
  <body class='Site'>
-    <%= render 'shared/navbar' %>
-    <%= render 'shared/flashes' %>
     <main class="Site-content">
       <%= yield %>
     </main>
-    <%= render 'shared/footer'%>
     <%= javascript_include_tag 'application' %>
   </body>
 </html>

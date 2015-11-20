@@ -95,19 +95,4 @@
     </ul>
   </div>
 
-  <div class="page-break"></div>
-
-  <h4>Documents à joindre à votre dossier :</h4>
-
-  <% current_user.candidates.each do |candidate| %>
-    <h5><%= candidate.firstname %></h5>
-    <ul>
-      <li>Carte nationale d'identité</li>
-      <li>3 dernières fiches de paye</li>
-      <% if candidate.cautioner %><li>Avis d'imposition du garant</li><% end %>
-
-    </ul>
-  <% end %>
-
-
 </div>

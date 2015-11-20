@@ -24,7 +24,20 @@ class DashboardController < ApplicationController
                :template => 'dashboard/pdf.pdf.erb',
                :layout => 'pdf',
                :footer => {
-                  :center => "Edoss, votre dossier en ligne",
+                  :center => "Edoss.com, votre dossier en ligne",
+               }
+      end
+    end
+  end
+
+  def pdf_guest
+    respond_to do |format|
+      format.pdf do
+        render :pdf => "dossier_#{current_user.candidates.first.firstname}_#{current_user.candidates.first.lastname}",
+               :template => 'dashboard/pdf_guest.pdf.erb',
+               :layout => 'pdf',
+               :footer => {
+                  :center => "Edoss.com, votre dossier en ligne",
                }
       end
     end

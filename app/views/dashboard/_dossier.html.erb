@@ -78,19 +78,21 @@
             <h4><strong><%= candidate.firstname.downcase.capitalize %> <%= candidate.lastname.upcase %></strong></h4>
             <p><%= bd %> ans</p>
 
-            <% if display == "step4" || display == "full" %>
+             <% if display == "step4" || display == "full" %>
               <% unless candidate.picture_file_size.nil? %>
-                <%= image_tag candidate.picture.url(:medium), class: "img-circle"%>
+                <%= image_tag candidate.picture.url(:medium), class: "img-circle text-center"%>
               <% end %>
+            <% else %>
+              <br>
             <% end %>
 
             <% if display == "step4" || display == "full" %>
               <p>
                 <strong><%= candidate.status %></strong>
-                <% if candidate.position && (candidate.status == 'Contrat à durée indéterminée' || candidate.status == 'Autre situation de travail (CDD, intérim, TNS)') %>
+                <% if candidate.position && candidate.position != "" && (candidate.status == 'Contrat à durée indéterminée' || candidate.status == 'Autre situation de travail (CDD, intérim, TNS)') %>
                   :<br><strong><%= candidate.position %></strong>
                 <% end %>
-                <% if candidate.companie && (candidate.status == 'Contrat à durée indéterminée' || candidate.status == 'Autre situation de travail (CDD, intérim, TNS)') %>
+                <% if candidate.companie && candidate.companie != "" && (candidate.status == 'Contrat à durée indéterminée' || candidate.status == 'Autre situation de travail (CDD, intérim, TNS)') %>
                    chez <strong><%= candidate.companie %></strong
                 <% end %>
                 <% if candidate.trial_period == true && candidate.status == 'Contrat à durée indéterminée' %>
