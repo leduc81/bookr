@@ -6,7 +6,6 @@
   &img {
     border: 1px solid yellow;
   }
-
 }
 
 #step-intro {
@@ -36,7 +35,7 @@
 }
 
 #step-img img {
-  width: 400px;
+  width: 200px;
   text-align: right;
   z-index:0;
 }
@@ -63,4 +62,15 @@ checkbox.radio_a.clicked {
   border-color: $color1;
   text-decoration: none;
 }
-
+#text-page-step2 {
+  min-height: 800px;
+  background-color: $color2;
+  h3 {
+  padding-top: 200px;
+  color: $color4;
+  font-weight: 100;
+  }
+}
+#text-page-step2 {
+  text-align: center;
+}
