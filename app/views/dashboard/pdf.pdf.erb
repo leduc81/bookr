@@ -54,7 +54,7 @@
             </div>
             <br>
           <% else %>
-            <br><br>
+
           <% end %>
 
           <div style="text-align:center;">
@@ -72,8 +72,10 @@
             </p>
           </div>
 
-          <p>Salaire mensuel: <strong><%= candidate.income %>€</strong>
-          <br><%= "Avec garant (#{candidate.cautioner_relationship.downcase})" if candidate.cautioner? %></p>
+          <div style="text-align:center;">
+            <p>Salaire mensuel: <strong><%= candidate.income %>€</strong>
+            <br><%= "Avec garant (#{candidate.cautioner_relationship.downcase})" if candidate.cautioner? %></p>
+          </div>
 
         </td>
       <% end %>
