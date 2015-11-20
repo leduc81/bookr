@@ -1,8 +1,8 @@
 <% current_candidate = Candidate.find(session['current_user']) if session['current_user'] %>
 <% display_button = false %>
 <div class="step text-center">
-  <div class="row text-center hidden-xs" id="step-intro">
-    <div class="col-xs-12">
+  <div class="row text-center hidden-xs" id="step-intro" style="margin-top:-25px; margin-bottom:">
+    <div class="col-xs-12" style="">
       <h2><%= @step['intro'] %></h2>
     </div>
   </div>
@@ -42,7 +42,7 @@
     </div>
   </div>
   <% if @step['info'] != "" %>
-    <div class="row text-justify" id="step-info">
+    <div class="row text-justify" id="step-info" style=>
       <div class="col-sm-2 col-sm-offset-2 col-md-1 col-md-offset-3 hidden-xs">
         <%= image_tag "info.png"%>
       </div>

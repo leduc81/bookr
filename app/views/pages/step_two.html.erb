@@ -5,11 +5,11 @@
     <div class="row text-center" style="padding-top:150px; padding-bottom:100px; padding-left:200px;">
       <div class="col-xs-12 col-md-6">
         <h3 class="text-justify", style='font-size:22px;'>Dans le <%= arrondissement %> arrondissement avec un budget de <strong><%= @user_candidate.dossier_max_rent %>€</strong>, vous pourrez trouver un appartement d'environ <strong><%= @max_surface %> m2</strong> !<br><br><i class="fa fa-info-circle"></i> Paris est une <strong>zone tendue</strong>. Depuis le 6 août 2015 et la loi Macron, tous les logements en location dans les zones tendues bénéficient d'un préavis de départ <strong>diminué à 1 mois</strong> !</h3><br>
-        <div type="submit" name="commit" class="btn custom-btn" style="margin-left:200px; padding-left:100px; padding-right:100px;">
+        <div type="submit" name="commit" class="btn custom-btn" style="padding-left:100px; padding-right:100px; padding-bottom:10px">
           <%= link_to "Continuer", step_path('2-1') %>
         </div>
       </div>
-      <div class="col-xs-12 col-md-6" id="step-img" style="padding-bottom: 100px; width:400px;">
+      <div class="col-xs-12 col-md-6" id="step-img" style="padding-bottom:50px; width:400px">
        <%= image_tag "surface.png" %>
       </div>
     </div>
