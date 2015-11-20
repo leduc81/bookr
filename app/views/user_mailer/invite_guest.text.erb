@@ -4,7 +4,7 @@ edoss.fr
 
 <%= "#{@user.candidates.first.firstname} #{@user.candidates.first.lastname} vous invite à consulter son dossier de location en ligne#{phrase}" %>
 
-guest_path(@guest.token)
+root_url + guest_path(@guest.token)
 
 --- Contacter le candidat ---
 <%= @user.candidates.first.firstname + " " + @user.candidates.first.lastname %>

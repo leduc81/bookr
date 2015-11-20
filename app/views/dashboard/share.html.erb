@@ -17,29 +17,29 @@
             <div class="card-content">
               <h4><%= guest.description %> <%= link_to "Voir", guest.url, class: "btn btn-default btn-xs", target: "_blank" unless guest.url.nil? %></h4>
               <% if guest.email != "" %>
-                <p class="card-sent-to"><i class='fa fa-envelope-o'></i> sent to <span><%= guest.email%></span></p>
+                <p class="card-sent-to"><i class='fa fa-envelope-o'></i> envoyé à <span><%= guest.email%></span></p>
               <% end %>
-              <h5> Expires: <%= guest.expires %> </h5>
+              <h5> Expire le: <%= guest.expires %> </h5>
               <% if status == "actif" %>
-                <h5> Active ? <%= link_to '<i class="fa fa-thumbs-o-up"></i>'.html_safe, user_guest_path(current_user, guest), method: "patch", class: "btn btn-success btn-xs", title: "partagé depuis #{guest.start}, expirera le #{guest.expires}, cliquer pour désactiver" %> </h5>
+                <h5> Actif ? <%= link_to '<i class="fa fa-thumbs-o-up"></i>'.html_safe, user_guest_path(current_user, guest), method: "patch", class: "btn btn-success btn-xs", title: "partagé depuis #{guest.start}, expirera le #{guest.expires}, cliquer pour désactiver" %> </h5>
               <% else %>
                 <% if status == "canceled" && guest.expires > Date.today %>
-                  <h5> Active ? <%= link_to '<i class="fa fa-thumbs-o-down"></i>'.html_safe, user_guest_path(current_user, guest), method: "patch", class: "btn btn-danger btn-xs", title: "partage désactivé à votre demande, expirera le #{guest.expires}, cliquer pour réactiver" %> </h5>
+                  <h5> Actif ? <%= link_to '<i class="fa fa-thumbs-o-down"></i>'.html_safe, user_guest_path(current_user, guest), method: "patch", class: "btn btn-danger btn-xs", title: "partage désactivé à votre demande, expirera le #{guest.expires}, cliquer pour réactiver" %> </h5>
                 <% else %> <%# expiré %>
                   <%= link_to status, "#", class: "btn btn-default btn-xs", title: "expiré le #{guest.expires}" %>
                 <% end %>
               <% end %>
             </div>
             <div class="card-views">
-              <p> Viewed: <%= guest.viewed_t.nil? ? "no" : "#{guest.viewed_t} times" %> </p>
+              <p> Vu  : <%= guest.viewed_t.nil? ? "-" : "#{guest.viewed_t} fois" %> </p>
             </div>
             <div class="card-controls">
               <% if status == "actif" %>
-                <button class='btn btn-primary btn-xs my_clip_button' data-clipboard-target='fe_text' data-clipboard-text='<%= root_url + guest_path(guest.token) %>' id='d_clip_button' title='Click me to copy to clipboard.'>
-                  <i class="fa fa-paperclip"></i> Copy URL
+                <button class='btn btn-primary btn-xs my_clip_button' data-clipboard-target='fe_text' data-clipboard-text='<%= root_url + guest_path(guest.token) %>' id='d_clip_button' title='Cliquer pour copier dans le presse-papier'>
+                  <i class="fa fa-paperclip"></i> Copier l'url
                 </button>
               <% end %>
-              <button class='btn btn-danger btn-xs my_clip_button' data-clipboard-text='<%# user_guest_path(current_user.id, guest.id), method: :delete %>' title='Click me to delete'>
+              <button class='btn btn-danger btn-xs my_clip_button' data-clipboard-text='<%# user_guest_path(current_user.id, guest.id), method: :delete %>' title='Cliquer pour supprimer le partage'>
                 <i class="fa fa-trash-o"></i></button>
             </div>
           </div>

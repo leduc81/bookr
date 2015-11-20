@@ -1,13 +1,15 @@
-<h2>edoss.fr</h2>
+<% image_tag "http://www.edoss.fr/assets/logo_new-d5a248164769fcfdaab5e6ed79c55356194fa8aadd48f3c4cfe71274f8f12203.png" %>
+
+<h2 style="color:#d6e5e3;">edoss.fr</h2>
 
 <% phrase = " pour le bien : #{@guest.description}" if @guest.description %>
 
 <p><%= "#{@user.candidates.first.firstname} #{@user.candidates.first.lastname} vous invite à consulter son dossier de location en ligne#{phrase}" %></p>
 
-<p><strong><%= link_to "Consulter le dossier en ligne sur Edoss.fr", guest_path(@guest.token) %></strong></p>
+<strong><%= link_to "Consulter le dossier en ligne sur Edoss.fr", root_url + guest_path(@guest.token), style: "color:#9fd8cb" %></strong>
 
-<h3>Contacter le candidat:</h3>
-<p><%= @user.candidates.first.firstname + " " + @user.candidates.first.lastname %></p>
-<p><%= @user.email %></p>
+<h3 style="color:#d6e5e3;">Contacter le candidat:</h3>
+<p style="color:#d6e5e3;"><%= @user.candidates.first.firstname + " " + @user.candidates.first.lastname %></p>
+<p style="color:#d6e5e3;"><%= @user.email %></p>
 
 <p>Service fourni par Edoss.fr, le dossier de location en ligne</p>
