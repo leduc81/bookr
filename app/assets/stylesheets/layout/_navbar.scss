@@ -76,11 +76,9 @@
     color: $color1;
     font-size: 14px;
     border: 2px $color4;
-
     &:hover {
       color: white;
       background: $color4;
-      // border-color: darken($color2, 10%);
     }
     &:visited {
       color: white;
