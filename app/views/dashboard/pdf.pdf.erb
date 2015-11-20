@@ -46,11 +46,15 @@
         <td>
 
           <% unless candidate.picture_file_size.nil? %>
-            <%= image_tag candidate.picture.url(:medium), class: "img-circle text-center" %>
+            <div class="text-center">
+              <%= image_tag candidate.picture.url(:medium), class: "img-circle" %>
+            </div>
           <% end %>
 
           <h4><strong><%= candidate.firstname.downcase.capitalize %> <%= candidate.lastname.upcase %></strong></h4>
           <p style="text-align:center;"><%= bd %> ans</p>
+
+          <br>
 
           <p>
             <strong class="highlighted"><%= candidate.status %></strong>
@@ -78,11 +82,13 @@
     <h4>Documents présentés</h4>
   </div>
 
-  <ul>
-    <li>Carte<% "s" if many %> d'identité nationale</li>
-    <li>Fiches de paye</li>
-    <li>Avis d'imposition des garants</li>
-  </ul>
+  <div style="width:50%;margin-left:25%;">
+    <ul>
+      <li>Carte<% "s" if many %> d'identité nationale</li>
+      <li>Fiches de paye</li>
+      <li>Avis d'imposition des garants</li>
+    </ul>
+  </div>
 
   <div class="page-break"></div>
 
