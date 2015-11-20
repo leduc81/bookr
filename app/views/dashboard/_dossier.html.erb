@@ -71,7 +71,6 @@
 
         <% now = Time.now.utc.to_date %>
         <% bd = now.year - candidate.birthdate.year - (candidate.birthdate.to_date.change(:year => now.year) > now ? 1 : 0) %>
-        <% phrase = " depuis le #{candidate.status_from_date}" if candidate.status == 'Contrat à durée indéterminée' && candidate.status_from_date %>
 
         <div class="cols-xs-12 col-md-6">
           <div class="candidat text-center">
@@ -95,7 +94,7 @@
                    chez <strong><%= candidate.companie %></strong
                 <% end %>
                 <% if candidate.trial_period == true && candidate.status == 'Contrat à durée indéterminée' %>
-                  " (en période d'essai)"
+                  <%= " (en période d'essai)" %>
                 <% end %>
               </p>
             <% end %>

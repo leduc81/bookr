@@ -1,16 +1,17 @@
-<% dossier = current_user.candidates.first %>
-<% many = current_user.candidates.size > 1 ? true : false %>
+<% dossier = @candidates.first %>
+
 <% revenue_dossier = 0 %>
-<% current_user.candidates.each do |candidate| %>
+<% @candidates.each do |candidate| %>
   <% revenue_dossier = revenue_dossier + candidate.income %>
 <% end %>
 
+<% many = current_user.candidates.size > 1 ? true : false %>
 
 <div class="document">
 
   <%= wicked_pdf_image_tag "logo_new_name.png" %>
 
-  <br><br>
+  <br>
 
   <h3><%= dossier.biographie %></h3>
 
@@ -18,16 +19,15 @@
     <h4>Contact</h4>
   </div>
 
-  <p style="text-align:center;"><strong><%= dossier.firstname %> <%= dossier.lastname %></strong>
-  <br><%= current_user.email %>
-  <br>06 15 01 02 03</p>
-
+  <h4><strong><%= dossier.firstname.downcase.capitalize %> <%= dossier.lastname.upcase %></strong></h4>
+  <% if dossier.phone_number != "" %><p style="text-align:center;"><strong><%= dossier.phone_number %></strong></p><% end %>
+  <p style="text-align:center;"><%= current_user.email %></p>
   <div class="section">
     <h4>Situation</h4>
   </div>
 
-  <h2><strong>Revenu mensuel total: <%= revenue_dossier %>€</strong></h2>
-  <h3>(environ <%= revenue_dossier * 12%>€ par an)</h3>
+  <h2>Revenu mensuel total: <br><strong class="highlighted"><%= revenue_dossier %>€</strong></h2>
+  <h4>(environ <%= revenue_dossier * 12%>€ / annuel)</h4>
 
   <div class="section">
     <h4>Candidats</h4>
@@ -42,17 +42,31 @@
 
         <% now = Time.now.utc.to_date %>
         <% bd = now.year - candidate.birthdate.year - (candidate.birthdate.to_date.change(:year => now.year) > now ? 1 : 0) %>
-        <% phrase = " depuis le #{candidate.status_from_date}" if candidate.status == 'Contrat à durée indéterminée' && candidate.status_from_date %>
-        <% phrase = (phrase + " (en période d'essai)") if phrase && candidate.trial_period == true %>
+
         <td>
 
-          <h3><%= "#{candidate.firstname.downcase.capitalize} #{candidate.lastname.upcase}" %></h3>
+          <h4><strong><%= candidate.firstname.downcase.capitalize %> <%= candidate.lastname.upcase %></strong></h4>
+          <p style="text-align:center;"><%= bd %> ans</p>
 
-          <p><%= bd %> ans
-          <br><%= "#{candidate.status}#{phrase}" %>
-          <br>Salaire mensuel: <strong><%= candidate.income %>€</strong></p>
+          <% unless candidate.picture_file_size.nil? %>
+            <%= image_tag candidate.picture.url(:medium), class: "img-circle"%>
+          <% end %>
 
-          <p><%= "Avec garant (#{candidate.cautioner_relationship.downcase})" if candidate.cautioner? %></p>
+          <p>
+            <strong class="highlighted"><%= candidate.status %></strong>
+            <% if candidate.position && (candidate.status == 'Contrat à durée indéterminée' || candidate.status == 'Autre situation de travail (CDD, intérim, TNS)') %>
+              :<br><strong><%= candidate.position %></strong>
+            <% end %>
+            <% if candidate.companie && (candidate.status == 'Contrat à durée indéterminée' || candidate.status == 'Autre situation de travail (CDD, intérim, TNS)') %>
+               chez <strong><%= candidate.companie %></strong
+            <% end %>
+            <% if candidate.trial_period == true && candidate.status == 'Contrat à durée indéterminée' %>
+              <%= " (en période d'essai)" %>
+            <% end %>
+          </p>
+
+          <p>Salaire mensuel: <strong><%= candidate.income %>€</strong>
+          <br><%= "Avec garant (#{candidate.cautioner_relationship.downcase})" if candidate.cautioner? %></p>
 
         </td>
       <% end %>
@@ -60,7 +74,17 @@
 
   </table>
 
-  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+   <div class="section">
+    <h4>Documents présentés</h4>
+  </div>
+
+  <ul>
+    <li>Carte<% "s" if many %> d'identité nationale</li>
+    <li>Fiches de paye</li>
+    <li>Avis d'imposition des garants</li>
+  </ul>
+
+  <div class="page-break"></div>
 
   <h4>Documents à joindre à votre dossier :</h4>
 
@@ -73,9 +97,6 @@
 
     </ul>
   <% end %>
-
-
-
 
 
 </div>

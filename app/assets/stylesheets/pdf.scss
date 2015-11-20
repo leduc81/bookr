@@ -29,6 +29,7 @@
   }
   h2 {
     text-align: center;
+    font-size: 28px;
   }
   h3 {
     text-align: center;
@@ -38,11 +39,17 @@
     color: inherit;
   }
   h4 {
+    text-align: center;
     text-transform: uppercase;
-    font-size: 18px;
+    font-size: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
   }
   tr {
 
+  }
+  .highlighted {
+    background-color: yellow;
   }
   .section {
     text-align: center;
@@ -51,22 +58,26 @@
     background-color: #F9E074;
     color: #333333;
     font-size: 18pt;
+    margin-top:20px;
   }
   td {
     word-wrap: 'break-word';
-    background-color: lightgrey;
-    padding-top:15px;
+    background-color: #D6E5E3;
+    padding-top:5px;
     padding-left:15px;
     padding-right:15px;
-    padding-bottom:15px;
+    padding-bottom:5px;
     border-radius: 5px;
   }
   p {
     font-family: "Raleway", "Helvetica", "sans-serif";
+    margin-top: 0px;
+    margin-bottom: 2px;
   }
-
-
-
-
+  .page-break {
+    display:block;
+    clear:both;
+    page-break-after:always;
+  }
 }
 
