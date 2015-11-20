@@ -6,7 +6,7 @@
       </div>
       <div class="navbar-wagon-pusher"></div>
       <div class='navbar-tab'>
-
+        <% raise %>
         <% if request.env['PATH_INFO'].split('/').at(request.env['PATH_INFO'].split('/').size - 2) == "dashboard" %>
             <%= render 'dashboard/tab', active: request.env['PATH_INFO'].split('/').last %>
         <% else %>

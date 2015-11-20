@@ -1,101 +1,50 @@
 <div class="third">
 
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12 col-md-6">
-        <h3>Félicitations! Ton dossier est prêt !</h3>
-        <h5>Tu peux maintenant télécharger l'entête en pdf et y joindre tes justificatifs pour l'envoyer aux propriétaires des appartements qui t'intéressent, ou uploader tes justificatifs pour avoir un dossier consultable en ligne directement ! ouh ouh</h5>
-        <%= link_to "Uploader mes justificatifs !", "#", class: "btn custom-btn", disabled: "disabled" %>
-      </div>
-      <div class="col-xs-12 col-md-6">
-        <div class="land">
-          <%= image_tag "growing.png", style:" <width:400px;", class: "landing_img" %>
-        </div>
+   <div class="dash-home">
+    <div class="container padded">
+      <div class="row">
+        <%= render "dashboard/dossier", display: "step4" %>
       </div>
     </div>
   </div>
-  <div class="document" class="container">
-    <div>
-      <%= image_tag "logo_new_name.png", class: "dossier_logo" %>
-    </div>
-    <div class="dossier_candidates">
-      <% x = @candidates.size %>
-      <% @candidates.each do |candidate| %>
-        <% now = Time.now.utc.to_date %>
-        <% bd = now.year - candidate.birthdate.year - (candidate.birthdate.to_date.change(:year => now.year) > now ? 1 : 0) %>
-        <h4><i class="fa fa-user"></i> <%= "#{candidate.firstname} #{candidate.lastname}" %> - <%= bd %> ans</h4>
-        <p><i class="fa fa-envelope-o"></i> hello@world.com</p>
-        <p><i class="fa fa-phone"></i> (01) 42 42 42 42</p>
 
-        <% @bio_name = "#{candidate.firstname} #{candidate.lastname}" %>
-      <% end %>
-    </div>
-    <ul class="list-inline">
-      <li><%= image_tag "default-user.png", class: "img-circle biopic"%></li>
-    </ul>
-    <div class="separator">
-      <h4>Biography</h4>
-    </div>
-    <div><p class="dossier_bio"></p></div>
-    <div>
-      <h4 class="revenue"> <%= "Total Revenue :"%>
-      <% if @candidates.count > 1%>
-        <%= @revenue_total = @candidates.first.income + @candidates.last.income  %>
-      <% else %>
-        <%= @revenue_total = @candidates.first.income %>
-      <%end%>
-      ( environ <%= @revenue_total * 12%>€ par an) </h4>
-    </div>
-    <div class="separator">
-      <h4>Employement and Income</h4>
-    </div>
-     <div>
-      <h4></h4>
-      <h6><%= @candidates.first.status%></h6>
-
-    </div>
-    <div>
-      <h4 class="revenue">Past Rentals</h4>
-    </div>
-    <div class="separator">
-      <h4>References</h4>
-    </div>
-  </div>
 
 <!-- commented modal -->
   <!-- Sign-up Modal -->
   <div data-backdrop="static" class="modal show" id="signUp" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-      <div class="modal-content">
+      <div class="modal-content" style="background-color:rgba(255, 255, 255, 0.85);">
         <div class="modal-header">
           <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"> -->
           <!--  <span aria-hidden="true">&times;</span> -->
           <!-- </button> -->
           <div class="row">
-            <div class="col-xs-12 col-md-8">
-              <h4 class="modal-title" id="myModalLabel">Génial !</h4>
-              <p>Votre dossier est maintenant prêt. Pour exploiter 100% du service, vous devez confirmer la création de votre compte</p>
+            <div class="col-xs-12">
+              <h4 class="modal-title text-center" id="myModalLabel">Prêt à trouver un appartement ?</h4>
             </div>
-            <div class="col-xs-12 hidden-xs hidden-sm col-md-4">
-              <%= image_tag "account.png", class: "landing_img" %>
+            <div class="col-xs-12 hidden-xs hidden-sm text-center">
+              <%= image_tag "rocket.png", class: "landing_img", style:"width:300px;" %>
+            </div>
+            <div class="col-xs-12 text-center">
+              <p>Votre dossier est prêt! Pour le télécharger, le partager et y accéder plus tard, veuillez enregistrer votre compte Edoss!</p>
             </div>
           </div>
         </div>
         <div class="modal-body text-justify">
-          <!-- Your signup form -->
           <%# render "devise/registrations/new" %>
           <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
           <div><%= f.label :email %><br />
             <%= f.email_field :email, class: "form-control input-lg" %>
           </div>
           <div><%= f.label :password %><br />
-            <%= f.password_field :password, class: "form-control input-lg" %>
+            <%= f.password_field :password, label: "Mot de passe", class: "form-control input-lg" %>
           </div>
           <div><%= f.label :password_confirmation %><br />
-            <%= f.password_field :password_confirmation, class: "form-control input-lg" %>
+            <%= f.password_field :password_confirmation, label: "Confirmez le mot de passe", class: "form-control input-lg" %>
           </div>
+          <br>
           <div class="text-center">
-            <%= f.submit "Sign up", class: "btn btn-warning" %>
+            <%= f.submit "Créer mon compte Edoss", class: "btn btn-danger" %>
           </div>
           <% end %>
         </div>
