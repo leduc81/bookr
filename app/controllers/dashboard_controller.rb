@@ -30,6 +30,19 @@ class DashboardController < ApplicationController
     end
   end
 
+  def pdf_guest
+    respond_to do |format|
+      format.pdf do
+        render :pdf => "dossier_#{current_user.candidates.first.firstname}_#{current_user.candidates.first.lastname}",
+               :template => 'dashboard/pdf_guest.pdf.erb',
+               :layout => 'pdf',
+               :footer => {
+                  :center => "Edoss.com, votre dossier en ligne",
+               }
+      end
+    end
+  end
+
   private
 
   def set_candidates

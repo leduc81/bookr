@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get "dashboard/application"
   get "dashboard/share"
   get "dashboard/pdf" => "dashboard#pdf"
+  get "dashboard/pdf_guest" => "dashboard#pdf_guest"
 
   resources :candidates, only: [:edit, :update ]
 
