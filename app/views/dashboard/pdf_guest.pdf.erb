@@ -1,0 +1,98 @@
+<% dossier = @candidates.first %>
+
+<% revenue_dossier = 0 %>
+<% @candidates.each do |candidate| %>
+  <% revenue_dossier = revenue_dossier + candidate.income %>
+<% end %>
+
+<% many = current_user.candidates.size > 1 ? true : false %>
+
+<div class="document">
+
+  <%= wicked_pdf_image_tag "logo_new_name.png" %>
+
+  <br>
+
+  <h3><%= dossier.biographie %></h3>
+
+  <div class="section">
+    <h4>Contact</h4>
+  </div>
+
+  <h4><strong><%= dossier.firstname.downcase.capitalize %> <%= dossier.lastname.upcase %></strong></h4>
+  <% if dossier.phone_number != "" %><p style="text-align:center;"><strong><%= dossier.phone_number %></strong></p><% end %>
+  <p style="text-align:center;"><%= current_user.email %></p>
+  <div class="section">
+    <h4>Situation</h4>
+  </div>
+
+  <h2>Revenu mensuel total: <br><strong class="highlighted"><%= revenue_dossier %>€</strong></h2>
+  <h4>(environ <%= revenue_dossier * 12%>€ / annuel)</h4>
+
+  <div class="section">
+    <h4>Candidats</h4>
+  </div>
+
+  <br>
+
+  <table>
+
+    <tr>
+      <% current_user.candidates.each do |candidate| %>
+
+        <% now = Time.now.utc.to_date %>
+        <% bd = now.year - candidate.birthdate.year - (candidate.birthdate.to_date.change(:year => now.year) > now ? 1 : 0) %>
+
+        <td>
+
+          <h4><strong><%= candidate.firstname.downcase.capitalize %> <%= candidate.lastname.upcase %></strong></h4>
+          <p style="text-align:center;"><%= bd %> ans</p>
+
+          <% unless candidate.picture_file_size.nil? %>
+            <div class="text-center">
+              <%= image_tag candidate.picture.url(:medium), class: "img-circle" %>
+            </div>
+            <br>
+          <% else %>
+            <br><br>
+          <% end %>
+
+          <div style="text-align:center;">
+            <p>
+              <strong class="highlighted"><%= candidate.status %></strong>
+              <% if candidate.position && candidate.position != "" && (candidate.status == 'Contrat à durée indéterminée' || candidate.status == 'Autre situation de travail (CDD, intérim, TNS)') %>
+                :<br><strong><%= candidate.position %></strong>
+              <% end %>
+              <% if candidate.companie && candidate.companie != "" && (candidate.status == 'Contrat à durée indéterminée' || candidate.status == 'Autre situation de travail (CDD, intérim, TNS)') %>
+                 chez <strong><%= candidate.companie %></strong
+              <% end %>
+              <% if candidate.trial_period == true && candidate.status == 'Contrat à durée indéterminée' %>
+                <%= " (en période d'essai)" %>
+              <% end %>
+            </p>
+          </div>
+
+          <div style="text-align:center;">
+            <p>Salaire mensuel: <strong><%= candidate.income %>€</strong>
+            <br><%= "Avec garant (#{candidate.cautioner_relationship.downcase})" if candidate.cautioner? %></p>
+          </div>
+
+        </td>
+      <% end %>
+    </tr>
+
+  </table>
+
+   <div class="section">
+    <h4>Documents présentés</h4>
+  </div>
+
+  <div style="width:50%;margin-left:25%;">
+    <ul>
+      <li>Carte<% "s" if many %> d'identité nationale</li>
+      <li>Fiches de paye</li>
+      <li>Avis d'imposition des garants</li>
+    </ul>
+  </div>
+
+</div>
