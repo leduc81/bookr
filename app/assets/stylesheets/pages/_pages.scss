@@ -9,3 +9,21 @@
     background-color: #F9E074;
   }
 }
+
+#download_button {
+  height:150px;
+  width:150px;
+  position: fixed;
+  right: 5vw;
+  top: 50%;
+  margin-top: -75px;
+  h3, a {
+    color: $color4;
+  }
+  i {
+    font-size: 60pt;
+  }
+  a:hover, a:active, a:visited {
+    text-decoration: none;
+  }
+}

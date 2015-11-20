@@ -1,7 +1,16 @@
 <div class="dash-home">
   <div class="container padded">
     <div class="row">
+
       <%= render "dossier", display: "full" %>
+
+      <div id="download_button" class="floating text-center">
+        <%= link_to dashboard_pdf_path(:format => :pdf), title: "Télécharger le dossier au format PDF", target: "_blank" do %>
+          <h3><i class="fa fa-cloud-download"></i>
+          <br>dossier.pdf</h3>
+        <% end %>
+      </div>
+
     </div>
   </div>
 </div>
