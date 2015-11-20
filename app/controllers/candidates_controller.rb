@@ -29,7 +29,7 @@ class CandidatesController < ApplicationController
     @candidate.update(candidate_params)
     @candidate.biographie = @candidate.intro
     @candidate.save
-    redirect_to dashboard_index_path
+    redirect_to dashboard_candidates_path
   end
 
   def destroy

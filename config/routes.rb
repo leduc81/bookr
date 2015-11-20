@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   get "pages/step4" => "pages#step_four"
 
   resources :users, only: [] do
-    resources :guests, only: [:update, :new, :create]
+    resources :guests, only: [:update, :new, :create, :destroy]
   end
   get "guests/error"
   resources :guests, only: :show

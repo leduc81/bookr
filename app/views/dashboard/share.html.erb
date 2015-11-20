@@ -39,6 +39,8 @@
                   <i class="fa fa-paperclip"></i> Copy URL
                 </button>
               <% end %>
+              <button class='btn btn-danger btn-xs my_clip_button' data-clipboard-text='<%# user_guest_path(current_user.id, guest.id), method: :delete %>' title='Click me to delete'>
+                <i class="fa fa-trash-o"></i></button>
             </div>
           </div>
         </div>

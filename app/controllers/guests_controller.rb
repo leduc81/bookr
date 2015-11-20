@@ -2,7 +2,7 @@ class GuestsController < ApplicationController
 
   before_action :def_user_guest_by_token, only: [:show]
   before_action :def_user, only: [:new, :update]
-  before_action :def_guest, only: [:update]
+  before_action :def_guest, only: [:update, :destroy]
 
   skip_before_action :authenticate_user!
 
@@ -53,6 +53,11 @@ class GuestsController < ApplicationController
     )
     # déplacé dans le modèle
     # UserMailer.invite_guest(guest, current_user).deliver_now
+    redirect_to dashboard_share_path
+  end
+
+  def destroy
+    @guest.delete
     redirect_to dashboard_share_path
   end
 
