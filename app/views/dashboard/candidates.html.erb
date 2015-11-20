@@ -1,11 +1,13 @@
 <div class="dash-home">
-<!--   <div> -->
-    <div class="container padded">
-
-        <div class="row">
-          <div class="col-xs-12 col-md-6 col-md-offset-3">
-            <div class="row text-center padded">
-              <% @candidates.each do |candidate| %>
+  <div class="container padded">
+    <div class="row text-center">
+      <div class="col-xs-12">
+        <%= link_to '<i class="fa fa-user-plus"></i> Ajouter un candidat'.html_safe,  new_user_guest_path(current_user), class: "navbar-wagon-button btn btn_pad" %>
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-6">
+          <% @candidates.each do |candidate| %>
               <div class="card">
                 <div class="card-picture">
                 <%if candidate.picture_file_size.nil?%>
@@ -23,9 +25,8 @@
                   <%= link_to "edit", edit_candidate_path(candidate), class: "navbar-wagon-button btn" %>
                 </div>
               </div>
-            <% end %>
-          </div>
         </div>
-      </div>
+      <% end %>
+    </div>
   </div>
 </div>

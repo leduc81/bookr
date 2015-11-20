@@ -11,6 +11,24 @@
   box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
+.card-partage {
+  flex: 0 0 25%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: $gray-lighter;
+  height: 200px;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 15px;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  background-image: image-url("city_y_g.png");
+  background-size: 113%;
+  background-repeat: no-repeat;
+  background-position: center;
+  color: $color4;
+}
+
 .card-controls {
   position: absolute;
   bottom: 20px;
@@ -29,7 +47,7 @@
   }
   .card-sent-to {
     font-weight: lighter;
-    color: #9C9C9C;
+    color: #818181;
     span {
       font-weight: bold;
     }

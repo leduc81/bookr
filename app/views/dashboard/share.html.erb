@@ -13,7 +13,7 @@
           <% status = guest.expires < Date.today ? "expiré" : "actif" %>
         <% end %>
         <div class="col-xs-12 col-sm-6">
-          <div class="card">
+          <div class="card-partage filter">
             <div class="card-content">
               <h4><%= guest.description %> <%= link_to "Voir", guest.url, class: "btn btn-default btn-xs", target: "_blank" unless guest.url.nil? %></h4>
               <% if guest.email != "" %>
