@@ -1,6 +1,6 @@
 <% dossier = @candidates.first %>
 
-<% if display == "full" %>
+<% if display == "step4" || display == "full" %>
   <% revenue_dossier = 0 %>
   <% @candidates.each do |candidate| %>
     <% revenue_dossier = revenue_dossier + candidate.income %>
@@ -23,7 +23,7 @@
     </div>
   </div>
 
-<% if display == "full" %>
+<% if display == "step4" || display == "full" %>
   <div class="row">
     <div class="col-xs-12 text-center">
       <div class="separator">
@@ -32,13 +32,15 @@
       <div>
         <h4><strong><%= dossier.firstname.downcase.capitalize %> <%= dossier.lastname.upcase %></strong></h4>
         <% if dossier.phone_number != "" %><p><strong><%= dossier.phone_number %></strong></p><% end %>
-        <p><%= current_user.email %></p>
+        <% if display == "full" %>
+          <p><%= current_user.email %></p>
+        <% end %>
       </div>
     </div>
   </div>
 <% end %>
 
-<% if display == "full" %>
+<% if display == "step4" || display == "full" %>
   <div class="row">
     <div class="col-xs-12 text-center">
       <div class="separator">
@@ -52,7 +54,7 @@
   </div>
 <% end %>
 
-<% if display == "full" || display == "step3" %>
+<% if display == "step4" || display == "full" || display == "step3" %>
   <div class="row">
     <div class="col-xs-12 text-center">
       <div class="separator">
@@ -62,7 +64,7 @@
   </div>
 <% end %>
 
-<% if display == "full" || display == "step3" %>
+<% if display == "step4" || display == "full" || display == "step3" %>
   <div class="row">
     <% if !@candidates.size.odd? || @candidates.size == 1 %> <%# if !odd candidates : 2 per lines %>
       <% @candidates.each do |candidate| %>
@@ -77,13 +79,13 @@
             <h4><strong><%= candidate.firstname.downcase.capitalize %> <%= candidate.lastname.upcase %></strong></h4>
             <p><%= bd %> ans</p>
 
-            <% if display == "full" %>
+            <% if display == "step4" || display == "full" %>
               <% unless candidate.picture_file_size.nil? %>
                 <%= image_tag candidate.picture.url(:medium), class: "img-circle"%>
               <% end %>
             <% end %>
 
-            <% if display == "full" %>
+            <% if display == "step4" || display == "full" %>
               <p>
                 <strong><%= candidate.status %></strong>
                 <% if candidate.position && (candidate.status == 'Contrat à durée indéterminée' || candidate.status == 'Autre situation de travail (CDD, intérim, TNS)') %>
@@ -98,9 +100,8 @@
               </p>
             <% end %>
 
-            <p>Salaire mensuel: <strong><%= candidate.income %>€</strong>
-
-            <% if display == "full" %>
+            <% if display == "step4" || display == "full" %>
+              <p>Salaire mensuel: <strong><%= candidate.income %>€</strong>
               <br><%= "Avec garant (#{candidate.cautioner_relationship.downcase})" if candidate.cautioner? %></p>
             <% end %>
           </div>
