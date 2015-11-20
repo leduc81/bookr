@@ -45,16 +45,16 @@
 
         <td>
 
+          <h4><strong><%= candidate.firstname.downcase.capitalize %> <%= candidate.lastname.upcase %></strong></h4>
+          <p style="text-align:center;"><%= bd %> ans</p>
+
           <% unless candidate.picture_file_size.nil? %>
             <div class="text-center">
               <%= image_tag candidate.picture.url(:medium), class: "img-circle" %>
             </div>
+          <% else %>
+            <br>
           <% end %>
-
-          <h4><strong><%= candidate.firstname.downcase.capitalize %> <%= candidate.lastname.upcase %></strong></h4>
-          <p style="text-align:center;"><%= bd %> ans</p>
-
-          <br>
 
           <p>
             <strong class="highlighted"><%= candidate.status %></strong>

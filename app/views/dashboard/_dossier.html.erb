@@ -75,14 +75,16 @@
         <div class="cols-xs-12 col-md-6">
           <div class="candidat text-center">
 
-            <% if display == "step4" || display == "full" %>
+            <h4><strong><%= candidate.firstname.downcase.capitalize %> <%= candidate.lastname.upcase %></strong></h4>
+            <p><%= bd %> ans</p>
+
+             <% if display == "step4" || display == "full" %>
               <% unless candidate.picture_file_size.nil? %>
                 <%= image_tag candidate.picture.url(:medium), class: "img-circle text-center"%>
               <% end %>
+            <% else %>
+              <br>
             <% end %>
-
-            <h4><strong><%= candidate.firstname.downcase.capitalize %> <%= candidate.lastname.upcase %></strong></h4>
-            <p><%= bd %> ans</p>
 
             <% if display == "step4" || display == "full" %>
               <p>
