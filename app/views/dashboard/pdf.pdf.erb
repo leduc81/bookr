@@ -56,18 +56,20 @@
             <br><br>
           <% end %>
 
-          <p style="text-center">
-            <strong class="highlighted"><%= candidate.status %></strong>
-            <% if candidate.position && candidate.position != "" && (candidate.status == 'Contrat à durée indéterminée' || candidate.status == 'Autre situation de travail (CDD, intérim, TNS)') %>
-              :<br><strong><%= candidate.position %></strong>
-            <% end %>
-            <% if candidate.companie && candidate.companie != "" && (candidate.status == 'Contrat à durée indéterminée' || candidate.status == 'Autre situation de travail (CDD, intérim, TNS)') %>
-               chez <strong><%= candidate.companie %></strong
-            <% end %>
-            <% if candidate.trial_period == true && candidate.status == 'Contrat à durée indéterminée' %>
-              <%= " (en période d'essai)" %>
-            <% end %>
-          </p>
+          <div style="text-center">
+            <p>
+              <strong class="highlighted"><%= candidate.status %></strong>
+              <% if candidate.position && candidate.position != "" && (candidate.status == 'Contrat à durée indéterminée' || candidate.status == 'Autre situation de travail (CDD, intérim, TNS)') %>
+                :<br><strong><%= candidate.position %></strong>
+              <% end %>
+              <% if candidate.companie && candidate.companie != "" && (candidate.status == 'Contrat à durée indéterminée' || candidate.status == 'Autre situation de travail (CDD, intérim, TNS)') %>
+                 chez <strong><%= candidate.companie %></strong
+              <% end %>
+              <% if candidate.trial_period == true && candidate.status == 'Contrat à durée indéterminée' %>
+                <%= " (en période d'essai)" %>
+              <% end %>
+            </p>
+          </div>
 
           <p>Salaire mensuel: <strong><%= candidate.income %>€</strong>
           <br><%= "Avec garant (#{candidate.cautioner_relationship.downcase})" if candidate.cautioner? %></p>
