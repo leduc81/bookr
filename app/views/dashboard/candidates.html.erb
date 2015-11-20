@@ -2,19 +2,23 @@
   <div class="container padded">
     <div class="row text-center">
       <div class="col-xs-12">
+        <%= link_to '<i class="fa fa-pencil-square-o"></i> Editer ton dossier'.html_safe, dashboard_application_path, class: "navbar-wagon-button btn btn_pad" %>
         <%= link_to '<i class="fa fa-user-plus"></i> Ajouter un candidat'.html_safe,  new_user_guest_path(current_user), class: "navbar-wagon-button btn btn_pad" %>
       </div>
     </div>
     <div class="row">
         <div class="col-xs-12 col-sm-6">
           <% @candidates.each do |candidate| %>
+
               <div class="card">
+                <%= link_to edit_candidate_path(candidate) do %>
                 <div class="card-picture">
-                <%if candidate.picture_file_size.nil?%>
-                  <%= image_tag "default-user.png", class: "img-circle"%>
-                <%else%>
-                  <p><%= image_tag candidate.picture.url(:medium), class: "img-circle" %>
-                <%end%>
+                  <%if candidate.picture_file_size.nil?%>
+                    <%= image_tag "default-user.png", class: "img-circle"%>
+                  <%else%>
+                    <p><%= image_tag candidate.picture.url(:medium), class: "img-circle" %>
+                  <%end%>
+                  <% end %>
                 </div>
                 <div class="card-candidate card-content">
                   <h4><%= candidate.firstname %> <%= candidate.lastname %></h4>
@@ -25,7 +29,7 @@
                   <%= link_to "edit", edit_candidate_path(candidate), class: "navbar-wagon-button btn" %>
                 </div>
               </div>
-        </div>
+          </div>
       <% end %>
     </div>
   </div>
