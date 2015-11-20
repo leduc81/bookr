@@ -11,6 +11,10 @@
   border-color: $color4;
   color: white;
   text-decoration: none;
+
+  &:focus {
+    color: white;
+  }
   &:hover {
     background-color: $color6;
     color: $color5;
@@ -18,6 +22,7 @@
     text-decoration: none;
   }
   &:active {
+    outline: 0 !important;
     color: white;
   }
   a{
@@ -39,3 +44,9 @@
   width: 40%;
   margin: auto;
 }
+
+.btn {
+  &:focus { outline: 0 }
+}
+
+
