@@ -50,13 +50,14 @@
 
           <% unless candidate.picture_file_size.nil? %>
             <div class="text-center">
-              <%= image_tag candidate.picture.url(:medium), class: "img-circle" %><br>
+              <%= image_tag candidate.picture.url(:medium), class: "img-circle" %>
             </div>
+            <br>
           <% else %>
             <br><br>
           <% end %>
 
-          <div style="text-center">
+          <div style="text-align:center;">
             <p>
               <strong class="highlighted"><%= candidate.status %></strong>
               <% if candidate.position && candidate.position != "" && (candidate.status == 'Contrat à durée indéterminée' || candidate.status == 'Autre situation de travail (CDD, intérim, TNS)') %>
