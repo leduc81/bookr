@@ -24,7 +24,7 @@ class DashboardController < ApplicationController
                :template => 'dashboard/pdf.pdf.erb',
                :layout => 'pdf',
                :footer => {
-                  :center => "Edoss.com, votre dossier en ligne",
+                  :center => "Edoss.fr, votre dossier en ligne",
                }
       end
     end
@@ -37,7 +37,7 @@ class DashboardController < ApplicationController
                :template => 'dashboard/pdf_guest.pdf.erb',
                :layout => 'pdf',
                :footer => {
-                  :center => "Edoss.com, votre dossier en ligne",
+                  :center => "Edoss.fr, votre dossier en ligne",
                }
       end
     end
