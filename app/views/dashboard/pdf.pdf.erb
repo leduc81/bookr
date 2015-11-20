@@ -45,19 +45,19 @@
 
         <td>
 
+          <% unless candidate.picture_file_size.nil? %>
+            <%= image_tag candidate.picture.url(:medium), class: "img-circle text-center" %>
+          <% end %>
+
           <h4><strong><%= candidate.firstname.downcase.capitalize %> <%= candidate.lastname.upcase %></strong></h4>
           <p style="text-align:center;"><%= bd %> ans</p>
 
-          <% unless candidate.picture_file_size.nil? %>
-            <%= image_tag candidate.picture.url(:medium), class: "img-circle"%>
-          <% end %>
-
           <p>
             <strong class="highlighted"><%= candidate.status %></strong>
-            <% if candidate.position && (candidate.status == 'Contrat à durée indéterminée' || candidate.status == 'Autre situation de travail (CDD, intérim, TNS)') %>
+            <% if candidate.position && candidate.position != "" && (candidate.status == 'Contrat à durée indéterminée' || candidate.status == 'Autre situation de travail (CDD, intérim, TNS)') %>
               :<br><strong><%= candidate.position %></strong>
             <% end %>
-            <% if candidate.companie && (candidate.status == 'Contrat à durée indéterminée' || candidate.status == 'Autre situation de travail (CDD, intérim, TNS)') %>
+            <% if candidate.companie && candidate.companie != "" && (candidate.status == 'Contrat à durée indéterminée' || candidate.status == 'Autre situation de travail (CDD, intérim, TNS)') %>
                chez <strong><%= candidate.companie %></strong
             <% end %>
             <% if candidate.trial_period == true && candidate.status == 'Contrat à durée indéterminée' %>
