@@ -13,6 +13,6 @@ $(document).ready(function() {
   $("#login-modal").on("shown.bs.modal", function() {
     $(this).find("input.email").focus();
   });
+  $("#signUp").find("#user_email").focus();
 });
-
 

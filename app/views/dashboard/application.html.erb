@@ -1,9 +1,10 @@
 <div class="dash-home">
 <!--   <div> -->
     <div class="container padded">
-      <div class="page_content">
+      <div class="page_content" style="margin-top:-20px">
         <div class="row">
           <div class="col-xs-12 col-md-6 col-md-offset-3">
+            <h3>Votre candidature</h3>
             <%= simple_form_for current_user.candidates.first do |f| %>
               <h4>Votre recherche</h4>
               <%= f.input :dossier_zip, label: "Département de recherche" %>
