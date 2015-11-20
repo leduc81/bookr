@@ -1,11 +1,13 @@
 <% dossier = @candidates.first %>
 
-<% revenue_dossier = 0 %>
-<% current_user.candidates.each do |candidate| %>
-  <% revenue_dossier = revenue_dossier + candidate.income %>
+<% if display == "full" %>
+  <% revenue_dossier = 0 %>
+  <% @candidates.each do |candidate| %>
+    <% revenue_dossier = revenue_dossier + candidate.income %>
+  <% end %>
 <% end %>
 
-<% many = current_user.candidates.size > 1 ? true : false %>
+<% many = @candidates.size > 1 ? true : false %>
 
 <div class="preview_document container">
 
